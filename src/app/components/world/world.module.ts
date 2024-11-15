@@ -6,6 +6,7 @@ import { WorldComponent } from './world.component';
   imports: [
     CommonModule
   ],
-  declarations: [WorldComponent]
+  declarations: [WorldComponent],
+  exports: [WorldComponent]
 })
 export class WorldModule { }

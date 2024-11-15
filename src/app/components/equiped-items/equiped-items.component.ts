@@ -119,6 +119,10 @@ export class EquipedItemsComponent implements OnInit {
       return `../assets/championset/champ${item.type}.gif`
     }
 
+    if(item.name === "Scimitar of Flame"){
+      return "../assets/quiver/quiweapon.gif"
+    }
+
     return "resolve image path went wrong! - replace with default img"
   }
 
