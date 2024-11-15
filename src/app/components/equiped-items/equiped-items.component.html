@@ -4,7 +4,7 @@
         <div class="flex items-center justify-center  rounded-md p-2 relative">
                 <!-- Image with Tooltip -->
                 <img (mouseover)="setActiveItem('head')" (mouseleave)="setActiveItem('head')"
-                        (click)="setActiveItem('head')" src="../assets/championset/champhead.gif"
+                        (click)="setActiveItem('head')" [src]="resolveImagePath(equipedItems.head)"
                         class="hover:cursor-pointer border rounded-md border-gray-500" />
 
                 <!-- Tooltip Positioned Below Image -->
@@ -15,7 +15,7 @@
         </div>
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img (mouseover)="setActiveItem('neck')"
                         (mouseleave)="setActiveItem('neck')" (click)="setActiveItem('neck')"
-                        src="../assets/championset/champneck.gif"
+                        [src]="resolveImagePath(equipedItems.neck)"
                         class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mt-5" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'neck'"
@@ -27,7 +27,7 @@
         <!-- Row 2 -->
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img
                         (mouseover)="setActiveItem('weapon')" (mouseleave)="setActiveItem('weapon')"
-                        (click)="setActiveItem('weapon')" src="../assets/championset/champweapon.gif"
+                        (click)="setActiveItem('weapon')" [src]="resolveImagePath(equipedItems.weapon)"
                         class="hover:cursor-pointer border rounded-md border-gray-500" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'weapon'"
@@ -37,7 +37,7 @@
         </div>
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img (mouseover)="setActiveItem('armor')"
                         (mouseleave)="setActiveItem('armor')" (click)="setActiveItem('armor')"
-                        src="../assets/championset/champbody.gif"
+                        [src]="resolveImagePath(equipedItems.armor)"
                         class="hover:cursor-pointer border rounded-md border-gray-500" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'armor'"
@@ -47,7 +47,7 @@
         </div>
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img
                         (mouseover)="setActiveItem('shield')" (mouseleave)="setActiveItem('shield')"
-                        (click)="setActiveItem('shield')" src="../assets/championset/champshield.gif"
+                        (click)="setActiveItem('shield')" [src]="resolveImagePath(equipedItems.shield)"
                         class="hover:cursor-pointer border rounded-md border-gray-500" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'shield'"
@@ -59,7 +59,7 @@
         <!-- Row 3 -->
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img (mouseover)="setActiveItem('belt')"
                         (mouseleave)="setActiveItem('belt')" (click)="setActiveItem('belt')"
-                        src="../assets/championset/champbelt.gif"
+                        [src]="resolveImagePath(equipedItems.belt)"
                         class="hover:cursor-pointer border rounded-md border-gray-500 ml-5 mb-5" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'belt'"
@@ -69,7 +69,7 @@
         </div>
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img (mouseover)="setActiveItem('shoes')"
                         (mouseleave)="setActiveItem('shoes')" (click)="setActiveItem('shoes')"
-                        src="../assets/championset/champshoes.gif"
+                        [src]="resolveImagePath(equipedItems.shoes)"
                         class="hover:cursor-pointer border rounded-md border-gray-500" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'shoes'"
@@ -79,7 +79,7 @@
         </div>
         <div class="flex items-center justify-center  rounded-md p-2 relative"><img (mouseover)="setActiveItem('ring')"
                         (mouseleave)="setActiveItem('ring')" (click)="setActiveItem('ring')"
-                        src="../assets/championset/champring.gif"
+                        [src]="resolveImagePath(equipedItems.ring)"
                         class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mb-5" />
                 <!-- Tooltip Positioned Below Image -->
                 <div *ngIf="activeItem === 'ring'"
