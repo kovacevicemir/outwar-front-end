@@ -1,11 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-world',
   templateUrl: './world.component.html',
-  styleUrls: ['./world.component.css']
+  styleUrls: ['./world.component.scss']
 })
 export class WorldComponent implements OnInit {
+  
+  playerLocation = [4,0]
+  roomIds = [5,40,43,53,66, 2,3,9,15,17,35,39,46,52,58,59,51,55,49,47,62,7,18,34,19,18,22,10,21,32,30,28,26,13,12,71,72,69,73,74]
+  waterIds = [63]
+  subwayIds = [44]
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getUserByUsername('test1');
+  }
+
+  getUserByUsername(username: string) {
+    const url = `https://localhost:44338/get-user-by-username?username=${username}`;
+    this.http.get(url).subscribe({
+      next: (response) => {
+        console.log('User data:', response);
+        // @ts-ignore
+        this.playerLocation = response.location;
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+      },
+    });
+  }
+
+
+  isPlayerLocation(row: number, col: number): boolean {
+    return this.playerLocation[0] === row && this.playerLocation[1] === col;
+  }
+
+  isRoom(cell: number): boolean {
+    return this.roomIds.includes(cell);
+  }
+  isWater(cell: number): boolean {
+    return this.waterIds.includes(cell);
+  }
+  isSubway(cell: number): boolean {
+    return this.subwayIds.includes(cell);
+  }
+
+  changeLocation(direction: string): void {
+    const url = `https://localhost:44338/change-user-location?username=test1&direction=${direction}`;
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        console.log('Change user location response:', response);
+        //@ts-ignore
+        this.playerLocation = response;
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+      },
+    });
+  }
 
   gameMap: number[][] = [
         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  8, 14, 14, 14, 14, 14, 14, 14,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0  ],
@@ -30,17 +85,28 @@ export class WorldComponent implements OnInit {
         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0 ]
   ];
 
-  // gameMap: number[][] = [
-  //   [1, 1, 1, 1, 1, 1, 1, 1],
-  //   [2, 2, 2, 2, 2, 2, 2, 2],
-  //   [3, 3, 3, 3, 3, 3, 3, 3]
-  // ];
-
-  transposedMap: number[][] = [];
-
-  constructor() { }
-
-  ngOnInit() {
+  // Listen for keypress events
+  @HostListener('document:keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent): void {
+    switch (event.key.toLowerCase()) {
+      case 'w':
+        this.changeLocation('up');
+        break;
+      case 'a':
+        this.changeLocation('left');
+        break;
+      case 's':
+        this.changeLocation('down');
+        break;
+      case 'd':
+        this.changeLocation('right');
+        break;
+      default:
+        // Ignore other keys
+        break;
+    }
   }
 
+
+  transposedMap: number[][] = [];
 }

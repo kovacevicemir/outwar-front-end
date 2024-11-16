@@ -1,8 +1,26 @@
 <div class="game-map">
   <div *ngFor="let row of gameMap; let i = index" class="game-row">
-    <div *ngFor="let cell of row" class="game-cell" 
-         [ngClass]="{'hidden': cell === 0, 'highlight': cell !== 0}">
+    <div 
+      *ngFor="let cell of row; let j = index" 
+      class="game-cell" 
+      [ngClass]="{
+        'hidden': cell === 0, 
+        'highlight': cell !== 0, 
+        'current-location-cell': isPlayerLocation(i, j),
+        'room-style': isRoom(cell),
+        'water-style': isWater(cell),
+        'subway-style': isSubway(cell)
+      }">
       {{ cell !== 0 ? cell : '' }}
     </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button (click)="changeLocation('up')">W</button>
+  <div class="horizontal-controls">
+    <button (click)="changeLocation('left')">A</button>
+    <button (click)="changeLocation('down')">S</button>
+    <button (click)="changeLocation('right')">D</button>
   </div>
 </div>

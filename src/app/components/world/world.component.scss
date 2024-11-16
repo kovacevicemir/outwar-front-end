@@ -1,0 +1,94 @@
+.game-map {
+  display: grid;
+  grid-template-columns: repeat(45, 1fr);  /* Adjust number of columns based on the number of cells in a row */
+  gap: 2px; /* 2px gap between cells */
+  max-width: 100%;
+  margin: 20px auto !important;
+}
+
+.game-row {
+  display: contents;  /* Allows each row to be displayed as a set of grid items */
+}
+
+.game-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f4f4f4;
+  height: 20px !important;
+  width: 20px !important; /* Cell height */
+  font-size: 14px;
+  border: 1px solid #ddd; /* Border around each cell */
+  transition: background-color 0.3s ease; /* Smooth transition for background color change */
+}
+
+.game-cell:hover {
+  cursor: pointer;
+  background-color: #e0e0e0; /* Optional: Change background on hover */
+}
+
+.hidden {
+  background-color: transparent !important;  /* Hide cells where the value is 0 */
+  border: none;  /* Remove borders for hidden cells */
+}
+
+.hidden:hover {
+  cursor: default;
+}
+
+.highlight {
+  background-color: gray !important ;  /* Light orange background for non-zero values */
+  color: white;  /* White text color */
+}
+
+.room-style {
+  background-color: #d6a247 !important; /* Highlight for room cells */
+}
+
+.water-style {
+  background-color: rgb(60, 60, 238) !important; /* Highlight for room cells */
+}
+
+.subway-style {
+  background-color: rgb(254, 98, 236) !important; /* Highlight for room cells */
+}
+
+.current-location-cell{
+  background-color: rgb(122, 186, 38) !important;
+}
+
+
+
+.game-cell {
+  background-color: #f4f4f4;
+  font-size: 12px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.horizontal-controls {
+  display: flex;
+  justify-content: space-around;
+  width: 150px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
