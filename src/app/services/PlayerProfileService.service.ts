@@ -54,22 +54,39 @@ export class PlayerProfileServiceService {
   // Signal to hold the user state
   private userSignal = signal<UserResponse | null>(null);
   public inventoryItemsSignal: WritableSignal<Item[]> = signal<Item[]>([]);
+  public equipedItems: WritableSignal<EquipedItems> = signal<EquipedItems>({});
 
   constructor(private http: HttpClient) {
     //     // Effect: Trigger functions when userSignal changes
 
-    effect(() => {
-      const user = this.userSignal(); // Automatically tracks `userSignal`
-      if (user !== null) {
-        this.generateEquipedItems(user);
-        this.generateInventoryItems();
-      }
-    },{allowSignalWrites: true});
+    effect(
+      () => {
+        const user = this.userSignal(); // Automatically tracks `userSignal`
+        if (user !== null) {
+          this.generateEquipedItems(user);
+          this.generateInventoryItems();
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
-  equipItem(item: Item){
+  equipItem(item: Item) {
     const url = `https://localhost:44338/equip-item?username=test1&itemId=${item.id}`;
-    this.http.post(url,null).subscribe({
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        //Refetch - retrigger all?
+        this.getUserByUsername('test1');
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+      },
+    });
+  }
+
+  unequipItem(item: Item) {
+    const url = `https://localhost:44338/unequip-item?username=test1&itemId=${item.id}`;
+    this.http.post(url, null).subscribe({
       next: (response) => {
         //Refetch - retrigger all?
         this.getUserByUsername('test1');
@@ -85,8 +102,8 @@ export class PlayerProfileServiceService {
     this.http.get(url).subscribe({
       next: (response) => {
         console.log('User data:', response);
-        this.userSignal.set(response as UserResponse); 
-        this.generateEquipedItems(response as UserResponse);
+        this.userSignal.set(response as UserResponse);
+        // this.generateEquipedItems(response as UserResponse);
       },
       error: (error) => {
         console.error('Error fetching user:', error);
@@ -105,7 +122,7 @@ export class PlayerProfileServiceService {
     // Normalize stats - Translate stats array to real stats - normalize
     // Attach image url to item as well
 
-    const normalizedEquipedItems: Item[] = [];
+    const newEquipedItems: EquipedItems = {}
 
     findEquipedItems.forEach((item) => {
       const normalizedItem = {
@@ -121,13 +138,11 @@ export class PlayerProfileServiceService {
         urlPath: this.resolveImagePath(item),
       };
 
-      normalizedEquipedItems.push(normalizedItem);
+       newEquipedItems[normalizedItem.type as keyof typeof newEquipedItems] = item;
     });
 
-    //Equip normalized items
-    normalizedEquipedItems.forEach((item) => {
-      this.equipedItems[item.type as keyof typeof this.equipedItems] = item;
-    });
+
+    this.equipedItems.set(newEquipedItems);
   }
 
   resolveImagePath(item: Item | undefined) {
@@ -172,19 +187,17 @@ export class PlayerProfileServiceService {
       try {
         this.inventoryItemsSignal.set(inventoryItems);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
 
-      console.log('final value of signal' , this.inventoryItemsSignal())
+      console.log('final value of signal', this.inventoryItemsSignal());
     }
   }
 
   getInventoryItemsSignal() {
-    const test = this.inventoryItemsSignal
     return this.inventoryItemsSignal;
   }
 
   title = 'micro-outwar';
   activeItem = '';
-  equipedItems: EquipedItems = {};
 }

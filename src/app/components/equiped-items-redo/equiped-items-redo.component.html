@@ -1,0 +1,84 @@
+<div class="equiped-main-container w-[250px] h-[277px] grid grid-cols-3 gap-0 p-0 max-w-xs mx-auto bg-black">
+
+  <!-- Row 1 with placeholder for 1 -->
+  <div class="border-transparent p-4"></div>
+  <div class="flex items-center justify-center rounded-md p-2 mb-4 relative">
+    <!-- Image with Tooltip -->
+    <img *ngIf="equipedItems().head" (click)="setActiveItem('head')" [src]="resolveImagePath(equipedItems().head)"
+      class="hover:cursor-pointer border rounded-md border-gray-500" />
+
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'head'" class="absolute z-10 left-0 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().head | json }}</pre>
+      <button *ngIf="equipedItems().head" (click)="unequipItem(equipedItems().head)">Unequip</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().neck" (click)="setActiveItem('neck')"
+      [src]="resolveImagePath(equipedItems().neck)"
+      class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mt-5" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'neck'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().neck | json }}</pre>
+      <button *ngIf="equipedItems().neck" (click)="unequipItem(equipedItems().neck)">Unequip</button>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().weapon"
+      (click)="setActiveItem('weapon')" [src]="resolveImagePath(equipedItems().weapon)"
+      class="hover:cursor-pointer border rounded-md border-gray-500" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'weapon'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().weapon | json }}</pre>
+      <button *ngIf="equipedItems().weapon" (click)="unequipItem(equipedItems().weapon)">Unequip</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('armor')" *ngIf="equipedItems().armor"
+      [src]="resolveImagePath(equipedItems().armor)"
+      class="hover:cursor-pointer border rounded-md border-gray-500 mt-[-45px]" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'armor'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().armor | json }}</pre>
+      <button *ngIf="equipedItems().armor" (click)="unequipItem(equipedItems().armor)">Unequip</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().shield"
+      (click)="setActiveItem('shield')" [src]="resolveImagePath(equipedItems().shield)"
+      class="hover:cursor-pointer border rounded-md border-gray-500" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'shield'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().shield | json }}</pre>
+      <button *ngIf="equipedItems().shield" (click)="unequipItem(equipedItems().shield)">Unequip</button>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('belt')" *ngIf="equipedItems().belt"
+      [src]="resolveImagePath(equipedItems().belt)"
+      class="hover:cursor-pointer border rounded-md border-gray-500 ml-5 mb-5" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'belt'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().belt | json }}</pre>
+      <button *ngIf="equipedItems().belt" (click)="unequipItem(equipedItems().belt)">Unequip</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('shoes')" *ngIf="equipedItems().shoes"
+      [src]="resolveImagePath(equipedItems().shoes)" class="hover:cursor-pointer border rounded-md border-gray-500" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'shoes'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().shoes | json }}</pre>
+      <button *ngIf="equipedItems().shoes" (click)="unequipItem(equipedItems().shoes)">Unequip</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('ring')" *ngIf="equipedItems().ring"
+      [src]="resolveImagePath(equipedItems().ring)"
+      class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mb-5" />
+    <!-- Tooltip Positioned Below Image -->
+    <div *ngIf="activeItem === 'ring'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
+      <pre>{{ equipedItems().ring | json }}</pre>
+      <button *ngIf="equipedItems().ring" (click)="unequipItem(equipedItems().ring)">Unequip</button>
+    </div>
+  </div>
+</div>
+
+<button (click)="debug()">DEBUG</button>
