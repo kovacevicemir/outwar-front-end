@@ -1,0 +1,5 @@
+.equiped-main-container{
+    background-image: url("/assets/silueta-background.jpg");
+    background-size: contain; /* Adjust image size to cover the container */
+    background-repeat: no-repeat; /* Prevent tiling */
+}

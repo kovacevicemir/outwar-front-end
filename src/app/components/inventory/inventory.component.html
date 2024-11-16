@@ -1,0 +1,17 @@
+<p>
+  inventory works!
+</p>
+<!-- inventory.component.html -->
+<div class="grid grid-cols-10 grid-rows-5 gap-1 p-0 w-[550px]">
+  <!-- Loop through each square in the grid and display items -->
+  <div *ngFor="let item of inventoryItems(); let i = index" class="relative w-12 h-12 rounded-lg overflow-hidden border-2 border-gray-300">
+    <!-- Show image if item exists -->
+    <img (click)="equipItem(item)" *ngIf="item" [src]="item.urlPath" alt="Item" class="object-cover w-full h-full rounded-lg" />
+    <!-- Show a placeholder if there's no item -->
+    <div *ngIf="!item" class="w-full h-full bg-gray-200 rounded-lg"></div>
+  </div>
+</div>
+
+
+
+<pre>{{ inventoryItems()| json }}</pre>
