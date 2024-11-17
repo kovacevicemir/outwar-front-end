@@ -47,6 +47,17 @@ export type UserResponse = {
   questMonsterIds: number[];
 };
 
+export type PlayerStatsSummary = {
+    attack: number,
+    hp: number,
+    maxRage: number,
+    rage: number,
+    exp: number,
+    rampage: number,
+    critical: number,
+    block: number,
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -55,6 +66,16 @@ export class PlayerProfileServiceService {
   private userSignal = signal<UserResponse | null>(null);
   public inventoryItemsSignal: WritableSignal<Item[]> = signal<Item[]>([]);
   public equipedItems: WritableSignal<EquipedItems> = signal<EquipedItems>({});
+  public playerStatsSummary: WritableSignal<PlayerStatsSummary> = signal<PlayerStatsSummary>({
+    attack: 0,
+    hp: 0,
+    maxRage: 0,
+    rage: 0,
+    exp: 0,
+    rampage: 0,
+    critical: 0,
+    block: 0,
+  });
 
   constructor(private http: HttpClient) {
     //     // Effect: Trigger functions when userSignal changes
@@ -65,6 +86,7 @@ export class PlayerProfileServiceService {
         if (user !== null) {
           this.generateEquipedItems(user);
           this.generateInventoryItems();
+          this.summarizeEquippedItems();
         }
       },
       { allowSignalWrites: true }
@@ -144,6 +166,39 @@ export class PlayerProfileServiceService {
 
     this.equipedItems.set(newEquipedItems);
   }
+
+  summarizeEquippedItems = () => {
+    const equippedItems = this.equipedItems();
+
+    const summary = {
+      attack: 0,
+      hp: 0,
+      maxRage: 0,
+      rage: 0,
+      exp: 0,
+      rampage: 0,
+      critical: 0,
+      block: 0,
+    };
+
+    //   0   | 1 |   2   |  3 | 4 |   5   |    6   |  7  
+    // attack|hp |maxRage|rage|exp|rampage|critical|block
+  
+    Object.values(equippedItems).forEach((item) => {
+      if (item) {
+        summary.attack += item.stats[0] || 0;
+        summary.hp += item.stats[1] || 0;
+        summary.maxRage += item.stats[2] || 0;
+        summary.rage += item.stats[3] || 0;
+        summary.exp += item.stats[4] || 0;
+        summary.rampage += item.stats[5] || 0;
+        summary.critical += item.stats[6] || 0;
+        summary.block += item.stats[7] || 0;
+      }
+    });
+  
+    this.playerStatsSummary.set(summary);
+  };
 
   resolveImagePath(item: Item | undefined) {
     if (item === undefined) {
