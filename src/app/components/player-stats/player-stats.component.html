@@ -3,8 +3,9 @@
   {{ playerStatsSummary() | json }}
 </p> -->
 <div class="p-4 border rounded-lg bg-gray-50 shadow w-[400px]">
-  <div *ngFor="let stat of playerStatsSummary() | keyvalue" class="flex justify-between items-center py-1 border-b last:border-b-0">
-    <span class="font-medium text-gray-700 capitalize">{{ stat.key }}</span>
-    <span class="text-gray-900 font-bold">{{ stat.value }}</span>
+  <div *ngFor="let stat of playerStatsSummary() | keyvalue"
+    class="flex justify-between items-center py-1 border-b last:border-b-0">
+      <span  class="font-medium text-gray-700 capitalize">{{ stat.key }}</span>
+      <span class="text-gray-900 font-bold">{{ stat.value }}</span>
   </div>
 </div>
