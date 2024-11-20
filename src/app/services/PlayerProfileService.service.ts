@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { effect, Injectable, signal, WritableSignal } from '@angular/core';
+import experienceList from '../data/experienceList.json';
 
 export type Item = {
   id: number;
@@ -50,17 +51,19 @@ export type UserResponse = {
 };
 
 export type PlayerStatsSummary = {
-    attack: number,
-    hp: number,
-    maxRage: number,
-    rage: number,
-    exp: number,
-    rampage: number,
-    critical: number,
-    block: number,
-    totalSetAttackBonus: number,
-    totalSetHpBonus: number
-}
+  attack: number;
+  hp: number;
+  maxRage: number;
+  rage: number;
+  exp: number;
+  rampage: number;
+  critical: number;
+  block: number;
+  totalSetAttackBonus: number;
+  totalSetHpBonus: number;
+  levelAttackBonus: number;
+  levelHpBonus: number;
+};
 
 @Injectable({
   providedIn: 'root',
@@ -70,18 +73,21 @@ export class PlayerProfileServiceService {
   public userSignal = signal<UserResponse | null>(null);
   public inventoryItemsSignal: WritableSignal<Item[]> = signal<Item[]>([]);
   public equipedItems: WritableSignal<EquipedItems> = signal<EquipedItems>({});
-  public playerStatsSummary: WritableSignal<PlayerStatsSummary> = signal<PlayerStatsSummary>({
-    attack: 0,
-    hp: 0,
-    maxRage: 0,
-    rage: 0,
-    exp: 0,
-    rampage: 0,
-    critical: 0,
-    block: 0,
-    totalSetAttackBonus: 0,
-    totalSetHpBonus: 0
-  });
+  public playerStatsSummary: WritableSignal<PlayerStatsSummary> =
+    signal<PlayerStatsSummary>({
+      attack: 0,
+      hp: 0,
+      maxRage: 0,
+      rage: 0,
+      exp: 0,
+      rampage: 0,
+      critical: 0,
+      block: 0,
+      totalSetAttackBonus: 0,
+      totalSetHpBonus: 0,
+      levelAttackBonus: 0,
+      levelHpBonus: 0,
+    });
 
   constructor(private http: HttpClient) {
     //     // Effect: Trigger functions when userSignal changes
@@ -107,7 +113,7 @@ export class PlayerProfileServiceService {
         this.getUserByUsername('test1');
       },
       error: (error) => {
-        console.error('Error fetching user:', error);
+        console.error('Error equiping item:', error);
       },
     });
   }
@@ -120,7 +126,7 @@ export class PlayerProfileServiceService {
         this.getUserByUsername('test1');
       },
       error: (error) => {
-        console.error('Error fetching user:', error);
+        console.error('Error unequiping item:', error);
       },
     });
   }
@@ -134,7 +140,7 @@ export class PlayerProfileServiceService {
         // this.generateEquipedItems(response as UserResponse);
       },
       error: (error) => {
-        console.error('Error fetching user:', error);
+        console.error('Error getting user:', error);
       },
     });
   }
@@ -150,7 +156,7 @@ export class PlayerProfileServiceService {
     // Normalize stats - Translate stats array to real stats - normalize
     // Attach image url to item as well
 
-    const newEquipedItems: EquipedItems = {}
+    const newEquipedItems: EquipedItems = {};
 
     findEquipedItems.forEach((item) => {
       const normalizedItem = {
@@ -166,9 +172,9 @@ export class PlayerProfileServiceService {
         urlPath: this.resolveImagePath(item),
       };
 
-       newEquipedItems[normalizedItem.type as keyof typeof newEquipedItems] = item;
+      newEquipedItems[normalizedItem.type as keyof typeof newEquipedItems] =
+        item;
     });
-
 
     this.equipedItems.set(newEquipedItems);
   }
@@ -187,11 +193,13 @@ export class PlayerProfileServiceService {
       block: 0,
       totalSetAttackBonus: 0,
       totalSetHpBonus: 0,
+      levelAttackBonus: 0,
+      levelHpBonus: 0,
     };
 
-    //   0   | 1 |   2   |  3 | 4 |   5   |    6   |  7  
+    //   0   | 1 |   2   |  3 | 4 |   5   |    6   |  7
     // attack|hp |maxRage|rage|exp|rampage|critical|block
-  
+
     Object.values(equippedItems).forEach((item) => {
       if (item) {
         summary.attack += item.stats[0] || 0;
@@ -204,26 +212,42 @@ export class PlayerProfileServiceService {
         summary.block += item.stats[7] || 0;
       }
     });
-  
 
-    const setBonuses = this.getDistinctSetsWithCalculatedBonus(this.equipedItems(), 8)
+    const setBonuses = this.getDistinctSetsWithCalculatedBonus(
+      this.equipedItems(),
+      8
+    );
     const totalBonuses = this.calculateTotalBonuses(setBonuses);
 
-    summary.attack += totalBonuses.totalAttackBonus
-    summary.hp += totalBonuses.totalHpBonus
+    summary.attack += totalBonuses.totalAttackBonus;
+    summary.hp += totalBonuses.totalHpBonus;
     summary.totalSetAttackBonus += totalBonuses.totalAttackBonus;
-    summary.totalSetHpBonus += totalBonuses.totalHpBonus
+    summary.totalSetHpBonus += totalBonuses.totalHpBonus;
+
+    //Add level bonuses
+    const levelDefinition = experienceList.find(
+      (e) => e.level === this.userSignal()?.level
+    );
+    if (levelDefinition) {
+      summary.attack += levelDefinition.attackPoints;
+      summary.hp += levelDefinition.Hp;
+      summary.levelAttackBonus = levelDefinition.attackPoints;
+      summary.levelHpBonus = levelDefinition.Hp;
+    }
 
     this.playerStatsSummary.set(summary);
-
   };
 
   calculateTotalBonuses(
-    distinctSets: { numberOfParts: number; setBonus: number[]; calculatedSetBonus: number[] }[]
+    distinctSets: {
+      numberOfParts: number;
+      setBonus: number[];
+      calculatedSetBonus: number[];
+    }[]
   ): { totalAttackBonus: number; totalHpBonus: number } {
     let totalAttackBonus = 0;
     let totalHpBonus = 0;
-  
+
     distinctSets.forEach((set) => {
       if (set.calculatedSetBonus.length > 0) {
         totalAttackBonus += set.calculatedSetBonus[0]; // Assuming attack bonus is at index 0
@@ -232,20 +256,27 @@ export class PlayerProfileServiceService {
         totalHpBonus += set.calculatedSetBonus[1]; // Assuming HP bonus is at index 1
       }
     });
-  
+
     return { totalAttackBonus, totalHpBonus };
   }
 
   getDistinctSetsWithCalculatedBonus(
     equippedItems: EquipedItems,
     maxParts: number
-  ): { numberOfParts: number; setBonus: number[]; calculatedSetBonus: number[] }[] {
-    const bonusCounts: Record<string, { setBonus: number[]; numberOfParts: number }> = {};
-  
+  ): {
+    numberOfParts: number;
+    setBonus: number[];
+    calculatedSetBonus: number[];
+  }[] {
+    const bonusCounts: Record<
+      string,
+      { setBonus: number[]; numberOfParts: number }
+    > = {};
+
     // Count the number of parts for each setBonus
     Object.values(equippedItems).forEach((item) => {
       if (item && item.setBonus) {
-        const bonusKey = item.setBonus.join(","); // Use stringified key to represent setBonus
+        const bonusKey = item.setBonus.join(','); // Use stringified key to represent setBonus
         if (bonusCounts[bonusKey]) {
           bonusCounts[bonusKey].numberOfParts += 1;
         } else {
@@ -253,7 +284,7 @@ export class PlayerProfileServiceService {
         }
       }
     });
-  
+
     // Calculate calculatedSetBonus and round to integers
     return Object.values(bonusCounts).map(({ setBonus, numberOfParts }) => {
       const calculatedSetBonus = setBonus.map((bonus) =>
@@ -265,7 +296,7 @@ export class PlayerProfileServiceService {
 
   extractSetName(itemName: string): string | null {
     // Define your set name matching logic here
-    const knownSets = ["champion", "banana", "hero", "legend"];
+    const knownSets = ['champion', 'banana', 'hero', 'legend'];
     for (const setName of knownSets) {
       if (itemName.toLowerCase().includes(setName)) {
         return setName;

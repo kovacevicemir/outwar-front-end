@@ -1,3 +1,27 @@
-<p>
-  ranking-page works!
-</p>
+<div class="overflow-x-auto p-4">
+  <table class="min-w-full table-auto border-collapse bg-gray-900 shadow-lg rounded-lg">
+    <!-- Table Head -->
+    <thead class="bg-gray-800 text-xs text-gray-300">
+      <tr>
+        <th class="px-4 py-2 text-center font-semibold">Rank</th>
+        <th class="px-4 py-2 text-left font-semibold">Name</th>
+        <th class="px-4 py-2 text-center font-semibold">Level</th>
+        <th class="px-4 py-2 text-center font-semibold">Experience</th>
+      </tr>
+    </thead>
+    
+    <!-- Table Body -->
+    <tbody class="text-sm text-gray-100">
+      <tr *ngFor="let player of ranking; let i = index" [ngClass]="{
+          'bg-gray-800': i % 2 === 0, 
+          'bg-gray-700': i % 2 !== 0, 
+          'hover:bg-blue-600': true
+        }" class="transition-all duration-200 ease-in-out hover:scale-105 cursor-pointer">
+        <td class="px-4 py-2 text-center">{{ i + 1 }}</td>
+        <td class="px-4 py-2">{{ player.name }}</td>
+        <td class="px-4 py-2 text-center">{{ player.level }}</td>
+        <td class="px-4 py-2 text-center">{{ player.experience }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

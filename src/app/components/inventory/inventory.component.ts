@@ -13,10 +13,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InventoryComponent implements OnInit {
   inventoryItems = this.playerProfileService.inventoryItemsSignal.asReadonly();
+  activeItem = 0;
 
   constructor(private playerProfileService: PlayerProfileServiceService, private http: HttpClient) {}
 
   ngOnInit() {
+  }
+
+  setActiveItem(item: number) {
+    console.log("setting active item: ",item)
+
+    if (this.activeItem === item) {
+      this.activeItem = 0;
+    } else {
+      this.activeItem = item;
+    }
   }
 
   equipItem(item: Item){
