@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import worldDefinitions from '../../data/WorldDefinitions.json';
+import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 
 interface WorldLocation {
   id: number;
@@ -19,7 +20,7 @@ export class WorldComponent implements OnInit {
   currentLocationDetails: WorldLocation = {
     id: 1,
     name: 'first street',
-    monsters: ['Monster 1'],
+    monsters: [],
     npcs: [],
   };
   roomIds = [
@@ -29,8 +30,9 @@ export class WorldComponent implements OnInit {
   ];
   waterIds = [63];
   subwayIds = [44];
+  combatOutcomeMsg = ''
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private playerProfileService: PlayerProfileServiceService) {}
 
   ngOnInit() {
     this.getUserByUsername('test1');
@@ -75,6 +77,8 @@ export class WorldComponent implements OnInit {
         if(currentLocationDetails){
           this.currentLocationDetails = currentLocationDetails
         }
+
+        this.combatOutcomeMsg = ''
       },
       error: (error) => {
         console.error('Error fetching user:', error);
@@ -170,8 +174,19 @@ export class WorldComponent implements OnInit {
     ],
   ];
 
-  attackMonster(monster: any){
-    console.log("todo")
+  attackMonster(monster: string){
+    const url = `https://localhost:44338/attack-monster-by-name?monsterName=${monster}&username=test1`;
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        console.log('attack response:', response);
+        this.combatOutcomeMsg = response.toString();
+        // this.generateEquipedItems(response as UserResponse);
+        this.playerProfileService.getUserByUsername('test1')
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+      },
+    });
   }
 
   getLocationDetails() {

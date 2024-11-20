@@ -51,6 +51,10 @@
           </li>
         </ul>
       </div>
+
+      <div *ngIf="combatOutcomeMsg !== ''" class="bg-gradient-to-r from-green-500 to-green-700 text-white p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-200 font-mono text-lg text-center border-4 border-green-400">
+        {{ combatOutcomeMsg }}
+      </div>
     
       <!-- Divider -->
       <hr class="my-6 border-gray-300" />

@@ -33,6 +33,8 @@ export type EquipedItems = {
 export type UserResponse = {
   id: number;
   name: string;
+  rage: number;
+  ragePerHour: number;
   level: number;
   experience: number;
   items: {
@@ -65,7 +67,7 @@ export type PlayerStatsSummary = {
 })
 export class PlayerProfileServiceService {
   // Signal to hold the user state
-  private userSignal = signal<UserResponse | null>(null);
+  public userSignal = signal<UserResponse | null>(null);
   public inventoryItemsSignal: WritableSignal<Item[]> = signal<Item[]>([]);
   public equipedItems: WritableSignal<EquipedItems> = signal<EquipedItems>({});
   public playerStatsSummary: WritableSignal<PlayerStatsSummary> = signal<PlayerStatsSummary>({

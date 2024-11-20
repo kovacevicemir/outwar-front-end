@@ -1,0 +1,14 @@
+<div class="flex items-center gap-1">
+  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.name">
+    {{ user()?.name }}
+  </div>
+  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.level">
+    Level {{ user()?.level }}
+  </div>
+  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.experience">
+    Experience {{ user()?.experience }} / {{expNeeded()}}
+  </div>
+  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.rage">
+    Rage {{ user()?.rage }} ({{user()?.ragePerHour}}/hr)
+  </div>
+</div>

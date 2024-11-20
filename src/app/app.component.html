@@ -226,7 +226,7 @@
                                                 <ul role="list" class="-mx-2 space-y-1">
                                                         <li>
                                                                 <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-                                                                <a href="/profile"
+                                                                <a routerLink="/profile"
                                                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                                                         <svg class="size-6 shrink-0" fill="none"
                                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -241,7 +241,7 @@
                                                         </li>
 
                                                         <li>
-                                                                <a href="/crew"
+                                                                <a routerLink="/crew"
                                                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                                                         <svg class="size-6 shrink-0" fill="none"
                                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -255,7 +255,7 @@
                                                                 </a>
                                                         </li>
                                                         <li>
-                                                                <a href="diamond-city"
+                                                                <a routerLink="diamond-city"
                                                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                                                         <svg class="size-6 shrink-0" fill="none"
                                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -269,7 +269,7 @@
                                                                 </a>
                                                         </li>
                                                         <li>
-                                                                <a href="/ranking"
+                                                                <a routerLink="/ranking"
                                                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                                                         <svg class="size-6 shrink-0" fill="none"
                                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -283,7 +283,7 @@
                                                                 </a>
                                                         </li>
                                                         <li>
-                                                                <a href="settings"
+                                                                <a routerLink="settings"
                                                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
                                                                         <svg class="size-6 shrink-0" fill="none"
                                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -383,23 +383,10 @@
                                                 </button>
                                         </div>
                                         <div
-                                                class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                                                class="flex flex-1 items-center justify-center  sm:justify-start">
 
-                                                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                                                        <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">Nickname</a>
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Level</a>
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Experience</a>
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Rage</a>
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Stats</a>
-                                                        <a href="#"
-                                                                class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">12:20
-                                                                AM</a>
+                                                <div class="hidden sm:ml-1 sm:flex sm:space-x-8">
+                                                        <app-player-top-bar-info></app-player-top-bar-info>
                                                 </div>
                                         </div>
                                         <div
@@ -442,7 +429,7 @@
                 <main class="lg:pr-96">
                         <router-outlet></router-outlet>
                 </main>
-                
+
         </div>
 </div>
 
