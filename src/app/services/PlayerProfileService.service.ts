@@ -131,6 +131,19 @@ export class PlayerProfileServiceService {
     });
   }
 
+  deleteItem(item: Item) {
+    const url = `https://localhost:44338/delete-item-from-user-by-item-id?username=test1&itemId=${item.id}`;
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        //Refetch - retrigger all?
+        this.getUserByUsername('test1');
+      },
+      error: (error) => {
+        console.error('Error equiping item:', error);
+      },
+    });
+  }
+
   getUserByUsername(username: string) {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({

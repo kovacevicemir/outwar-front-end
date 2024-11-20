@@ -34,6 +34,10 @@ export class InventoryComponent implements OnInit {
     this.playerProfileService.equipItem(item);
   }
 
+  deleteItem(item: Item){
+    this.playerProfileService.deleteItem(item);
+  }
+
   resolveImagePath(item: Item | undefined){
     if(item === undefined){
       return "resolve image path went wrong! - replace with default img 2"
