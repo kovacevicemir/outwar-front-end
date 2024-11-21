@@ -1,3 +1,112 @@
-<p>
-  crew-page works!
-</p>
+<div *ngIf="crew()" class="min-h-screen bg-gray-100 p-6">
+  <!-- Crew Name Section -->
+  <div class="bg-white rounded shadow p-4">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Crew Name: <span class="text-green-500">{{crew()?.name}}</span>
+    </h1>
+
+    <!-- Crew Leader -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-700 mb-2">Crew Leader</h2>
+      <div class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Name:</strong> test1</p>
+        <p><strong>Level:</strong> 12</p>
+      </div>
+    </div>
+
+    <!-- Crew Members -->
+    <div>
+      <h2 class="text-xl font-semibold text-gray-700 mb-2">Crew Members</h2>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-fit bg-gray-50 rounded shadow">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="text-left px-4 py-2 text-gray-700">Name</th>
+              <th class="text-left px-4 py-2 text-gray-700">Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="px-4 py-2 text-gray-800">test1</td>
+              <td class="px-4 py-2 text-gray-800">12</td>
+            </tr>
+            <!-- Add additional rows for members as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crew Upgrades Section -->
+  <div class="bg-white rounded shadow p-4 mt-6">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Crew Upgrades</h2>
+    <ul class="grid grid-cols-3 gap-4">
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Attack:</strong> 0</p>
+      </li>
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>HP:</strong> 0</p>
+      </li>
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Experience:</strong> 0</p>
+      </li>
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Rage:</strong> 0</p>
+      </li>
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Critical:</strong> 0</p>
+      </li>
+      <li class="bg-gray-50 rounded p-3 shadow">
+        <p><strong>Block:</strong> 0</p>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- RAIDS: -->
+  <div class="space-y-4 mt-12">
+    <hr class="bg-gray-600 h-2" />
+    <h2 class="text-xl mt-12 font-semibold">Raids</h2>
+    <hr class="bg-gray-600 h-2" />
+
+
+    <!-- Loop through each item in the array -->
+    <div *ngFor="let item of gods" class="bg-gray-100 rounded-lg shadow-md p-4">
+      <!-- Collapsible Header -->
+      <div class="flex justify-between items-center">
+        <div class="text-lg font-semibold text-gray-800">{{ item.Name }}</div>
+        <button (click)="toggleCollapse(item)" class="text-blue-500 hover:text-blue-700 text-2xl w-12">
+          <span *ngIf="!collapseState[item.Name]">-</span>
+          <span *ngIf="collapseState[item.Name]">+</span>
+        </button>
+      </div>
+
+      <!-- Collapsible Content -->
+      <div *ngIf="!collapseState[item.Name]" class="mt-4 flex space-x-8">
+        <!-- Left Side: Item Details -->
+        <div class="flex-1">
+          <p class="text-gray-700"><strong>Level Requirement:</strong> {{ item.LevelRequirement }}</p>
+          <p class="text-gray-700"><strong>Attack:</strong> {{ item.Attack }}</p>
+          <p class="text-gray-700"><strong>HP:</strong> {{ item.Hp }}</p>
+          <div>
+            <strong class="text-gray-700">Drops:</strong>
+            <ul class="list-disc pl-5">
+              <li *ngFor="let drop of item.Drops">
+                <span class="text-gray-600">{{ drop }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Side: Item Image -->
+        <div class="flex-none w-40 h-40 bg-gray-200 rounded-lg overflow-hidden">
+          <img [src]="item.imageUrl" alt="{{ item.Name }}" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="crew() === null">
+  You dont belong to any crew!
+</div>

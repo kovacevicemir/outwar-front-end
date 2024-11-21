@@ -48,6 +48,7 @@ export type UserResponse = {
   }[];
   equipedItemsId: number[];
   questMonsterIds: number[];
+  crewName?:string
 };
 
 export type PlayerStatsSummary = {

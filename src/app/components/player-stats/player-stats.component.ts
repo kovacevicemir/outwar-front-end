@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class PlayerStatsComponent implements OnInit {
 
   playerStatsSummary = this.playerProfileService.playerStatsSummary.asReadonly();
+  user = this.playerProfileService.userSignal.asReadonly();
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}
 

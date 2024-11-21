@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Shadow Path",
     "monsters": ["Acidic Primate", "Aracnite"],
-    "npcs": ["NPC 1"]
+    "npcs": []
   },
   {
     "id": 2,
