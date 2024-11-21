@@ -38,6 +38,24 @@ export class CrewService {
     });
   }
 
+  createRaid(raidName: string){
+    if(this.userSignal()?.name === undefined || this.userSignal()?.name === null){
+      this.getUserByUsername('test1')
+      return;
+    }
+
+    const url = `https://localhost:44338/create-raid?crewName=${this.crewSignal()?.name}&createdBy=${this.userSignal()?.name}&raidName=${raidName}`
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        console.log('create raid:', response);
+        
+      },
+      error: (error) => {
+        console.error('Error creating raid:', error);
+      },
+    });
+  }
+
   
   getUserByUsername(username: string) {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;

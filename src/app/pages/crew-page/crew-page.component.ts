@@ -34,6 +34,10 @@ export class CrewPageComponent implements OnInit {
     this.collapseState[item.Name] = !this.collapseState[item.Name];
   }
 
+  formRaid(raidName: string){
+    this.crewService.createRaid(raidName);
+  }
+
   constructor(
     private route: ActivatedRoute,
     private crewService: CrewService,
