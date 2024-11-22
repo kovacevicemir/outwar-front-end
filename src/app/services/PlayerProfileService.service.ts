@@ -317,20 +317,73 @@ export class PlayerProfileServiceService {
     return null; // Return null if no set match is found
   }
 
-  resolveImagePath(item: Item | undefined) {
-    if (item === undefined) {
-      return 'resolve image path went wrong! - replace with default img 2';
+  resolveImagePath(item: Item | undefined){
+    if(item === undefined){
+      return "resolve image path went wrong! - replace with default img 2"
     }
 
-    if (item.name.includes('Champions')) {
-      return `../assets/championset/champ${item.type}.gif`;
+    if(item.name.includes("Champions")){
+      return `../assets/championset/champ${item.type}.gif`
     }
 
-    if (item.name === 'Scimitar of Flame') {
-      return '../assets/quiver/quiweapon.gif';
+    if(item.name.includes("Pimp")){
+      return `../assets/pimpset/pimp${item.type}.gif`
     }
 
-    return 'resolve image path went wrong! - replace with default img';
+    if(item.name.includes("Construction")){
+      return `../assets/constructionset/con${item.type}.gif`
+    }
+
+    if(item.name.includes("Roman")){
+      return `../assets/romanset/roman${item.type}.gif`
+    }
+
+    if(item.name.includes("Dissimulation")){
+      return `../assets/disimulationset/dis${item.type}.gif`
+    }
+
+    if(item.name.includes("Cobalt")){
+      return `../assets/cobaltset/cob${item.type}.gif`
+    }
+
+    if(item.name.includes("Extremity")){
+      return `../assets/extremityset/ex${item.type}.gif`
+    }
+
+    if(item.name.includes("Symphony")){
+      return `../assets/symphonyset/sym${item.type}.gif`
+    }
+
+    if(item.name.includes("Octave")){
+      return `../assets/octaveset/oct${item.type}.gif`
+    }
+
+
+    if(item.name.includes("Gangland")){
+      return `../assets/ganglandset/gan${item.type}.gif`
+    }
+
+    if(item.name.includes("Government")){
+      return `../assets/govermentset/gov${item.type}.gif`
+    }
+
+    if(item.name.includes("Elements")){
+      return `../assets/elementalset/ele${item.type}.gif`
+    }
+
+    if(item.name.includes("Decay")){
+      return `../assets/decayset/dec${item.type}.gif`
+    }
+
+    if(item.name.includes("Noc")){
+      return `../assets/nocset/noc${item.type}.gif`
+    }
+
+    if(item.name === "Scimitar of Flame"){
+      return "../assets/quiver/quiweapon.gif"
+    }
+
+    return "resolve image path went wrong! - replace with default img"
   }
 
   generateInventoryItems() {

@@ -26,22 +26,8 @@ export class EquipedItemsRedoComponent implements OnInit {
   }
 
   resolveImagePath(item: Item | undefined){
-    if(item === undefined){
-      return "resolve image path went wrong! - replace with default img 2"
-    }
-
-    if(item.name.includes("Champions")){
-      return `../assets/championset/champ${item.type}.gif`
-    }
-
-    if(item.name === "Scimitar of Flame"){
-      return "../assets/quiver/quiweapon.gif"
-    }
-
-    return "resolve image path went wrong! - replace with default img"
+    return this.playerProfileService.resolveImagePath(item);
   }
-
-
 
   unequipItem(item?: Item){
     if(item){
