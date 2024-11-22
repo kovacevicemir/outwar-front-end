@@ -149,9 +149,7 @@ export class PlayerProfileServiceService {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
-        console.log('User data:', response);
         this.userSignal.set(response as UserResponse);
-        // this.generateEquipedItems(response as UserResponse);
       },
       error: (error) => {
         console.error('Error getting user:', error);
@@ -363,8 +361,6 @@ export class PlayerProfileServiceService {
       } catch (error) {
         console.log(error);
       }
-
-      console.log('final value of signal', this.inventoryItemsSignal());
     }
   }
 

@@ -58,8 +58,6 @@ export class RankingPageComponent implements OnInit {
       next: (response) => {
         if(response){
           this.ranking = response as [];
-
-          console.log("this is ranking: ",this.ranking)
         }
       },
       error: (error) => {

@@ -21,8 +21,6 @@ export class InventoryComponent implements OnInit {
   }
 
   setActiveItem(item: number) {
-    console.log("setting active item: ",item)
-
     if (this.activeItem === item) {
       this.activeItem = 0;
     } else {

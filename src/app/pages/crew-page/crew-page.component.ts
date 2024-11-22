@@ -1,18 +1,20 @@
 import { Component, effect, OnInit } from '@angular/core';
 import { CrewService } from '../../services/CrewService.service';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { ActivatedRoute } from '@angular/router';
-import gods from "../../data/Gods.json"
+import gods from '../../data/Gods.json';
 
-interface God{
-  Name: string,
-  LevelRequirement: number,
-  Attack: number,
-  Hp: number,
-  Drops: string[],
-  DropsChance: number[],
-  imageUrl: string
+interface God {
+  Name: string;
+  LevelRequirement: number;
+  Attack: number;
+  Hp: number;
+  Drops: string[];
+  DropsChance: number[];
+  imageUrl: string;
 }
 
 @Component({
@@ -24,9 +26,21 @@ interface God{
 })
 export class CrewPageComponent implements OnInit {
   crew = this.crewService.crewSignal.asReadonly();
+  activeRaids = this.crewService.activeRaids.asReadonly();
   user = this.playerProfileService.userSignal.asReadonly();
-  gods:God[] = [];
+  gods: God[] = [];
   collapseState: { [key: string]: boolean } = {};
+  isModalOpen = false;
+  modalContent = ``;
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    window.location.reload();
+  }
 
   // Toggle collapse for an item based on its name or index
   toggleCollapse(item: any): void {
@@ -34,8 +48,12 @@ export class CrewPageComponent implements OnInit {
     this.collapseState[item.Name] = !this.collapseState[item.Name];
   }
 
-  formRaid(raidName: string){
-    this.crewService.createRaid(raidName);
+  async formRaid(raidName: string) {
+    const res = await this.crewService.createRaid(raidName);
+    if (res) {
+      this.modalContent = `${raidName} raid formed!`;
+      this.isModalOpen = true;
+    }
   }
 
   constructor(
@@ -44,34 +62,122 @@ export class CrewPageComponent implements OnInit {
     private playerProfileService: PlayerProfileServiceService
   ) {
     this.gods = gods;
-    console.log("gods: ",gods)
 
     effect(() => {
       const user = this.user(); //track user signal change
       const crewNameParam = this.route.snapshot.queryParamMap.get('crewName');
       if (user !== null && crewNameParam === null) {
         this.fetchCrewByUser();
+        this.crewService.getCrewRaids(this.user()?.crewName as string);
       }
 
-      if(user === null && crewNameParam === null){
+      if (user === null && crewNameParam === null) {
         this.playerProfileService.getUserByUsername('test1');
       }
     });
   }
 
+  isActiveRaid(raidName: string) {
+    const raids = this.activeRaids();
+    if (raids === null) {
+      return false;
+    }
+
+    if (raids?.find((e) => e.raidName === raidName)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  canLaunchRaid(raidName: string) {
+    const raids = this.activeRaids();
+    const user = this.user();
+    if (raids === null || user === null) {
+      return false;
+    }
+
+    if (
+      raids?.find(
+        (e) => e.raidName === raidName && e.createdBy.name === user.name
+      )
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  getUserName(): string {
+    try {
+      const name = this.user()?.name;
+      if (name !== undefined && name !== null) {
+        return name.toString();
+      }
+    } catch (error) {
+      console.error('Error fetching user name:', error);
+    }
+  
+    return '';
+  }
+
+  showRaidButton(raidName: string) {
+    const name = this.getUserName();
+    const raidMembers = this.getRaidMembers(raidName);
+
+    if(raidMembers.find(m => m.name === name)){
+      return false;
+    }
+
+    return true;
+  }
+
+  getRaidMembers(raidName: string) {
+    const raids = this.activeRaids();
+    if (raids === null) {
+      return [];
+    }
+
+    const raid = raids?.find((e) => e.raidName === raidName);
+    if (raid) {
+      return raid.raidMembers;
+    }
+
+    return [];
+  }
+
+  async attackRaid(raidName: string) {
+    const finalRes = await this.crewService.attackRaid(raidName);
+    this.modalContent = finalRes;
+    this.isModalOpen = true;
+  }
+
+  getHpLeft(raidName: string) {
+    const raids = this.activeRaids();
+    if (raids === null) {
+      return 0;
+    }
+
+    const raid = raids?.find((e) => e.raidName === raidName);
+    if (raid) {
+      return raid.hpLeft;
+    }
+
+    return 0;
+  }
+
   ngOnInit() {
-    if(this.user() === null){
+    if (this.user() === null) {
       this.playerProfileService.getUserByUsername('test1');
     }
 
     const crewName = this.route.snapshot.queryParamMap.get('crewName');
     if (crewName) {
-      this.fetchCrewByName(crewName)
+      this.fetchCrewByName(crewName);
       return;
-    }else{
-      this.fetchCrewByUser()
+    } else {
+      this.fetchCrewByUser();
     }
-    ;
   }
 
   fetchCrewByName(crewName: string) {
@@ -81,7 +187,7 @@ export class CrewPageComponent implements OnInit {
     }
   }
 
-  fetchCrewByUser(){
+  fetchCrewByUser() {
     if (this.user()?.crewName !== null) {
       this.crewService.getCrewByName(this.user()?.crewName as string);
       return;

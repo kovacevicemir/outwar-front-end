@@ -42,7 +42,6 @@ export class WorldComponent implements OnInit {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
-        console.log('User data:', response);
         // @ts-ignore
         this.playerLocation = response.location;
       },
@@ -70,7 +69,6 @@ export class WorldComponent implements OnInit {
     const url = `https://localhost:44338/change-user-location?username=test1&direction=${direction}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
-        console.log('Change user location response:', response);
         //@ts-ignore
         this.playerLocation = response;
         const currentLocationDetails = this.getLocationDetails();
@@ -178,7 +176,6 @@ export class WorldComponent implements OnInit {
     const url = `https://localhost:44338/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {
-        console.log('attack response:', response);
         this.combatOutcomeMsg = response.toString();
         // this.generateEquipedItems(response as UserResponse);
         this.playerProfileService.getUserByUsername('test1')

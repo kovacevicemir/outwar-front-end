@@ -94,10 +94,25 @@
                 <span class="text-gray-600">{{ drop }}</span>
               </li>
             </ul>
-            <button *ngIf="item" (click)="formRaid(item.Name)"
+            <button *ngIf="item && isActiveRaid(item.Name) === false" (click)="formRaid(item.Name)"
               class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Form Raid
             </button>
+            <button *ngIf="item && canLaunchRaid(item.Name) === true" (click)="attackRaid(item.Name)"
+              class=" bg-green-500 mt-4 mr-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Launch Raid!
+            </button>
+            <button *ngIf="item && isActiveRaid(item.Name) === true && showRaidButton(item.Name)" (click)="formRaid(item.Name)"
+              class=" bg-purple-500 mt-4 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+              Join Raid! (todo)
+            </button>
+          </div>
+          <div *ngIf="getRaidMembers(item.Name).length !== 0" class="mt-3">
+            <strong>Raid members:</strong>
+            <ol class="ml-1" *ngFor="let member of getRaidMembers(item.Name)">
+              <li>{{member.name}}</li>
+            </ol>
+            <p class="mt-2 font-semibold text-red-800">HP Left: {{getHpLeft(item.Name)}}</p>
           </div>
         </div>
 
@@ -106,6 +121,19 @@
           <img [src]="item.imageUrl" alt="{{ item.Name }}" class="w-full h-full object-cover">
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <!-- Modal -->
+  <div class="modal-backdrop" *ngIf="isModalOpen">
+    <div class="modal">
+      {{modalContent}}
+      <br/>
+      <button (click)="closeModal()" class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        OK
+        </button>
     </div>
   </div>
 </div>

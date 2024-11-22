@@ -10,6 +10,14 @@ export interface Crew{
   VaultItems: Item[]
 }
 
+export interface Raid{
+  id: number,
+  raidName: string,
+  raidMembers: UserResponse[],
+  createdBy: UserResponse,
+  hpLeft: number
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,6 +25,7 @@ export class CrewService {
   // Signal to hold the user state
   public userSignal = signal<UserResponse | null>(null);
   public crewSignal = signal<Crew | null>(null);
+  public activeRaids = signal<Raid[] | null>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -24,11 +33,33 @@ export class CrewService {
     // this.getCrewByName();
   }
 
+  async attackRaid(raidName: string): Promise<any> {
+    const url = `https://localhost:44338/attack-raid?crewName=${this.crewSignal()?.name}&raidName=${raidName}`;
+    try {
+      const response = await this.http.post(url, null).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error attacking raid:', error);
+      throw error;
+    }
+  }
+
+  getCrewRaids(crewName: string){
+    const url = `https://localhost:44338/get-crew-raids?crewName=${crewName}`
+    this.http.get(url).subscribe({
+      next: (response) => {
+        this.activeRaids.set(response as Raid[]);
+      },
+      error: (error) => {
+        console.error('Error getting crew:', error);
+      },
+    });
+  }
+
   getCrewByName(crewName: string){
     const url = `https://localhost:44338/get-crew?crewName=${crewName}`
     this.http.get(url).subscribe({
       next: (response) => {
-        console.log('crew data:', response);
         this.crewSignal.set(response as Crew);
         // this.generateEquipedItems(response as UserResponse);
       },
@@ -38,22 +69,20 @@ export class CrewService {
     });
   }
 
-  createRaid(raidName: string){
+  async createRaid(raidName: string){
     if(this.userSignal()?.name === undefined || this.userSignal()?.name === null){
       this.getUserByUsername('test1')
       return;
     }
 
     const url = `https://localhost:44338/create-raid?crewName=${this.crewSignal()?.name}&createdBy=${this.userSignal()?.name}&raidName=${raidName}`
-    this.http.post(url, null).subscribe({
-      next: (response) => {
-        console.log('create raid:', response);
-        
-      },
-      error: (error) => {
-        console.error('Error creating raid:', error);
-      },
-    });
+    try {
+      const response = await this.http.post(url, null).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error creating raid:', error);
+      throw error;
+    }
   }
 
   
@@ -61,9 +90,7 @@ export class CrewService {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
-        console.log('User data:', response);
         this.userSignal.set(response as UserResponse);
-        // this.generateEquipedItems(response as UserResponse);
       },
       error: (error) => {
         console.error('Error getting user:', error);
