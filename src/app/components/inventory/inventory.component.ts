@@ -2,12 +2,13 @@ import { ChangeDetectionStrategy, Component, effect, OnInit } from '@angular/cor
 import { Item, PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrade-display.component';
 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, ItemUpgradeDisplayComponent],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

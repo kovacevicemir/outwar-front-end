@@ -1,0 +1,4 @@
+.image-container {
+    display: flex; /* Display images in a row */
+    gap: 1px;     /* Add some space between images */
+  }

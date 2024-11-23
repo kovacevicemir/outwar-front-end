@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Item, PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { CommonModule } from '@angular/common';
+import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrade-display.component';
 
 @Component({
   selector: 'app-equiped-items-redo',
   templateUrl: './equiped-items-redo.component.html',
   styleUrls: ['./equiped-items-redo.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, ItemUpgradeDisplayComponent]
 })
 export class EquipedItemsRedoComponent implements OnInit {
 

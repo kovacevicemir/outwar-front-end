@@ -8,18 +8,108 @@
       class="hover:cursor-pointer border rounded-md border-gray-500" />
 
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'head'" class="absolute z-10 left-0 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().head | json }}</pre>
-      <button *ngIf="equipedItems().head" (click)="unequipItem(equipedItems().head)">Unequip</button>
+    <div *ngIf="activeItem === 'head'" class="absolute z-10 left-0 top-full mt-1 bg-gray-200rounded shadow-lg">
+      <div *ngIf="equipedItems().head" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+        <!-- Item Name -->
+        <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().head?.name }}</h2>
+
+        <!-- Item Type and Upgrade Level -->
+        <div class="mt-2 text-sm text-gray-600">
+          <app-item-upgrade-display [upgradeLevel]=equipedItems().head?.upgradeLevel></app-item-upgrade-display>
+        </div>
+
+        <!-- equipedItems().head Stats -->
+        <div class="mt-4 space-y-1">
+          <p *ngIf="equipedItems().head?.attack" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.attack }} ATK</span>
+          </p>
+          <p *ngIf="equipedItems().head?.hp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.hp }} HP</span>
+          </p>
+          <p *ngIf="equipedItems().head?.maxRage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.maxRage }} max rage</span>
+          </p>
+          <p *ngIf="equipedItems().head?.rage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.rage }} rage per hr</span>
+          </p>
+          <p *ngIf="equipedItems().head?.exp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.exp }} exp per hr</span>
+          </p>
+          <p *ngIf="equipedItems().head?.rampage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.rampage }} rampage</span>
+          </p>
+          <p *ngIf="equipedItems().head?.critical" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.critical }} critical hit</span>
+          </p>
+          <p *ngIf="equipedItems().head?.block" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().head?.block }} block</span>
+          </p>
+
+        </div>
+
+
+
+        <div class="flex mt-4">
+          <button *ngIf="equipedItems().head" (click)="unequipItem(equipedItems().head)"
+            class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+            Unequip
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().neck" (click)="setActiveItem('neck')"
-      [src]="resolveImagePath(equipedItems().neck)"
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().neck"
+      (click)="setActiveItem('neck')" [src]="resolveImagePath(equipedItems().neck)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mt-5" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'neck'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().neck | json }}</pre>
-      <button *ngIf="equipedItems().neck" (click)="unequipItem(equipedItems().neck)">Unequip</button>
+    <div *ngIf="activeItem === 'neck'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 rounded shadow-lg">
+      <div *ngIf="equipedItems().neck" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+        <!-- Item Name -->
+        <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().neck?.name }}</h2>
+
+        <!-- Item Type and Upgrade Level -->
+        <div class="mt-2 text-sm text-gray-600">
+          <app-item-upgrade-display [upgradeLevel]=equipedItems().neck?.upgradeLevel></app-item-upgrade-display>
+        </div>
+
+        <!-- equipedItems().neck Stats -->
+        <div class="mt-4 space-y-1">
+          <p *ngIf="equipedItems().neck?.attack" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.attack }} ATK</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.hp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.hp }} HP</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.maxRage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.maxRage }} max rage</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.rage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.rage }} rage per hr</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.exp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.exp }} exp per hr</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.rampage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.rampage }} rampage</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.critical" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.critical }} critical hit</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.block" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().neck?.block }} block</span>
+          </p>
+
+        </div>
+
+
+
+        <div class="flex mt-4">
+          <button *ngIf="equipedItems().neck" (click)="unequipItem(equipedItems().neck)"
+            class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+            Unequip
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -28,55 +118,329 @@
       (click)="setActiveItem('weapon')" [src]="resolveImagePath(equipedItems().weapon)"
       class="hover:cursor-pointer border rounded-md border-gray-500" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'weapon'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().weapon | json }}</pre>
-      <button *ngIf="equipedItems().weapon" (click)="unequipItem(equipedItems().weapon)">Unequip</button>
+    <div *ngIf="activeItem === 'weapon'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 rounded shadow-lg">
+      <div *ngIf="equipedItems().weapon" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+        <!-- Item Name -->
+        <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().weapon?.name }}</h2>
+
+        <!-- Item Type and Upgrade Level -->
+        <div class="mt-2 text-sm text-gray-600">
+          <app-item-upgrade-display [upgradeLevel]=equipedItems().weapon?.upgradeLevel></app-item-upgrade-display>
+        </div>
+
+        <!-- equipedItems().weapon Stats -->
+        <div class="mt-4 space-y-1">
+          <p *ngIf="equipedItems().weapon?.attack" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.attack }} ATK</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.hp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.hp }} HP</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.maxRage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.maxRage }} max rage</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.rage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.rage }} rage per hr</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.exp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.exp }} exp per hr</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.rampage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.rampage }} rampage</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.critical" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.critical }} critical hit</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.block" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().weapon?.block }} block</span>
+          </p>
+        </div>
+
+        <div class="flex mt-4">
+          <button *ngIf="equipedItems().weapon" (click)="unequipItem(equipedItems().weapon)"
+            class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+            Unequip
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('armor')" *ngIf="equipedItems().armor"
-      [src]="resolveImagePath(equipedItems().armor)"
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('armor')"
+      *ngIf="equipedItems().armor" [src]="resolveImagePath(equipedItems().armor)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mt-[-45px]" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'armor'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().armor | json }}</pre>
-      <button *ngIf="equipedItems().armor" (click)="unequipItem(equipedItems().armor)">Unequip</button>
+    <div *ngIf="activeItem === 'armor'" class="absolute left-0 z-10 bottom-[40px] mt-1 bg-gray-200 rounded shadow-lg">
+      <div *ngIf="activeItem === 'armor'" class="absolute left-0 z-10  mt-1 bg-gray-200 rounded shadow-lg">
+        <div *ngIf="equipedItems().armor" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+          <!-- Item Name -->
+          <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().armor?.name }}</h2>
+
+          <!-- Item Type and Upgrade Level -->
+          <div class="mt-2 text-sm text-gray-600">
+            <app-item-upgrade-display [upgradeLevel]=equipedItems().armor?.upgradeLevel></app-item-upgrade-display>
+          </div>
+
+          <!-- equipedItems().armor Stats -->
+          <div class="mt-4 space-y-1">
+            <p *ngIf="equipedItems().armor?.attack" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.attack }} ATK</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.hp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.hp }} HP</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.maxRage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.maxRage }} max rage</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.rage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.rage }} rage per hr</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.exp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.exp }} exp per hr</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.rampage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.rampage }} rampage</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.critical" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.critical }} critical hit</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.block" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().armor?.block }} block</span>
+            </p>
+          </div>
+
+          <div class="flex mt-4">
+            <button *ngIf="equipedItems().armor" (click)="unequipItem(equipedItems().armor)"
+              class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+              Unequip
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().shield"
       (click)="setActiveItem('shield')" [src]="resolveImagePath(equipedItems().shield)"
       class="hover:cursor-pointer border rounded-md border-gray-500" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'shield'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().shield | json }}</pre>
-      <button *ngIf="equipedItems().shield" (click)="unequipItem(equipedItems().shield)">Unequip</button>
+    <div *ngIf="activeItem === 'shield'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 rounded shadow-lg">
+      <div *ngIf="equipedItems().shield" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+        <!-- Item Name -->
+        <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().shield?.name }}</h2>
+
+        <!-- Item Type and Upgrade Level -->
+        <div class="mt-2 text-sm text-gray-600">
+          <app-item-upgrade-display [upgradeLevel]=equipedItems().shield?.upgradeLevel></app-item-upgrade-display>
+        </div>
+
+        <!-- equipedItems().shield Stats -->
+        <div class="mt-4 space-y-1">
+          <p *ngIf="equipedItems().shield?.attack" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.attack }} ATK</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.hp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.hp }} HP</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.maxRage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.maxRage }} max rage</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.rage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.rage }} rage per hr</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.exp" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.exp }} exp per hr</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.rampage" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.rampage }} rampage</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.critical" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.critical }} critical hit</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.block" class="text-gray-600 text-xs">
+            <span class="font-semibold">+{{ equipedItems().shield?.block }} block</span>
+          </p>
+        </div>
+
+        <div class="flex mt-4">
+          <button *ngIf="equipedItems().shield" (click)="unequipItem(equipedItems().shield)"
+            class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+            Unequip
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Row 3 -->
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('belt')" *ngIf="equipedItems().belt"
-      [src]="resolveImagePath(equipedItems().belt)"
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('belt')"
+      *ngIf="equipedItems().belt" [src]="resolveImagePath(equipedItems().belt)"
       class="hover:cursor-pointer border rounded-md border-gray-500 ml-5 mb-5" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === 'belt'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().belt | json }}</pre>
-      <button *ngIf="equipedItems().belt" (click)="unequipItem(equipedItems().belt)">Unequip</button>
+    <div *ngIf="activeItem === 'belt'" class="absolute left-0 z-10 bottom-[30px] mt-1 bg-gray-200 rounded shadow-lg">
+      <div *ngIf="activeItem === 'belt'" class="absolute left-0 z-10  mt-1 bg-gray-200 rounded shadow-lg">
+        <div *ngIf="equipedItems().belt" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+          <!-- Item Name -->
+          <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().belt?.name }}</h2>
+
+          <!-- Item Type and Upgrade Level -->
+          <div class="mt-2 text-sm text-gray-600">
+            <app-item-upgrade-display [upgradeLevel]=equipedItems().belt?.upgradeLevel></app-item-upgrade-display>
+          </div>
+
+          <!-- equipedItems().belt Stats -->
+          <div class="mt-4 space-y-1">
+            <p *ngIf="equipedItems().belt?.attack" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.attack }} ATK</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.hp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.hp }} HP</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.maxRage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.maxRage }} max rage</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.rage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.rage }} rage per hr</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.exp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.exp }} exp per hr</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.rampage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.rampage }} rampage</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.critical" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.critical }} critical hit</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.block" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ equipedItems().belt?.block }} block</span>
+            </p>
+
+          </div>
+
+          <!-- Item Type and Upgrade Level -->
+          <div class="mt-4 text-sm text-gray-600">
+            <app-item-upgrade-display [upgradeLevel]=equipedItems().belt?.upgradeLevel></app-item-upgrade-display>
+          </div>
+
+          <div class="flex mt-4">
+            <button *ngIf="equipedItems().belt" (click)="unequipItem(equipedItems().belt)"
+              class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+              Unequip
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('shoes')" *ngIf="equipedItems().shoes"
-      [src]="resolveImagePath(equipedItems().shoes)" class="hover:cursor-pointer border rounded-md border-gray-500" />
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('shoes')"
+      *ngIf="equipedItems().shoes" [src]="resolveImagePath(equipedItems().shoes)"
+      class="hover:cursor-pointer border rounded-md border-gray-500" />
     <!-- Tooltip Positioned Below Image -->
     <div *ngIf="activeItem === 'shoes'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().shoes | json }}</pre>
-      <button *ngIf="equipedItems().shoes" (click)="unequipItem(equipedItems().shoes)">Unequip</button>
+      <div *ngIf="activeItem === 'shoes'" class="absolute left-0 z-10 bottom-[30px] mt-1 bg-gray-200 rounded shadow-lg">
+        <div *ngIf="activeItem === 'shoes'" class="absolute left-0 z-10  mt-1 bg-gray-200 rounded shadow-lg">
+          <div *ngIf="equipedItems().shoes" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+            <!-- Item Name -->
+            <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().shoes?.name }}</h2>
+
+            <!-- Item Type and Upgrade Level -->
+            <div class="mt-2 text-sm text-gray-600">
+              <app-item-upgrade-display [upgradeLevel]=equipedItems().shoes?.upgradeLevel></app-item-upgrade-display>
+            </div>
+
+            <!-- equipedItems().shoes Stats -->
+            <div class="mt-4 space-y-1">
+              <p *ngIf="equipedItems().shoes?.attack" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.attack }} ATK</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.hp" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.hp }} HP</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.maxRage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.maxRage }} max rage</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.rage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.rage }} rage per hr</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.exp" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.exp }} exp per hr</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.rampage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.rampage }} rampage</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.critical" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.critical }} critical hit</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.block" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().shoes?.block }} block</span>
+              </p>
+            </div>
+
+            <div class="flex mt-4">
+              <button *ngIf="equipedItems().shoes" (click)="unequipItem(equipedItems().shoes)"
+                class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+                Unequip
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('ring')" *ngIf="equipedItems().ring"
-      [src]="resolveImagePath(equipedItems().ring)"
+  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('ring')"
+      *ngIf="equipedItems().ring" [src]="resolveImagePath(equipedItems().ring)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mb-5" />
     <!-- Tooltip Positioned Below Image -->
     <div *ngIf="activeItem === 'ring'" class="absolute left-0 z-10 top-full mt-1 bg-gray-200 p-2 rounded shadow-lg">
-      <pre>{{ equipedItems().ring | json }}</pre>
-      <button *ngIf="equipedItems().ring" (click)="unequipItem(equipedItems().ring)">Unequip</button>
+      <div *ngIf="activeItem === 'ring'" class="absolute left-0 z-10 bottom-[50px] mt-1 bg-gray-200 rounded shadow-lg">
+        <div *ngIf="activeItem === 'ring'" class="absolute left-0 z-10  mt-1 bg-gray-200 rounded shadow-lg">
+          <div *ngIf="equipedItems().ring" class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+            <!-- Item Name -->
+            <h2 class=" text-xs font-bold text-gray-800 text-left">{{ equipedItems().ring?.name }}</h2>
+
+            <!-- Item Type and Upgrade Level -->
+            <div class="mt-2 text-sm text-gray-600">
+              <app-item-upgrade-display [upgradeLevel]=equipedItems().ring?.upgradeLevel></app-item-upgrade-display>
+            </div>
+
+            <!-- equipedItems().ring Stats -->
+            <div class="mt-4 space-y-1">
+              <p *ngIf="equipedItems().ring?.attack" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.attack }} ATK</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.hp" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.hp }} HP</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.maxRage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.maxRage }} max rage</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.rage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.rage }} rage per hr</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.exp" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.exp }} exp per hr</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.rampage" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.rampage }} rampage</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.critical" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.critical }} critical hit</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.block" class="text-gray-600 text-xs">
+                <span class="font-semibold">+{{ equipedItems().ring?.block }} block</span>
+              </p>
+
+            </div>
+
+
+
+            <div class="flex mt-4">
+              <button *ngIf="equipedItems().ring" (click)="unequipItem(equipedItems().ring)"
+                class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+                Unequip
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

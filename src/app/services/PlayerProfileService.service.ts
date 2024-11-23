@@ -185,7 +185,7 @@ export class PlayerProfileServiceService {
       };
 
       newEquipedItems[normalizedItem.type as keyof typeof newEquipedItems] =
-        item;
+      normalizedItem;
     });
 
     this.equipedItems.set(newEquipedItems);
