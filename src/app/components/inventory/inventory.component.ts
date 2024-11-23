@@ -15,7 +15,13 @@ export class InventoryComponent implements OnInit {
   inventoryItems = this.playerProfileService.inventoryItemsSignal.asReadonly();
   activeItem = 0;
 
-  constructor(private playerProfileService: PlayerProfileServiceService, private http: HttpClient) {}
+  constructor(private playerProfileService: PlayerProfileServiceService) {
+   
+    effect(() => {
+      this.inventoryItems(); //track inventory signal change
+      this.activeItem = 0;
+    });
+  }
 
   ngOnInit() {
   }
@@ -34,21 +40,5 @@ export class InventoryComponent implements OnInit {
 
   deleteItem(item: Item){
     this.playerProfileService.deleteItem(item);
-  }
-
-  resolveImagePath(item: Item | undefined){
-    if(item === undefined){
-      return "resolve image path went wrong! - replace with default img 2"
-    }
-
-    if(item.name.includes("Champions")){
-      return `../assets/championset/champ${item.type}.gif`
-    }
-
-    if(item.name === "Scimitar of Flame"){
-      return "../assets/quiver/quiweapon.gif"
-    }
-
-    return "resolve image path went wrong! - replace with default img"
   }
 }
