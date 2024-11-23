@@ -383,6 +383,95 @@ export class PlayerProfileServiceService {
       return "../assets/quiver/quiweapon.gif"
     }
 
+    switch(item.name) {
+      case "Boots of Invulnerability":
+          return "../assets/synge/synboots.gif";
+      case "Ring of Splendid Wealth":
+          return "../assets/synge/synring.gif";
+      case "Circlet of Power":
+          return "../assets/synge/synhead.gif";
+      case "Charred Band":
+          return "../assets/synge/synbelt.gif";
+      case "Shield of Righteousness":
+          return "../assets/synge/synshield.gif";
+      case "Plate of the Crimson Sky":
+          return "../assets/synge/synbody.gif";
+      case "Wrath of the Gods":
+          return "../assets/synge/synweapon.gif";
+      case "Blood-Soaked Moccasins":
+          return "../assets/rancid/ranshoes.gif";
+      case "Ring of Hatred":
+          return "../assets/rancid/ranring.gif";
+      case "Blade of Dark Power":
+          return "../assets/rancid/ranweapon.gif";
+      case "Ring of the Cunning":
+          return "../assets/terrance/terring.gif";
+      case "Manacle of Clairvoyent Thought":
+          return "../assets/terrance/terhead.gif";
+      case "Blade of Disruption":
+          return "../assets/terrance/terweapon.gif";
+      case "Mask of Confusion":
+          return "../assets/terrance/terhead2.gif";
+      case "Longsword of War":
+          return "../assets/zertan/zerweapon.gif";
+      case "Draconic Shield of Terror":
+          return "../assets/zertan/zershield.gif";
+      case "Plate Mail of Discordance":
+          return "../assets/zertan/zerbody.gif";
+      case "Boots of Strategy":
+          return "../assets/quiver/quishoes.gif";
+      case "Ring of Eternal Power":
+          return "../assets/quiver/quiring.gif";
+      case "Crown of the Cerebral":
+          return "../assets/quiver/quihead.gif";
+      case "Breastplate of Chaos":
+          return "../assets/quiver/quibody.gif";
+      case "Breastplate of Vengence":
+          return "../assets/quiver/quibody2.gif";
+      case "Aegis of Energy":
+          return "../assets/quiver/quishield.gif";
+      case "Top-Hat of Insanity":
+          return "../assets/garland/garhead.gif";
+      case "Belt of Safety":
+          return "../assets/garland/garbelt.gif";
+      case "Kite Shield of Fixation":
+          return "../assets/garland/garshield.gif";
+      case "Wicked Gorget of Force":
+          return "../assets/garland/garneck.gif";
+      case "Animated Boots of Valor":
+          return "../assets/garland/garshoes.gif";
+      case "Runic Shield of Spectral Warding":
+          return "../assets/tylos/tylshield.gif";
+      case "Belt of Popstar Flesh":
+          return "../assets/tylos/tylbelt.gif";
+      case "Ring of Profusion":
+          return "../assets/tylos/tylring.gif";
+      case "Warlord's Belt of Battle":
+          return "../assets/threk/thrbelt.gif";
+      case "Breastplate of Slaughter":
+          return "../assets/threk/thrbody.gif";
+      case "Gatling Gun of Compassion":
+          return "../assets/threk/thrweapon.gif";
+      case "Medallion of Eradication":
+          return "../assets/threk/thrneck.gif";
+      case "Belt of Glamour":
+          return "../assets/jazzmin/jazbelt.gif";
+      case "Beaded Necklace of Affluence":
+          return "../assets/jazzmin/jazneck.gif";
+      case "Cap of Supernal Force":
+          return "../assets/jazzmin/jazhead.gif";
+      case "Shoes of Nimbility":
+          return "../assets/jazzmin/jazshoes.gif";
+      case "Amulet of Gazing Dread":
+          return "../assets/sigil/signeck.gif";
+      case "Great Blade of Ferocity":
+          return "../assets/sigil/sigweapon.gif";
+      case "Ring of Pulsing Energy":
+          return "../assets/sigil/sigring.gif";
+      case "Breastplate of Vigilant Combat":
+          return "../assets/sigil/sigbody.gif";
+    }
+
     return "resolve image path went wrong! - replace with default img"
   }
 
