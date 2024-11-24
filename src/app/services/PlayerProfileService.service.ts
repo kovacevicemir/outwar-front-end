@@ -195,10 +195,10 @@ export class PlayerProfileServiceService {
     const equippedItems = this.equipedItems();
 
     const summary = {
-      attack: 0,
-      hp: 0,
-      maxRage: 0,
-      rage: 0,
+      attack: 10,
+      hp: 50,
+      maxRage: 2000,
+      rage: 10,
       exp: 0,
       rampage: 0,
       critical: 0,

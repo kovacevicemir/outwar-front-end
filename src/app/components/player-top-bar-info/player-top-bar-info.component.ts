@@ -1,5 +1,6 @@
 import { Component, computed, OnInit } from '@angular/core';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
 import experienceList from '../../data/experienceList.json';
 
@@ -8,11 +9,12 @@ import experienceList from '../../data/experienceList.json';
   templateUrl: './player-top-bar-info.component.html',
   styleUrls: ['./player-top-bar-info.component.css'],
   standalone: true,
-  imports: [CommonModule]
-})
+  imports: [CommonModule, MatTooltipModule ]
+}) 
 export class PlayerTopBarInfoComponent implements OnInit {
 
   user = this.playerProfileService.userSignal.asReadonly();
+  playerStatsSummary = this.playerProfileService.playerStatsSummary.asReadonly();
   expNeeded = computed(() => this.generateNeededExp());
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}

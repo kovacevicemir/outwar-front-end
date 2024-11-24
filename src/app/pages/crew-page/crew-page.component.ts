@@ -77,6 +77,15 @@ export class CrewPageComponent implements OnInit {
     });
   }
 
+  getLeaderName() {
+    const members = this.crew()?.members || [];
+    const crewLeaderId = this.crew()?.crewLeaderId
+    const leader = members.find(
+      (m) => m.id === crewLeaderId
+    );
+    return leader?.name ?? 'N/A';
+  }
+
   isActiveRaid(raidName: string) {
     const raids = this.activeRaids();
     if (raids === null) {
@@ -117,7 +126,7 @@ export class CrewPageComponent implements OnInit {
     } catch (error) {
       console.error('Error fetching user name:', error);
     }
-  
+
     return '';
   }
 
@@ -125,7 +134,7 @@ export class CrewPageComponent implements OnInit {
     const name = this.getUserName();
     const raidMembers = this.getRaidMembers(raidName);
 
-    if(raidMembers.find(m => m.name === name)){
+    if (raidMembers.find((m) => m.name === name)) {
       return false;
     }
 

@@ -1,0 +1,19 @@
+.tooltip {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%; /* Position it directly below the target div */
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    margin-top: 4px; /* Space between div and tooltip */
+  }
+  
+  /* Display the tooltip on hover */
+  .hover-trigger:hover .tooltip {
+    display: block;
+  }

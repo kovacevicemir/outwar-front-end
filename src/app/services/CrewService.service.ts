@@ -6,8 +6,8 @@ export interface Crew{
   id: number,
   name: string,
   crewLeaderId: number,
-  Members: UserResponse[],
-  VaultItems: Item[]
+  members: UserResponse[],
+  vaultItems: Item[]
 }
 
 export interface Raid{

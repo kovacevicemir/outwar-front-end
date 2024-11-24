@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <hr/>
+  <hr />
 
   <!-- Set Bonus -->
   <div class="flex justify-between text-xs text-gray-400">
@@ -37,7 +37,7 @@
     <span>{{ playerStatsSummary().levelAttackBonus }} attack / {{ playerStatsSummary().levelHpBonus }} hp</span>
   </div>
 
- <hr/>
+  <hr />
 
   <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
     <div class="flex items-center">
@@ -46,34 +46,38 @@
     </div>
     <div class="flex items-center">
       <span class="font-semibold">Rage:</span>
-      <span>{{ playerStatsSummary().rage }}</span>
+      <span>{{ playerStatsSummary().rage }} hr</span>
     </div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
     <div class="flex items-center">
       <span class="font-semibold">Rampage:</span>
-      <span>{{ playerStatsSummary().rampage }}</span>
+      <span>{{ playerStatsSummary().rampage }}%</span>
     </div>
     <div class="flex items-center">
       <span class="font-semibold">Critical:</span>
-      <span>{{ playerStatsSummary().critical }}</span>
+      <span>{{ playerStatsSummary().critical }}%</span>
     </div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
     <div class="flex items-center">
       <span class="font-semibold">Block:</span>
-      <span>{{ playerStatsSummary().block }}</span>
+      <span>{{ playerStatsSummary().block }}%</span>
     </div>
     <div class="flex items-center">
       <span class="font-semibold">EXP:</span>
-      <span>{{ playerStatsSummary().exp }}</span>
+      <span>{{ playerStatsSummary().exp }} hr</span>
     </div>
   </div>
 </div>
 
-<div class="ml-3 border border-sm p-1 w-fit flex items-center" >
-  <span class="text-xs font-semibold">  Crew: {{ user()?.crewName || 'No crew' }}
+<div class="ml-3 border border-sm p-1 w-fit flex items-center">
+  <span class="text-xs font-semibold">
+    Crew:
+    <a [attr.href]="'/crew?name=' + (user()?.crewName || '')">
+      {{ user()?.crewName || 'No crew' }}
+    </a>
   </span>
 </div>
