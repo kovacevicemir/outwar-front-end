@@ -322,6 +322,10 @@ export class PlayerProfileServiceService {
       return "resolve image path went wrong! - replace with default img 2"
     }
 
+    if(item.name.includes("Osteology")){
+      return `../assets/osteologyset/osteology${item.type}.gif`
+    }
+
     if(item.name.includes("Champions")){
       return `../assets/championset/champ${item.type}.gif`
     }

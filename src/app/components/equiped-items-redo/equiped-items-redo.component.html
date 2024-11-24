@@ -36,13 +36,16 @@
             <span class="font-semibold">+{{ equipedItems().head?.exp }} exp per hr</span>
           </p>
           <p *ngIf="equipedItems().head?.rampage" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().head?.rampage }} rampage</span>
+            <span class="font-semibold">+{{ equipedItems().head?.rampage }}% rampage</span>
           </p>
           <p *ngIf="equipedItems().head?.critical" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().head?.critical }} critical hit</span>
+            <span class="font-semibold">+{{ equipedItems().head?.critical }}% critical hit</span>
           </p>
           <p *ngIf="equipedItems().head?.block" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().head?.block }} block</span>
+            <span class="font-semibold">+{{ equipedItems().head?.block }}% block</span>
+          </p>
+          <p *ngIf="equipedItems().head?.setBonus?.[0]" class="text-gray-600 text-xs">
+            <span class="font-semibold">[{{ equipedItems().head?.setBonus?.[0] }}/{{equipedItems().head?.setBonus?.[1]}}] Set Bonus</span>
           </p>
 
         </div>
@@ -90,13 +93,16 @@
             <span class="font-semibold">+{{ equipedItems().neck?.exp }} exp per hr</span>
           </p>
           <p *ngIf="equipedItems().neck?.rampage" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().neck?.rampage }} rampage</span>
+            <span class="font-semibold">+{{ equipedItems().neck?.rampage }}% rampage</span>
           </p>
           <p *ngIf="equipedItems().neck?.critical" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().neck?.critical }} critical hit</span>
+            <span class="font-semibold">+{{ equipedItems().neck?.critical }}% critical hit</span>
           </p>
           <p *ngIf="equipedItems().neck?.block" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().neck?.block }} block</span>
+            <span class="font-semibold">+{{ equipedItems().neck?.block }}% block</span>
+          </p>
+          <p *ngIf="equipedItems().neck?.setBonus?.[0]" class="text-gray-600 text-xs">
+            <span class="font-semibold">[{{ equipedItems().neck?.setBonus?.[0] }}/{{equipedItems().neck?.setBonus?.[1]}}] Set Bonus</span>
           </p>
 
         </div>
@@ -146,13 +152,16 @@
             <span class="font-semibold">+{{ equipedItems().weapon?.exp }} exp per hr</span>
           </p>
           <p *ngIf="equipedItems().weapon?.rampage" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().weapon?.rampage }} rampage</span>
+            <span class="font-semibold">+{{ equipedItems().weapon?.rampage }}% rampage</span>
           </p>
           <p *ngIf="equipedItems().weapon?.critical" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().weapon?.critical }} critical hit</span>
+            <span class="font-semibold">+{{ equipedItems().weapon?.critical }}% critical hit</span>
           </p>
           <p *ngIf="equipedItems().weapon?.block" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().weapon?.block }} block</span>
+            <span class="font-semibold">+{{ equipedItems().weapon?.block }}% block</span>
+          </p>
+          <p *ngIf="equipedItems().weapon?.setBonus?.[0]" class="text-gray-600 text-xs">
+            <span class="font-semibold">[{{ equipedItems().weapon?.setBonus?.[0] }}/{{equipedItems().weapon?.setBonus?.[1]}}] Set Bonus</span>
           </p>
         </div>
 
@@ -198,13 +207,16 @@
               <span class="font-semibold">+{{ equipedItems().armor?.exp }} exp per hr</span>
             </p>
             <p *ngIf="equipedItems().armor?.rampage" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().armor?.rampage }} rampage</span>
+              <span class="font-semibold">+{{ equipedItems().armor?.rampage }}% rampage</span>
             </p>
             <p *ngIf="equipedItems().armor?.critical" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().armor?.critical }} critical hit</span>
+              <span class="font-semibold">+{{ equipedItems().armor?.critical }}% critical hit</span>
             </p>
             <p *ngIf="equipedItems().armor?.block" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().armor?.block }} block</span>
+              <span class="font-semibold">+{{ equipedItems().armor?.block }}% block</span>
+            </p>
+            <p *ngIf="equipedItems().armor?.setBonus?.[0]" class="text-gray-600 text-xs">
+              <span class="font-semibold">[{{ equipedItems().armor?.setBonus?.[0] }}/{{equipedItems().armor?.setBonus?.[1]}}] Set Bonus</span>
             </p>
           </div>
 
@@ -250,13 +262,16 @@
             <span class="font-semibold">+{{ equipedItems().shield?.exp }} exp per hr</span>
           </p>
           <p *ngIf="equipedItems().shield?.rampage" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().shield?.rampage }} rampage</span>
+            <span class="font-semibold">+{{ equipedItems().shield?.rampage }}% rampage</span>
           </p>
           <p *ngIf="equipedItems().shield?.critical" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().shield?.critical }} critical hit</span>
+            <span class="font-semibold">+{{ equipedItems().shield?.critical }}% critical hit</span>
           </p>
           <p *ngIf="equipedItems().shield?.block" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ equipedItems().shield?.block }} block</span>
+            <span class="font-semibold">+{{ equipedItems().shield?.block }}% block</span>
+          </p>
+          <p *ngIf="equipedItems().shield?.setBonus?.[0]" class="text-gray-600 text-xs">
+            <span class="font-semibold">[{{ equipedItems().shield?.setBonus?.[0] }}/{{equipedItems().shield?.setBonus?.[1]}}] Set Bonus</span>
           </p>
         </div>
 
@@ -304,13 +319,16 @@
               <span class="font-semibold">+{{ equipedItems().belt?.exp }} exp per hr</span>
             </p>
             <p *ngIf="equipedItems().belt?.rampage" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().belt?.rampage }} rampage</span>
+              <span class="font-semibold">+{{ equipedItems().belt?.rampage }}% rampage</span>
             </p>
             <p *ngIf="equipedItems().belt?.critical" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().belt?.critical }} critical hit</span>
+              <span class="font-semibold">+{{ equipedItems().belt?.critical }}% critical hit</span>
             </p>
             <p *ngIf="equipedItems().belt?.block" class="text-gray-600 text-xs">
-              <span class="font-semibold">+{{ equipedItems().belt?.block }} block</span>
+              <span class="font-semibold">+{{ equipedItems().belt?.block }}% block</span>
+            </p>
+            <p *ngIf="equipedItems().belt?.setBonus?.[0]" class="text-gray-600 text-xs">
+              <span class="font-semibold">[{{ equipedItems().belt?.setBonus?.[0] }}/{{equipedItems().belt?.setBonus?.[1]}}] Set Bonus</span>
             </p>
 
           </div>
@@ -364,13 +382,16 @@
                 <span class="font-semibold">+{{ equipedItems().shoes?.exp }} exp per hr</span>
               </p>
               <p *ngIf="equipedItems().shoes?.rampage" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().shoes?.rampage }} rampage</span>
+                <span class="font-semibold">+{{ equipedItems().shoes?.rampage }}% rampage</span>
               </p>
               <p *ngIf="equipedItems().shoes?.critical" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().shoes?.critical }} critical hit</span>
+                <span class="font-semibold">+{{ equipedItems().shoes?.critical }}% critical hit</span>
               </p>
               <p *ngIf="equipedItems().shoes?.block" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().shoes?.block }} block</span>
+                <span class="font-semibold">+{{ equipedItems().shoes?.block }}% block</span>
+              </p>
+              <p *ngIf="equipedItems().shoes?.setBonus?.[0]" class="text-gray-600 text-xs">
+                <span class="font-semibold">[{{ equipedItems().shoes?.setBonus?.[0] }}/{{equipedItems().shoes?.setBonus?.[1]}}] Set Bonus</span>
               </p>
             </div>
 
@@ -419,13 +440,16 @@
                 <span class="font-semibold">+{{ equipedItems().ring?.exp }} exp per hr</span>
               </p>
               <p *ngIf="equipedItems().ring?.rampage" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().ring?.rampage }} rampage</span>
+                <span class="font-semibold">+{{ equipedItems().ring?.rampage }}% rampage</span>
               </p>
               <p *ngIf="equipedItems().ring?.critical" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().ring?.critical }} critical hit</span>
+                <span class="font-semibold">+{{ equipedItems().ring?.critical }}% critical hit</span>
               </p>
               <p *ngIf="equipedItems().ring?.block" class="text-gray-600 text-xs">
-                <span class="font-semibold">+{{ equipedItems().ring?.block }} block</span>
+                <span class="font-semibold">+{{ equipedItems().ring?.block }}% block</span>
+              </p>
+              <p *ngIf="equipedItems().ring?.setBonus?.[0]" class="text-gray-600 text-xs">
+                <span class="font-semibold">[{{ equipedItems().ring?.setBonus?.[0] }}/{{equipedItems().ring?.setBonus?.[1]}}] Set Bonus</span>
               </p>
 
             </div>

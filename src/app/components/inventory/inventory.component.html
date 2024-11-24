@@ -35,15 +35,17 @@
             <span class="font-semibold">+{{ item.exp }} exp per hr</span>
           </p>
           <p *ngIf="item.rampage" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ item.rampage }} rampage</span>
+            <span class="font-semibold">+{{ item.rampage }}% rampage</span>
           </p>
           <p *ngIf="item.critical" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ item.critical }} critical hit</span>
+            <span class="font-semibold">+{{ item.critical }}% critical hit</span>
           </p>
           <p *ngIf="item.block" class="text-gray-600 text-xs">
-            <span class="font-semibold">+{{ item.block }} block</span>
+            <span class="font-semibold">+{{ item.block }}% block</span>
           </p>
-
+          <p *ngIf="item.setBonus[0]" class="text-gray-600 text-xs">
+            <span class="font-semibold">[{{ item.setBonus?.[0] }}/{{item.setBonus?.[1]}}] Set Bonus</span>
+          </p>
           
           
         </div>
