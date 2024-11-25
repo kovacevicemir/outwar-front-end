@@ -1,17 +1,17 @@
-<div class="flex items-center gap-1">
-  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.name">
+<div class="flex items-center gap-0">
+  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300" *ngIf="user()?.name">
     {{ user()?.name }}
   </div>
-  <div class="border rounded-md p-1 text-gray-700" *ngIf="user()?.level">
+  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300" *ngIf="user()?.level">
     Level {{ user()?.level }}
   </div>
-  <div class="border rounded-md p-1 text-gray-700 relative hover-trigger" *ngIf="user()?.experience">
+  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300 relative hover-trigger" *ngIf="user()?.experience">
     Experience {{ user()?.experience }}
 
     <!-- Tooltip -->
     <div class="tooltip">{{expNeeded()}} exp for next level <br /> +{{playerStatsSummary()?.exp}} exp per hr</div>
   </div>
-  <div class="border rounded-md p-1 text-gray-700 relative hover-trigger" *ngIf="user()?.rage">
+  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300 relative hover-trigger" *ngIf="user()?.rage">
     Rage {{ user()?.rage }}
 
     <!-- Tooltip -->

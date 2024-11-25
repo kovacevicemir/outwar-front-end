@@ -15,11 +15,11 @@
   </div>
 
   <div class="controls">
-    <button class="border rounded-md px-3 py-1" (click)="changeLocation('up')">W</button>
+    <button class="border rounded-md px-3 py-1 bg-gray-200 text-black" (click)="changeLocation('up')">W</button>
     <div class="horizontal-controls">
-      <button class="border rounded-md px-3 py-1" (click)="changeLocation('left')">A</button>
-      <button class="border rounded-md px-3 py-1" (click)="changeLocation('down')">S</button>
-      <button class="border rounded-md px-3 py-1" (click)="changeLocation('right')">D</button>
+      <button class="border rounded-md px-3 py-1 bg-gray-200 text-black" (click)="changeLocation('left')">A</button>
+      <button class="border rounded-md px-3 py-1 bg-gray-200 text-black" (click)="changeLocation('down')">S</button>
+      <button class="border rounded-md px-3 py-1 bg-gray-200 text-black" (click)="changeLocation('right')">D</button>
     </div>
   </div>
 
@@ -27,18 +27,18 @@
     name: 'first street',
     monsters: ['Monster 1'],
     npcs: [], -->
-  <div class="p-4 bg-gray-100 rounded shadow-md">
+  <div class="p-4 bg-gray-700 rounded shadow-md">
     <!-- Display the location name -->
-    <h1 class="text-2xl font-bold text-gray-800 mb-4">{{ currentLocationDetails.name }}</h1>
+    <h1 class="text-2xl font-bold text-gray-200 mb-4">{{ currentLocationDetails.name }}</h1>
 
     <!-- Display the monsters and Attack button -->
     <div>
-      <h2 class="text-xl font-semibold text-gray-700 mb-2">Monsters:</h2>
+      <h2 class="text-xl font-semibold text-gray-300 mb-2">Monsters:</h2>
       <ul class="space-y-2">
         <li *ngFor="let monster of currentLocationDetails.monsters"
-          class="flex items-center justify-between bg-gray-50 p-2 rounded shadow">
-          <span class="text-gray-700">{{ monster }}</span>
-          <button class="bg-red-500 text-white text-sm px-4 py-2 rounded hover:bg-red-600"
+          class="flex items-center justify-between bg-gray-600 p-2 rounded shadow">
+          <span class="text-gray-300">{{ monster }}</span>
+          <button class="bg-red-500 text-white text-xs px-4 py-2 rounded hover:bg-red-600"
             (click)="attackMonster(monster)">
             Attack
           </button>
@@ -56,9 +56,9 @@
 
     <!-- Display the NPCs -->
     <div *ngIf="currentLocationDetails.npcs.length > 0">
-      <h2 class="text-xl font-semibold text-gray-700 mb-2">NPCs:</h2>
+      <h2 class="text-xl font-semibold text-gray-300 mb-2">NPCs:</h2>
       <ul class="space-y-2">
-        <li *ngFor="let npc of currentLocationDetails.npcs" class="text-gray-700 bg-gray-50 p-2 rounded shadow"
+        <li *ngFor="let npc of currentLocationDetails.npcs" class="text-xs text-gray-300 bg-gray-600 p-2 rounded shadow"
           (click)="openModal(npc)">
           {{ npc }} <button class=" bg-green-500 mt-4 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Talk</button>
         </li>
@@ -70,11 +70,11 @@
   <div>
     <!-- Modal -->
     <div class="modal-backdrop" *ngIf="isModalOpen">
-      <div class="modal">
+      <div class="modal bg-gray-700">
         {{modalContent}}
         <br />
         <button (click)="closeModal()"
-          class=" bg-gray-500 mt-4 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">
+          class=" bg-gray-500 mt-4 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">
           Cancel
         </button>
         <button (click)="closeModal()"

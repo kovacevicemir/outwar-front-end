@@ -1,24 +1,24 @@
 <div class="main-container">
-  <div *ngIf="crew()" class="min-h-screen bg-gray-100 p-6">
+  <div *ngIf="crew()" class="min-h-screen bg-gray-800 p-6">
     <!-- Crew Name Section -->
-    <div class="bg-white rounded shadow p-4">
-      <h1 class="text-2xl font-bold text-gray-800 mb-4">Crew Name: <span class="text-green-500">{{crew()?.name}}</span>
+    <div class="bg-gray-700 rounded shadow p-4">
+      <h1 class="text-2xl font-bold text-gray-100 mb-4">Crew Name: <span class="text-green-500">{{crew()?.name}}</span>
       </h1>
 
       <!-- Crew Leader -->
-      <div class="mb-6">
-        <h2 class="text-xl font-semibold text-gray-700 mb-2">Crew Leader</h2>
-        <div class="bg-gray-50 rounded p-3 shadow">
+      <div class="mb-6 w-fit">
+        <h2 class="text-xl font-semibold text-gray-300 mb-2">Crew Leader</h2>
+        <div class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Name:</strong> {{getLeaderName()}}</p>
           <p><strong>Level:</strong> 12</p>
         </div>
       </div>
 
       <!-- Crew Members -->
-      <div>
-        <h2 class="text-xl font-semibold text-gray-700 mb-2">Crew Members</h2>
+      <div class="">
+        <h2 class="text-xl font-semibold text-gray-300 mb-2">Crew Members</h2>
         <div class="overflow-x-auto">
-          <table class="table-auto w-fit bg-gray-50 rounded shadow">
+          <table class="table-auto w-fit bg-gray-800 rounded shadow">
             <thead class="bg-gray-200">
               <tr>
                 <th class="text-left px-4 py-2 text-gray-700">Name</th>
@@ -27,9 +27,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let member of (this.crew()?.members || [])" class="border-t">
-                <td class="px-4 py-2 text-gray-800">{{ member.name }}</td>
+                <td class="px-4 py-2 text-gray-200">{{ member.name }}</td>
                 <!-- Assuming each member has a 'name' property -->
-                <td class="px-4 py-2 text-gray-800">{{ member.level }}</td>
+                <td class="px-4 py-2 text-gray-200">{{ member.level }}</td>
                 <!-- Assuming each member has an 'id' property -->
               </tr>
               <!-- Add additional rows for members as needed -->
@@ -40,25 +40,25 @@
     </div>
 
     <!-- Crew Upgrades Section -->
-    <div class="bg-white rounded shadow p-4 mt-6 w-[400px]">
-      <h2 class="text-xl font-semibold text-gray-800 mb-4">Crew Upgrades</h2>
+    <div class="bg-gray-700 rounded shadow p-4 mt-6 w-[400px]">
+      <h2 class="text-xl font-semibold text-gray-300 mb-4">Crew Upgrades</h2>
       <ul class="grid grid-cols-3 gap-4 text-xs ">
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Attack:</strong> 0</p>
         </li>
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>HP:</strong> 0</p>
         </li>
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Experience:</strong> 0</p>
         </li>
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Rage:</strong> 0</p>
         </li>
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Critical:</strong> 0</p>
         </li>
-        <li class="bg-gray-50 rounded p-3 shadow">
+        <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Block:</strong> 0</p>
         </li>
       </ul>
@@ -73,10 +73,10 @@
 
 
       <!-- Loop through each item in the array -->
-      <div *ngFor="let item of gods" class="bg-gray-100 rounded-lg shadow-md p-4">
+      <div *ngFor="let item of gods" class="bg-gray-900 rounded-lg shadow-md p-4">
         <!-- Collapsible Header -->
         <div class="flex justify-between items-center">
-          <div class="text-lg font-semibold text-gray-800">{{ item.Name }}</div>
+          <div class="text-lg font-semibold text-gray-300">{{ item.Name }}</div>
           <button (click)="toggleCollapse(item)" class="text-blue-500 hover:text-blue-700 text-2xl w-12">
             <span *ngIf="!collapseState[item.Name]">-</span>
             <span *ngIf="collapseState[item.Name]">+</span>
@@ -87,14 +87,14 @@
         <div *ngIf="!collapseState[item.Name]" class="mt-4 flex space-x-8">
           <!-- Left Side: Item Details -->
           <div class="flex-1">
-            <p class="text-gray-700"><strong>Level Requirement:</strong> {{ item.LevelRequirement }}</p>
-            <p class="text-gray-700"><strong>Attack:</strong> {{ item.Attack }}</p>
-            <p class="text-gray-700"><strong>HP:</strong> {{ item.Hp }}</p>
+            <p class="text-gray-300"><strong>Level Requirement:</strong> {{ item.LevelRequirement }}</p>
+            <p class="text-gray-300"><strong>Attack:</strong> {{ item.Attack }}</p>
+            <p class="text-gray-300"><strong>HP:</strong> {{ item.Hp }}</p>
             <div>
-              <strong class="text-gray-700">Drops:</strong>
+              <strong class="text-gray-300">Drops:</strong>
               <ul class="list-disc pl-5">
                 <li *ngFor="let drop of item.Drops">
-                  <span class="text-gray-600">{{ drop }}</span>
+                  <span class="text-gray-300">{{ drop }}</span>
                 </li>
               </ul>
               <button *ngIf="item && isActiveRaid(item.Name) === false" (click)="formRaid(item.Name)"
@@ -132,11 +132,11 @@
   <div>
     <!-- Modal -->
     <div class="modal-backdrop" *ngIf="isModalOpen">
-      <div class="modal">
+      <div class="modal bg-gray-800">
         {{modalContent}}
         <br />
         <button (click)="closeModal()"
-          class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          class="text-xs bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           OK
         </button>
       </div>

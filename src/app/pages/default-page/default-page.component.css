@@ -1,4 +1,8 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+.main-container {
+  max-width: 867px;
+}

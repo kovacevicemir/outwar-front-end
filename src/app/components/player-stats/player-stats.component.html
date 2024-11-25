@@ -12,7 +12,7 @@
 
 <div class="p-4 space-y-2">
   <!-- Total Attack and Total HP -->
-  <div class="flex gap-2 items-center justify-between text-xs text-gray-800">
+  <div class="flex gap-2 items-center justify-between text-xs text-gray-100">
     <div class="flex items-center">
       <span class="font-semibold">Total Attack:</span>
       <span>&nbsp;{{ playerStatsSummary().attack }}</span>
@@ -26,20 +26,20 @@
   <hr />
 
   <!-- Set Bonus -->
-  <div class="flex justify-between text-xs text-gray-400">
+  <div class="flex justify-between text-xs text-gray-300">
     <span class="font-semibold">Set Bonus</span>
     <span>{{ playerStatsSummary().totalSetAttackBonus }} attack / {{ playerStatsSummary().totalSetHpBonus }} hp</span>
   </div>
 
   <!-- Level Bonus -->
-  <div class="flex justify-between text-xs text-gray-400">
+  <div class="flex justify-between text-xs text-gray-300">
     <span class="font-semibold">Level Bonus</span>
     <span>{{ playerStatsSummary().levelAttackBonus }} attack / {{ playerStatsSummary().levelHpBonus }} hp</span>
   </div>
 
   <hr />
 
-  <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
+  <div class="grid grid-cols-2 gap-4 text-xs text-gray-300">
     <div class="flex items-center">
       <span class="font-semibold">Max Rage:</span>
       <span>{{ playerStatsSummary().maxRage }}</span>
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
+  <div class="grid grid-cols-2 gap-4 text-xs text-gray-300">
     <div class="flex items-center">
       <span class="font-semibold">Rampage:</span>
       <span>{{ playerStatsSummary().rampage }}%</span>
@@ -61,7 +61,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 text-xs text-gray-400">
+  <div class="grid grid-cols-2 gap-4 text-xs text-gray-300">
     <div class="flex items-center">
       <span class="font-semibold">Block:</span>
       <span>{{ playerStatsSummary().block }}%</span>
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<div class="ml-3 border border-sm p-1 w-fit flex items-center">
+<div class="ml-3 text-gray-100 border border-gray-800 border-md p-1 w-fit flex items-center bg-gray-900">
   <span class="text-xs font-semibold">
     Crew:
     <a [attr.href]="'/crew?name=' + (user()?.crewName || '')">
