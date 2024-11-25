@@ -106,6 +106,17 @@ export class PlayerProfileServiceService {
     );
   }
 
+  async upgradeItem(item: Item): Promise<any> {
+    const url = `https://localhost:44338/upgrade-item-level-by-item-id?username=test1&itemId=${item.id}`;
+    try {
+      const response = await this.http.post(url, null).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error upgrading item:', error);
+      throw error;
+    }
+  }
+
   equipItem(item: Item) {
     const url = `https://localhost:44338/equip-item?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({

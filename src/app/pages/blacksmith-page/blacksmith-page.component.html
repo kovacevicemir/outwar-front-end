@@ -13,42 +13,42 @@
         class="object-cover w-full h-full rounded-lg hover:cursor-pointer" />
       <!-- Tooltip Positioned Below Image -->
       <div *ngIf="activeItem === item.id"
-        class="absolute left-0 z-30 top-full mt-1 bg-gray-200 rounded shadow-lg w-fit">
+        class="absolute left-0 z-30 top-full mt-1 bg-gray-900 rounded shadow-lg w-fit">
 
         <!-- <pre>{{ item | json }}</pre> -->
-        <div class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+        <div class="w-fit min-w-[150px] mx-auto p-4 bg-gray-900 rounded-lg shadow-md">
           <!-- Item Name -->
-          <h2 class=" text-xs font-bold text-gray-800 text-left">{{ item.name }}</h2>
-          <div *ngIf="item.upgradeLevel !== 0" class="mt-2 text-sm text-gray-600">
+          <h2 class=" text-xs font-bold text-gray-200 text-left">{{ item.name }}</h2>
+          <div *ngIf="item.upgradeLevel !== 0" class="mt-2 text-sm text-gray-300">
             <app-item-upgrade-display [upgradeLevel]=item.upgradeLevel></app-item-upgrade-display>
           </div>
           <!-- Item Stats -->
           <div class="mt-4 space-y-1">
-            <p *ngIf="item.attack" class="text-gray-600 text-xs">
+            <p *ngIf="item.attack" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.attack }} ATK</span>
             </p>
-            <p *ngIf="item.hp" class="text-gray-600 text-xs">
+            <p *ngIf="item.hp" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.hp }} HP</span>
             </p>
-            <p *ngIf="item.maxRage" class="text-gray-600 text-xs">
+            <p *ngIf="item.maxRage" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.maxRage }} max rage</span>
             </p>
-            <p *ngIf="item.rage" class="text-gray-600 text-xs">
+            <p *ngIf="item.rage" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.rage }} rage per hr</span>
             </p>
-            <p *ngIf="item.exp" class="text-gray-600 text-xs">
+            <p *ngIf="item.exp" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.exp }} exp per hr</span>
             </p>
-            <p *ngIf="item.rampage" class="text-gray-600 text-xs">
+            <p *ngIf="item.rampage" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.rampage }}% rampage</span>
             </p>
-            <p *ngIf="item.critical" class="text-gray-600 text-xs">
+            <p *ngIf="item.critical" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.critical }}% critical hit</span>
             </p>
-            <p *ngIf="item.block" class="text-gray-600 text-xs">
+            <p *ngIf="item.block" class="text-gray-300 text-xs">
               <span class="font-semibold">+{{ item.block }}% block</span>
             </p>
-            <p *ngIf="item.setBonus[0]" class="text-gray-600 text-xs">
+            <p *ngIf="item.setBonus[0]" class="text-gray-300 text-xs">
               <span class="font-semibold">[{{ item.setBonus?.[0] }}/{{item.setBonus?.[1]}}] Set Bonus</span>
             </p>
 
@@ -77,14 +77,14 @@
   </div>
 
   <!-- Selected item -->
-  <div>
-    <strong>Selected item</strong>
+  <div class="mt-6">
+    <strong >Selected item</strong>
     <div class=" border-2 rounded-lg w-[50px] h-[52px] border-emerald-500">
       <img *ngIf="selectedItem" [src]="selectedItem.urlPath" alt="Item"
         class="w-[50px] h-[50px] object-cover rounded-lg hover:cursor-pointer" />
     </div>
     <div class="mt-2">
-      <app-item-upgrade-display *ngIf="selectedItem" [upgradeLevel]=3></app-item-upgrade-display>
+      <app-item-upgrade-display *ngIf="selectedItem" [upgradeLevel]=selectedItem.upgradeLevel></app-item-upgrade-display>
     </div>
 
     <div *ngIf="selectedItem" class=" mt-2 space-y-1">
@@ -124,6 +124,10 @@
         class="text-xs bg-green-600 mt-1 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
         upgrade
       </button>
+    </div>
+
+    <div class="mt-2" *ngIf="resMessage">
+      <p class="text-green-600">{{resMessage}}</p>
     </div>
   </div>
 

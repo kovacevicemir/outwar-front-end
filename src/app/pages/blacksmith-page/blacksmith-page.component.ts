@@ -17,6 +17,7 @@ export class BlacksmithPageComponent implements OnInit {
   inventoryItems = this.playerProfileService.inventoryItemsSignal.asReadonly();
   activeItem = 0;
   selectedItem: Item | undefined = undefined;
+  resMessage = ``;
 
   constructor(private playerProfileService: PlayerProfileServiceService) {
     effect(() => {
@@ -27,8 +28,16 @@ export class BlacksmithPageComponent implements OnInit {
 
   ngOnInit() {}
 
-  upgrade() {
-    alert('todo');
+  async upgrade() {
+    if (this.selectedItem){
+      const res = await this.playerProfileService.upgradeItem(this.selectedItem);
+      this.resMessage = res;
+      this.playerProfileService.getUserByUsername('test1');
+
+      if(res.includes("successfully upgraded")){
+        this.selectedItem.upgradeLevel++;
+      }
+    }
   }
 
   getUpgradeCostText() {

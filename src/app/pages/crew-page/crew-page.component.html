@@ -7,8 +7,8 @@
 
       <!-- Crew Leader -->
       <div class="mb-6 w-fit">
-        <h2 class="text-xl font-semibold text-gray-300 mb-2">Crew Leader</h2>
-        <div class="bg-gray-800 rounded p-3 shadow">
+        <h2 class="text-sm font-semibold text-gray-300 mb-2">Crew Leader</h2>
+        <div class="bg-gray-800 rounded p-3 shadow text-xs">
           <p><strong>Name:</strong> {{getLeaderName()}}</p>
           <p><strong>Level:</strong> 12</p>
         </div>
@@ -16,13 +16,13 @@
 
       <!-- Crew Members -->
       <div class="">
-        <h2 class="text-xl font-semibold text-gray-300 mb-2">Crew Members</h2>
+        <h2 class="text-sm font-semibold text-gray-300 mb-2">Crew Members</h2>
         <div class="overflow-x-auto">
-          <table class="table-auto w-fit bg-gray-800 rounded shadow">
-            <thead class="bg-gray-200">
+          <table class="table-auto w-fit bg-gray-800 rounded shadow text-xs">
+            <thead class="bg-gray-900">
               <tr>
-                <th class="text-left px-4 py-2 text-gray-700">Name</th>
-                <th class="text-left px-4 py-2 text-gray-700">Level</th>
+                <th class="text-left px-4 py-2 text-gray-200">Name</th>
+                <th class="text-left px-4 py-2 text-gray-200">Level</th>
               </tr>
             </thead>
             <tbody>
@@ -41,8 +41,8 @@
 
     <!-- Crew Upgrades Section -->
     <div class="bg-gray-700 rounded shadow p-4 mt-6 w-[400px]">
-      <h2 class="text-xl font-semibold text-gray-300 mb-4">Crew Upgrades</h2>
-      <ul class="grid grid-cols-3 gap-4 text-xs ">
+      <h2 class="text-sm font-semibold text-gray-300 mb-4">Crew Upgrades</h2>
+      <ul class="grid grid-cols-3 gap-4 text-xs">
         <li class="bg-gray-800 rounded p-3 shadow">
           <p><strong>Attack:</strong> 0</p>
         </li>
@@ -98,11 +98,11 @@
                 </li>
               </ul>
               <button *ngIf="item && isActiveRaid(item.Name) === false" (click)="formRaid(item.Name)"
-                class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                class="text-xs bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Form Raid
               </button>
               <button *ngIf="item && canLaunchRaid(item.Name) === true" (click)="attackRaid(item.Name)"
-                class=" bg-green-500 mt-4 mr-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                class="text-xs bg-green-500 mt-4 mr-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Launch Raid!
               </button>
               <button *ngIf="item && isActiveRaid(item.Name) === true && showRaidButton(item.Name)"
