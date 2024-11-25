@@ -30,9 +30,14 @@ export class WorldComponent implements OnInit {
   ];
   waterIds = [63];
   subwayIds = [44];
-  combatOutcomeMsg = ''
+  combatOutcomeMsg = '';
+  isModalOpen = false;
+  modalContent = `Fetch quest status is it taken or not... display quest status etc. todo`;
 
-  constructor(private http: HttpClient, private playerProfileService: PlayerProfileServiceService) {}
+  constructor(
+    private http: HttpClient,
+    private playerProfileService: PlayerProfileServiceService
+  ) {}
 
   ngOnInit() {
     this.getUserByUsername('test1');
@@ -72,16 +77,25 @@ export class WorldComponent implements OnInit {
         //@ts-ignore
         this.playerLocation = response;
         const currentLocationDetails = this.getLocationDetails();
-        if(currentLocationDetails){
-          this.currentLocationDetails = currentLocationDetails
+        if (currentLocationDetails) {
+          this.currentLocationDetails = currentLocationDetails;
         }
 
-        this.combatOutcomeMsg = ''
+        this.combatOutcomeMsg = '';
       },
       error: (error) => {
         console.error('Error fetching user:', error);
       },
     });
+  }
+
+  openModal(npc:string) {
+    this.modalContent = this.modalContent + ` ${npc} - quest`
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 
   gameMap: number[][] = [
@@ -172,13 +186,13 @@ export class WorldComponent implements OnInit {
     ],
   ];
 
-  attackMonster(monster: string){
+  attackMonster(monster: string) {
     const url = `https://localhost:44338/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         this.combatOutcomeMsg = response.toString();
         // this.generateEquipedItems(response as UserResponse);
-        this.playerProfileService.getUserByUsername('test1')
+        this.playerProfileService.getUserByUsername('test1');
       },
       error: (error) => {
         console.error('Error fetching user:', error);

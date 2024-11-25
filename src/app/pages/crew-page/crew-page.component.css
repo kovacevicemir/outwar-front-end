@@ -21,3 +21,6 @@
     width: 300px;
   }
   
+  .main-container {
+    max-width: 867px;
+  }

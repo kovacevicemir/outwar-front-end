@@ -7,6 +7,7 @@ import { DiamondCityPageComponent } from './pages/diamond-city-page/diamond-city
 import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { DefaultPageComponent } from './pages/default-page/default-page.component';
+import { BlacksmithPageComponent } from './pages/blacksmith-page/blacksmith-page.component';
 
 export const routes: Routes = [
   { path: '', component: DefaultPageComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'crew', component: CrewPageComponent },
   { path: 'diamond-city', component: DiamondCityPageComponent },
   { path: 'ranking', component: RankingPageComponent },
+  { path: 'blacksmith', component: BlacksmithPageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: 'hello', component: HelloWorldComponent },
 ];

@@ -79,16 +79,28 @@
   margin-top: 10px;
 }
 
-button {
-  padding: 5px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+.main-container {
+  max-width: 867px;
 }
 
-button:hover {
-  background-color: #e0e0e0;
+/* Modal Backdrop */
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Box */
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
 }

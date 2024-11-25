@@ -1,0 +1,132 @@
+<div class="main-container">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">
+    Blacksmith
+  </h2>
+
+  <!-- inventory.component.html -->
+  <div class="grid grid-cols-10 grid-rows-5 gap-1 p-0 w-[550px]">
+    <!-- Loop through each square in the grid and display items -->
+    <div *ngFor="let item of inventoryItems(); let i = index"
+      class="relative w-12 h-12 rounded-lg overflow-visible border-2 border-gray-300">
+      <!-- Show image if item exists -->
+      <img *ngIf="item" (click)="setActiveItem(item.id)" [src]="item.urlPath" alt="Item"
+        class="object-cover w-full h-full rounded-lg hover:cursor-pointer" />
+      <!-- Tooltip Positioned Below Image -->
+      <div *ngIf="activeItem === item.id"
+        class="absolute left-0 z-30 top-full mt-1 bg-gray-200 rounded shadow-lg w-fit">
+
+        <!-- <pre>{{ item | json }}</pre> -->
+        <div class="w-fit min-w-[150px] mx-auto p-4 bg-white rounded-lg shadow-md">
+          <!-- Item Name -->
+          <h2 class=" text-xs font-bold text-gray-800 text-left">{{ item.name }}</h2>
+          <div *ngIf="item.upgradeLevel !== 0" class="mt-2 text-sm text-gray-600">
+            <app-item-upgrade-display [upgradeLevel]=item.upgradeLevel></app-item-upgrade-display>
+          </div>
+          <!-- Item Stats -->
+          <div class="mt-4 space-y-1">
+            <p *ngIf="item.attack" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.attack }} ATK</span>
+            </p>
+            <p *ngIf="item.hp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.hp }} HP</span>
+            </p>
+            <p *ngIf="item.maxRage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.maxRage }} max rage</span>
+            </p>
+            <p *ngIf="item.rage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.rage }} rage per hr</span>
+            </p>
+            <p *ngIf="item.exp" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.exp }} exp per hr</span>
+            </p>
+            <p *ngIf="item.rampage" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.rampage }}% rampage</span>
+            </p>
+            <p *ngIf="item.critical" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.critical }}% critical hit</span>
+            </p>
+            <p *ngIf="item.block" class="text-gray-600 text-xs">
+              <span class="font-semibold">+{{ item.block }}% block</span>
+            </p>
+            <p *ngIf="item.setBonus[0]" class="text-gray-600 text-xs">
+              <span class="font-semibold">[{{ item.setBonus?.[0] }}/{{item.setBonus?.[1]}}] Set Bonus</span>
+            </p>
+
+
+          </div>
+
+          <!-- Item Type and Upgrade Level -->
+          <!-- <div class="mt-4 text-sm text-gray-600">
+          <p>
+            Upgrade Level: <span class="font-semibold">{{ item.upgradeLevel }}</span>
+          </p>
+        </div> -->
+
+          <div class="flex mt-4">
+            <button *ngIf="item" (click)="selectItem(item)"
+              class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+              Select
+            </button>
+          </div>
+        </div>
+
+        <!-- Show a placeholder if there's no item -->
+        <div *ngIf="!item" class="w-full h-full bg-gray-200 rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected item -->
+  <div>
+    <strong>Selected item</strong>
+    <div *ngIf="selectedItem" class=" border-2 rounded-lg w-[50px] h-[50px] border-emerald-950">
+      <img *ngIf="selectedItem" [src]="selectedItem.urlPath" alt="Item"
+        class="w-[50px] h-[50px] object-cover rounded-lg hover:cursor-pointer" />
+    </div>
+    <div class="mt-2">
+      <app-item-upgrade-display *ngIf="selectedItem" [upgradeLevel]=3></app-item-upgrade-display>
+    </div>
+
+    <div *ngIf="selectedItem" class=" mt-2 space-y-1">
+      <p *ngIf="selectedItem.attack" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem?.attack }} ATK</span>
+      </p>
+      <p *ngIf="selectedItem.hp" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem?.hp }} HP</span>
+      </p>
+      <p *ngIf="selectedItem.maxRage" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.maxRage }} max rage</span>
+      </p>
+      <p *ngIf="selectedItem.rage" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.rage }} rage per hr</span>
+      </p>
+      <p *ngIf="selectedItem.exp" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.exp }} exp per hr</span>
+      </p>
+      <p *ngIf="selectedItem.rampage" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.rampage }}% rampage</span>
+      </p>
+      <p *ngIf="selectedItem.critical" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.critical }}% critical hit</span>
+      </p>
+      <p *ngIf="selectedItem.block" class="text-gray-600 text-xs">
+        <span class="font-semibold">+{{ selectedItem.block }}% block</span>
+      </p>
+      <p *ngIf="selectedItem.setBonus[0]" class="text-gray-600 text-xs">
+        <span class="font-semibold">[{{ selectedItem.setBonus?.[0] }}/{{selectedItem.setBonus?.[1]}}] Set Bonus</span>
+      </p>
+    </div>
+
+
+    <div class="mt-4" *ngIf="selectedItem">
+      <span class="text-xs">{{getUpgradeCostText()}}</span><br/>
+      <button (click)="upgrade()"
+        class="text-xs bg-green-600 mt-1 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
+        upgrade
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- <pre>{{ inventoryItems()| json }}</pre> -->

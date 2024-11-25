@@ -1,9 +1,7 @@
-<div class="game-map">
-  <div *ngFor="let row of gameMap; let i = index" class="game-row">
-    <div 
-      *ngFor="let cell of row; let j = index" 
-      class="game-cell" 
-      [ngClass]="{
+<div class="main-container">
+  <div class="game-map">
+    <div *ngFor="let row of gameMap; let i = index" class="game-row">
+      <div *ngFor="let cell of row; let j = index" class="game-cell" [ngClass]="{
         'hidden': cell === 0, 
         'highlight': cell !== 0, 
         'current-location-cell': isPlayerLocation(i, j),
@@ -11,64 +9,80 @@
         'water-style': isWater(cell),
         'subway-style': isSubway(cell)
       }">
-      {{ cell !== 0 ? cell : '' }}
+        {{ cell !== 0 ? cell : '' }}
+      </div>
     </div>
   </div>
-</div>
 
-<div class="controls">
-  <button (click)="changeLocation('up')">W</button>
-  <div class="horizontal-controls">
-    <button (click)="changeLocation('left')">A</button>
-    <button (click)="changeLocation('down')">S</button>
-    <button (click)="changeLocation('right')">D</button>
+  <div class="controls">
+    <button class="border rounded-md px-3 py-1" (click)="changeLocation('up')">W</button>
+    <div class="horizontal-controls">
+      <button class="border rounded-md px-3 py-1" (click)="changeLocation('left')">A</button>
+      <button class="border rounded-md px-3 py-1" (click)="changeLocation('down')">S</button>
+      <button class="border rounded-md px-3 py-1" (click)="changeLocation('right')">D</button>
+    </div>
   </div>
-</div>
 
-<!-- id: 1,
+  <!-- id: 1,
     name: 'first street',
     monsters: ['Monster 1'],
     npcs: [], -->
-    <div class="p-4 bg-gray-100 rounded shadow-md">
-      <!-- Display the location name -->
-      <h1 class="text-2xl font-bold text-gray-800 mb-4">{{ currentLocationDetails.name }}</h1>
-    
-      <!-- Display the monsters and Attack button -->
-      <div>
-        <h2 class="text-xl font-semibold text-gray-700 mb-2">Monsters:</h2>
-        <ul class="space-y-2">
-          <li
-            *ngFor="let monster of currentLocationDetails.monsters"
-            class="flex items-center justify-between bg-gray-50 p-2 rounded shadow"
-          >
-            <span class="text-gray-700">{{ monster }}</span>
-            <button
-              class="bg-red-500 text-black text-sm px-4 py-2 rounded hover:bg-red-600"
-              (click)="attackMonster(monster)"
-            >
-              Attack
-            </button>
-          </li>
-        </ul>
-      </div>
+  <div class="p-4 bg-gray-100 rounded shadow-md">
+    <!-- Display the location name -->
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">{{ currentLocationDetails.name }}</h1>
 
-      <div *ngIf="combatOutcomeMsg !== ''" class="bg-gradient-to-r from-green-500 to-green-700 text-white p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-200 font-mono text-lg text-center border-4 border-green-400">
-        {{ combatOutcomeMsg }}
-      </div>
-    
-      <!-- Divider -->
-      <hr class="my-6 border-gray-300" />
-    
-      <!-- Display the NPCs -->
-      <div>
-        <h2 class="text-xl font-semibold text-gray-700 mb-2">NPCs:</h2>
-        <ul class="space-y-2">
-          <li
-            *ngFor="let npc of currentLocationDetails.npcs"
-            class="text-gray-700 bg-gray-50 p-2 rounded shadow"
-          >
-            {{ npc }}
-          </li>
-        </ul>
+    <!-- Display the monsters and Attack button -->
+    <div>
+      <h2 class="text-xl font-semibold text-gray-700 mb-2">Monsters:</h2>
+      <ul class="space-y-2">
+        <li *ngFor="let monster of currentLocationDetails.monsters"
+          class="flex items-center justify-between bg-gray-50 p-2 rounded shadow">
+          <span class="text-gray-700">{{ monster }}</span>
+          <button class="bg-red-500 text-white text-sm px-4 py-2 rounded hover:bg-red-600"
+            (click)="attackMonster(monster)">
+            Attack
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="combatOutcomeMsg !== ''"
+      class="bg-gradient-to-r from-green-500 to-green-700 text-white p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-200 font-mono text-lg text-center border-4 border-green-400">
+      {{ combatOutcomeMsg }}
+    </div>
+
+    <!-- Divider -->
+    <hr *ngIf="currentLocationDetails.npcs.length > 0" class="my-6 border-gray-300" />
+
+    <!-- Display the NPCs -->
+    <div *ngIf="currentLocationDetails.npcs.length > 0">
+      <h2 class="text-xl font-semibold text-gray-700 mb-2">NPCs:</h2>
+      <ul class="space-y-2">
+        <li *ngFor="let npc of currentLocationDetails.npcs" class="text-gray-700 bg-gray-50 p-2 rounded shadow"
+          (click)="openModal(npc)">
+          {{ npc }} <button class=" bg-green-500 mt-4 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Talk</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div>
+    <!-- Modal -->
+    <div class="modal-backdrop" *ngIf="isModalOpen">
+      <div class="modal">
+        {{modalContent}}
+        <br />
+        <button (click)="closeModal()"
+          class=" bg-gray-500 mt-4 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">
+          Cancel
+        </button>
+        <button (click)="closeModal()"
+          class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          OK
+        </button>
       </div>
     </div>
+  </div>
+
+</div>
