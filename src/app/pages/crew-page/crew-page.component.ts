@@ -1,8 +1,6 @@
 import { Component, effect, OnInit } from '@angular/core';
 import { CrewService } from '../../services/CrewService.service';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { ActivatedRoute } from '@angular/router';
 import gods from '../../data/Gods.json';

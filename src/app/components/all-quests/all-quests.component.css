@@ -1,0 +1,22 @@
+.main-container{
+    margin-top: 32px;
+}
+
+.toggle-checkbox {
+    display: none;
+  }
+  
+  .toggle-label {
+    position: relative;
+
+  }
+  
+  .toggle-dot {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+  }
+
+  .refresh-icon{
+    cursor: pointer;
+  }

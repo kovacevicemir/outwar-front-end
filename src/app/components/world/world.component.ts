@@ -56,6 +56,10 @@ export class WorldComponent implements OnInit {
     });
   }
 
+  startQuest(questName: string){
+    this.playerProfileService.startQuest(questName)
+  }
+
   isPlayerLocation(row: number, col: number): boolean {
     return this.playerLocation[0] === row && this.playerLocation[1] === col;
   }

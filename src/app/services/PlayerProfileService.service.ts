@@ -106,6 +106,17 @@ export class PlayerProfileServiceService {
     );
   }
 
+  async startQuest(questName: string): Promise<any>{
+    const url = `https://localhost:44338/start-quest?username=test1&questName=${questName}`;
+    try {
+      const response = await this.http.post(url, null).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error starting quest:', error);
+      throw error;
+    }
+  }
+
   async upgradeItem(item: Item): Promise<any> {
     const url = `https://localhost:44338/upgrade-item-level-by-item-id?username=test1&itemId=${item.id}`;
     try {

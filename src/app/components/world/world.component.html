@@ -66,6 +66,8 @@
     </div>
   </div>
 
+  <app-all-quests></app-all-quests>
+
 
   <div>
     <!-- Modal -->
@@ -76,6 +78,10 @@
         <button (click)="closeModal()"
           class=" bg-gray-500 mt-4 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">
           Cancel
+        </button>
+        <button (click)="startQuest(currentLocationDetails.npcs[0])"
+          class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Start Quest
         </button>
         <button (click)="closeModal()"
           class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

@@ -1,0 +1,49 @@
+<div class="w-full mx-auto main-container">
+  <h2 class="text-lg">Quests</h2>
+  <div class="mb-4 flex items-center space-x-2">
+    <label for="toggleActive" class="text-gray-400 font-semibold">Show Active Only</label>
+    <input type="checkbox" id="toggleActive" class="toggle-checkbox hidden" [(ngModel)]="showActiveOnly"
+      (change)="toogleActive()" />
+    <label for="toggleActive"
+      class="toggle-label inline-block w-[2.2rem] h-[1.1rem] bg-gray-600 rounded-full cursor-pointer">
+      <span class="toggle-dot w-4 h-4 bg-white rounded-full shadow-md transform duration-300"
+        [ngClass]="showActiveOnly ? 'translate-x-4 bg-green-500' : 'translate-x-0'"></span>
+    </label>
+
+    <mat-icon class="cursor-pointer" (click)="refreshQuests()" aria-hidden="false" aria-label="Example home icon"
+        fontIcon="refresh"></mat-icon>
+
+  </div>
+
+  <div *ngFor="let quest of displayedQuests; let i = index" class="mb-4 border border-gray-900 rounded-lg">
+    <div class="flex justify-between items-center bg-gray-900 p-4 cursor-pointer" (click)="toggleCollapse(i)">
+      <div>
+        <h2 class="text-lg font-semibold">{{ quest.name }}</h2>
+        <p class="text-sm">
+          Status:
+          <span [class.text-green-600]="quest.status === 1" [class.text-blue-600]="quest.status === 0">
+            {{ quest.status === 1 ? 'Completed' : 'Started' }}
+          </span>
+        </p>
+        <p class="text-sm">Got Reward: {{ quest.gotReward ? 'Yes' : 'No' }}</p>
+      </div>
+      <span class="text-xl transform" [class.rotate-180]="!isCollapsed(i)">
+        ⬇
+      </span>
+    </div>
+    <div *ngIf="!isCollapsed(i)" class="p-4 bg-gray-800">
+      <p class="mb-2 font-semibold">Monsters to Kill:</p>
+      <ul class="list-disc list-inside">
+        <li *ngFor="let monster of quest.monsterIds; let index = index" class="text-sm">
+          {{monsters[0].Name}} {{ quest.progress[index] || 0 }} / {{ quest.requirements[index] || 0 }}
+        </li>
+      </ul>
+      <div class="mt-4">
+        <p class="mb-1 font-semibold">Reward: {{ quest.exp }} Exp</p>
+        <ul class="list-disc list-inside text-sm">
+          <li *ngFor="let item of quest.itemRewardNames">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
