@@ -36,7 +36,7 @@
       <p class="mb-2 font-semibold">Monsters to Kill:</p>
       <ul class="list-disc list-inside">
         <li *ngFor="let monster of quest.monsterIds; let index = index" class="text-sm">
-          {{monsters[index].Name}} {{ quest.progress[index] || 0 }} / {{ quest.requirements[index] || 0 }}
+          {{monsters[monster -1].Name}} {{ quest.progress[index] || 0 }} / {{ quest.requirements[index] || 0 }}
         </li>
       </ul>
       <div class="mt-4">

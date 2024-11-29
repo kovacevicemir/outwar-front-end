@@ -7,5 +7,23 @@
       "Progress": [0,0],
       "ItemRewardNames": ["Roman Ring"],
       "Exp": 100
+    },
+    {
+      "Name": "Goverment Official",
+      "Description": "Would you like to work for Goverment? Kill 5 Corrupted DC Enforcers...",
+      "MonsterIds": [80],
+      "Requirements": [5],
+      "Progress": [0],
+      "ItemRewardNames": [
+        "Government Issued Hat",
+        "Government Issued Blazer",
+        "Government Issued .45",
+        "Government Issued ID Badge",
+        "Government Issued Shoes",
+        "Government Issued Ring",
+        "Government Issued Belt",
+        "Government Issued Necktie"
+      ],
+      "Exp": 100
     }
   ]
