@@ -1,10 +1,10 @@
 [
   {
     "Name": "Acidic Primate",
-    "Attack": 11,
-    "Hp": 130,
-    "Exp": 5,
-    "Rage": 1,
+    "Attack": 5,
+    "Hp": 30,
+    "Exp": 4,
+    "Rage": 3,
     "Drops": [
       "Pimp Hat",
       "Pimp Suit",
@@ -14,394 +14,379 @@
       "Pimp Ring"
     ],
     "DropsChance": [
-      10,
-      20,
-      10,
       5,
+      5,
+      5,
+      6,
       7,
       7
     ],
-    "id": 1
+    "Id": 1
   },
   {
     "Name": "Acidic Spider",
-    "Attack": 12,
-    "Hp": 160,
-    "Exp": 5,
-    "Rage": 1,
+    "Attack": 8,
+    "Hp": 100,
+    "Exp": 4,
+    "Rage": 3,
     "Drops": [
       "Construction Hat",
       "Construction Vest",
       "Construction Jackhammer"
     ],
     "DropsChance": [
-      8,
-      8,
-      8
+      5,
+      5,
+      5
     ],
-    "id": 2
+    "Id": 2
   },
   {
     "Name": "Addicted Doctor",
-    "Attack": 13,
-    "Hp": 190,
-    "Exp": 6,
-    "Rage": 1,
+    "Attack": 11,
+    "Hp": 111,
+    "Exp": 4,
+    "Rage": 4,
     "Drops": [
       "Construction Hat",
       "Construction Vest",
       "Construction Jackhammer"
     ],
     "DropsChance": [
-      8,
-      8,
-      8
+      4,
+      4,
+      4
     ],
-    "id": 3
+    "Id": 3
   },
   {
     "Name": "Aefron",
     "Attack": 14,
-    "Hp": 220,
-    "Exp": 7,
-    "Rage": 1,
+    "Hp": 125,
+    "Exp": 4,
+    "Rage": 4,
     "Drops": [
       "Construction Sign",
       "Construction Boots",
       "Construction Lunchpale"
     ],
     "DropsChance": [
-      8,
-      8,
-      8
+      4,
+      4,
+      4
     ],
-    "id": 4
+    "Id": 4
   },
   {
     "Name": "Agony Knight",
     "Attack": 15,
-    "Hp": 250,
-    "Exp": 8,
-    "Rage": 1,
+    "Hp": 150,
+    "Exp": 4,
+    "Rage": 4,
     "Drops": [
       "Construction Sign",
       "Construction Boots",
       "Construction Lunchpale"
     ],
     "DropsChance": [
-      8,
-      8,
-      8
+      4,
+      4,
+      4
     ],
-    "id": 5
+    "Id": 5
   },
   {
     "Name": "Agothyn the Mutant Warlord",
     "Attack": 16,
     "Hp": 280,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 5,
+    "Rage": 5,
     "Drops": [
       "Roman Helmet",
       "Roman Armour",
       "Roman Sword"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 6
+    "Id": 6
   },
   {
     "Name": "Alsayic Goliath",
     "Attack": 17,
     "Hp": 310,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 5,
+    "Rage": 5,
     "Drops": [
       "Roman Helmet",
       "Roman Armour",
       "Roman Sword"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      3,
+      3,
+      3
     ],
-    "id": 7
+    "Id": 7
   },
   {
     "Name": "Ambulance Driver",
     "Attack": 18,
     "Hp": 340,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 5,
+    "Rage": 5,
     "Drops": [
       "Roman Helmet",
       "Roman Armour",
       "Roman Sword"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 8
+    "Id": 8
   },
   {
     "Name": "Ancient Deserter",
     "Attack": 19,
     "Hp": 370,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 5,
+    "Rage": 5,
     "Drops": [
       "Roman Shield",
       "Roman Sandals",
       "Roman Ring"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 9
+    "Id": 9
   },
   {
     "Name": "Apparitional Veteran",
     "Attack": 20,
     "Hp": 400,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Roman Shield",
       "Roman Sandals",
       "Roman Ring"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 10
+    "Id": 10
   },
   {
     "Name": "Aracnite",
     "Attack": 21,
     "Hp": 430,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Roman Shield",
       "Roman Sandals",
       "Roman Ring"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 11
+    "Id": 11
   },
   {
     "Name": "Aracnor",
     "Attack": 22,
     "Hp": 460,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Roman Shield",
       "Roman Sandals",
       "Roman Ring"
     ],
     "DropsChance": [
-      7,
-      7,
-      7
+      4,
+      4,
+      4
     ],
-    "id": 12
+    "Id": 12
   },
   {
     "Name": "Arcane Elemental Keeper",
     "Attack": 23,
     "Hp": 490,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Battle Helmet of Dissimulation",
       "Bullet Proof Vest of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6
+      4,
+      4
     ],
-    "id": 13
+    "Id": 13
   },
   {
     "Name": "Armed Cannoneer",
     "Attack": 24,
     "Hp": 520,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Battle Helmet of Dissimulation",
       "Bullet Proof Vest of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6
+      4,
+      4
     ],
-    "id": 14
+    "Id": 14
   },
   {
     "Name": "Armored Battleborg",
     "Attack": 25,
     "Hp": 550,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Battle Helmet of Dissimulation",
       "Bullet Proof Vest of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6
+      3,
+      4
     ],
-    "id": 15
+    "Id": 15
   },
   {
     "Name": "Armored Spartan",
     "Attack": 26,
     "Hp": 580,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Rifle of Dissimulation",
       "Sandbag of Dissimulation",
       "Army Boots of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6,
-      6
+      4,
+      3,
+      5
     ],
-    "id": 16
+    "Id": 16
   },
   {
     "Name": "Astral Necromancer",
     "Attack": 27,
     "Hp": 610,
-    "Exp": 8,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 6,
     "Drops": [
       "Rifle of Dissimulation",
       "Sandbag of Dissimulation",
       "Army Boots of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6,
-      6
+      4,
+      3,
+      5
     ],
-    "id": 17
+    "Id": 17
   },
   {
     "Name": "Astro Warden",
     "Attack": 28,
     "Hp": 640,
-    "Exp": 9,
-    "Rage": 1,
+    "Exp": 6,
+    "Rage": 7,
     "Drops": [
       "Ring of Dissimulation",
       "Army Belt of Dissimulation",
       "Dog-Tag of Dissimulation"
     ],
     "DropsChance": [
-      6,
-      6,
-      6
+      4,
+      3,
+      4
     ],
-    "id": 18
+    "Id": 18
   },
   {
     "Name": "Avatar of Nar Zhul",
     "Attack": 29,
     "Hp": 670,
-    "Exp": 52,
+    "Exp": 6,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 19
+    "Id": 19
   },
   {
     "Name": "Deranged Ogre",
     "Attack": 30,
     "Hp": 700,
-    "Exp": 46,
+    "Exp": 7,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 20
+    "Id": 20
   },
   {
     "Name": "Desert Lion",
     "Attack": 31,
     "Hp": 730,
-    "Exp": 88,
+    "Exp": 7,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 21
+    "Id": 21
   },
   {
     "Name": "Devoted Evocator",
     "Attack": 32,
     "Hp": 760,
-    "Exp": 13,
+    "Exp": 7,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 22
+    "Id": 22
   },
   {
     "Name": "Diabolic Wraith",
     "Attack": 33,
     "Hp": 790,
-    "Exp": 15,
+    "Exp": 7,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 23
+    "Id": 23
   },
   {
     "Name": "Dingo",
@@ -409,15 +394,12 @@
     "Hp": 820,
     "Exp": 15,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 24
+    "Id": 24
   },
   {
     "Name": "Dirt Crawler",
@@ -425,15 +407,12 @@
     "Hp": 850,
     "Exp": 40,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 25
+    "Id": 25
   },
   {
     "Name": "Diseased Jaxalo",
@@ -441,15 +420,12 @@
     "Hp": 880,
     "Exp": 10,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 26
+    "Id": 26
   },
   {
     "Name": "Diseased Kraw",
@@ -457,15 +433,12 @@
     "Hp": 910,
     "Exp": 15,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 27
+    "Id": 27
   },
   {
     "Name": "Diseased Mongrel",
@@ -473,15 +446,12 @@
     "Hp": 940,
     "Exp": 17,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 28
+    "Id": 28
   },
   {
     "Name": "Diseased Sandworm",
@@ -489,15 +459,12 @@
     "Hp": 970,
     "Exp": 84,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 29
+    "Id": 29
   },
   {
     "Name": "Disfigured Brute",
@@ -505,15 +472,18 @@
     "Hp": 1000,
     "Exp": 17,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": ["Spiked Helmet of the Cobalt","Breastplate of the Cobalt","Flail of the Cobalt","Tower Shield of the Cobalt","Sollerets of the Cobalt","Ring of the Cobalt","Belt of the Cobalt","Spiked Collar of the Cobalt"],
     "DropsChance": [
-      10,
-      20
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
     ],
-    "id": 30
+    "Id": 30
   },
   {
     "Name": "Disorderly Fiend",
@@ -521,15 +491,12 @@
     "Hp": 1030,
     "Exp": 90,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 31
+    "Id": 31
   },
   {
     "Name": "Disturbed Zombie",
@@ -537,15 +504,12 @@
     "Hp": 1060,
     "Exp": 26,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 32
+    "Id": 32
   },
   {
     "Name": "Dominic Saprano",
@@ -553,15 +517,12 @@
     "Hp": 1090,
     "Exp": 18,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 33
+    "Id": 33
   },
   {
     "Name": "Dorstox the Kinetic Slicer",
@@ -569,15 +530,12 @@
     "Hp": 1120,
     "Exp": 93,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 34
+    "Id": 34
   },
   {
     "Name": "Dothraki Warrior",
@@ -585,15 +543,12 @@
     "Hp": 1150,
     "Exp": 66,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 35
+    "Id": 35
   },
   {
     "Name": "Dried Up Alien",
@@ -601,15 +556,12 @@
     "Hp": 1180,
     "Exp": 55,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 36
+    "Id": 36
   },
   {
     "Name": "Duowolf",
@@ -617,15 +569,12 @@
     "Hp": 1210,
     "Exp": 37,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 37
+    "Id": 37
   },
   {
     "Name": "Dusk Imp",
@@ -633,15 +582,12 @@
     "Hp": 1240,
     "Exp": 57,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 38
+    "Id": 38
   },
   {
     "Name": "Earth Troll",
@@ -649,15 +595,12 @@
     "Hp": 1270,
     "Exp": 65,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 39
+    "Id": 39
   },
   {
     "Name": "Emblazed Serpent",
@@ -665,15 +608,12 @@
     "Hp": 1300,
     "Exp": 70,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 40
+    "Id": 40
   },
   {
     "Name": "Empowered Lich",
@@ -681,15 +621,12 @@
     "Hp": 1330,
     "Exp": 10,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 41
+    "Id": 41
   },
   {
     "Name": "Enforcer Captain",
@@ -697,15 +634,18 @@
     "Hp": 1360,
     "Exp": 76,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": ["Beanie of Extremity","Hoodie of Extremity","Truck-tool of Extremity","Board of Extremity","Skate Shoes of Extremity","Ball Barring of Extremity","Strap of Extremity","Glowing Chain of Extremity"],
     "DropsChance": [
-      10,
-      20
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
     ],
-    "id": 42
+    "Id": 42
   },
   {
     "Name": "Engulfed Undead",
@@ -713,15 +653,12 @@
     "Hp": 1390,
     "Exp": 50,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 43
+    "Id": 43
   },
   {
     "Name": "Enraged Centaur",
@@ -729,15 +666,12 @@
     "Hp": 1420,
     "Exp": 69,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 44
+    "Id": 44
   },
   {
     "Name": "Enraged Grizzly",
@@ -745,15 +679,12 @@
     "Hp": 1450,
     "Exp": 48,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 45
+    "Id": 45
   },
   {
     "Name": "Enraged Warewolf",
@@ -761,15 +692,12 @@
     "Hp": 1480,
     "Exp": 55,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 46
+    "Id": 46
   },
   {
     "Name": "Enthusiast",
@@ -777,15 +705,12 @@
     "Hp": 1510,
     "Exp": 36,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 47
+    "Id": 47
   },
   {
     "Name": "Enveloped Ibis",
@@ -793,15 +718,12 @@
     "Hp": 1540,
     "Exp": 37,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 48
+    "Id": 48
   },
   {
     "Name": "Ergon the Headhunter",
@@ -809,15 +731,12 @@
     "Hp": 1570,
     "Exp": 86,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 49
+    "Id": 49
   },
   {
     "Name": "Ether Overseer",
@@ -825,15 +744,12 @@
     "Hp": 1600,
     "Exp": 20,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 50
+    "Id": 50
   },
   {
     "Name": "Baneful Battlemage",
@@ -841,15 +757,12 @@
     "Hp": 1630,
     "Exp": 60,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 51
+    "Id": 51
   },
   {
     "Name": "Banished Energy",
@@ -857,15 +770,12 @@
     "Hp": 1660,
     "Exp": 71,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 52
+    "Id": 52
   },
   {
     "Name": "Barkangel",
@@ -873,15 +783,12 @@
     "Hp": 1690,
     "Exp": 90,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 53
+    "Id": 53
   },
   {
     "Name": "Battle Rat",
@@ -889,15 +796,12 @@
     "Hp": 1720,
     "Exp": 51,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 54
+    "Id": 54
   },
   {
     "Name": "Bewildered Ghost",
@@ -905,15 +809,12 @@
     "Hp": 1750,
     "Exp": 7,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 55
+    "Id": 55
   },
   {
     "Name": "Beyalon",
@@ -921,15 +822,18 @@
     "Hp": 1780,
     "Exp": 12,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": ["Fedora of the Gangland","Trench Coat of the Gangland","Piano Wire of the Gangland","Shield of the Gangland","Wing Tips of the Gangland","Ring of the Gangland","Waistband of the Gangland","Pendant of the Gangland"],
     "DropsChance": [
-      10,
-      20
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
     ],
-    "id": 56
+    "Id": 56
   },
   {
     "Name": "Bipedor",
@@ -937,15 +841,12 @@
     "Hp": 1810,
     "Exp": 20,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 57
+    "Id": 57
   },
   {
     "Name": "Blackheart Security",
@@ -953,15 +854,12 @@
     "Hp": 1840,
     "Exp": 40,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 58
+    "Id": 58
   },
   {
     "Name": "Blacksmith of Agony",
@@ -970,14 +868,26 @@
     "Exp": 5,
     "Rage": 1,
     "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
+      "Octave Helmet",
+      "Octave Breastplate",
+      "Octave Machine Gun",
+      "Octave Energy Blade",
+      "Octave Boots",
+      "Octave Ring",
+      "Octave Belt",
+      "Octave Energy Collar"
     ],
     "DropsChance": [
-      10,
-      20
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
     ],
-    "id": 59
+    "Id": 59
   },
   {
     "Name": "Blasphemous Creation",
@@ -985,15 +895,12 @@
     "Hp": 1900,
     "Exp": 28,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 60
+    "Id": 60
   },
   {
     "Name": "Blaze Wyvern",
@@ -1001,15 +908,12 @@
     "Hp": 1930,
     "Exp": 64,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 61
+    "Id": 61
   },
   {
     "Name": "Blazed Humanoid",
@@ -1017,15 +921,12 @@
     "Hp": 1960,
     "Exp": 15,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 62
+    "Id": 62
   },
   {
     "Name": "Blighted Soundchaser",
@@ -1033,15 +934,12 @@
     "Hp": 1990,
     "Exp": 69,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 63
+    "Id": 63
   },
   {
     "Name": "Blinded Ghoul",
@@ -1049,15 +947,12 @@
     "Hp": 2020,
     "Exp": 56,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 64
+    "Id": 64
   },
   {
     "Name": "Blistered Swine",
@@ -1065,15 +960,12 @@
     "Hp": 2050,
     "Exp": 81,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 65
+    "Id": 65
   },
   {
     "Name": "Blood Drinker",
@@ -1081,15 +973,12 @@
     "Hp": 2080,
     "Exp": 11,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 66
+    "Id": 66
   },
   {
     "Name": "Blood Leech",
@@ -1097,15 +986,12 @@
     "Hp": 2110,
     "Exp": 19,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 67
+    "Id": 67
   },
   {
     "Name": "Blood Witch",
@@ -1114,14 +1000,26 @@
     "Exp": 67,
     "Rage": 1,
     "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
+      "Headband of Symphony",
+      "Robe of Symphony",
+      "Guitar of Symphony",
+      "Shield of Symphony",
+      "Shoes of Symphony",
+      "Ring of Symphony",
+      "Sash of Symphony",
+      "Charm of Symphony"
     ],
     "DropsChance": [
-      10,
-      20
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
     ],
-    "id": 68
+    "Id": 68
   },
   {
     "Name": "Brainy Conspirator",
@@ -1129,15 +1027,12 @@
     "Hp": 2170,
     "Exp": 43,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 69
+    "Id": 69
   },
   {
     "Name": "Brash Triggerman",
@@ -1145,15 +1040,12 @@
     "Hp": 2200,
     "Exp": 59,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 70
+    "Id": 70
   },
   {
     "Name": "Brute Fanatic",
@@ -1161,15 +1053,12 @@
     "Hp": 2230,
     "Exp": 38,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 71
+    "Id": 71
   },
   {
     "Name": "Cabal Knight",
@@ -1177,15 +1066,12 @@
     "Hp": 2260,
     "Exp": 93,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 72
+    "Id": 72
   },
   {
     "Name": "Carrion Vulture",
@@ -1193,15 +1079,12 @@
     "Hp": 2290,
     "Exp": 38,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 73
+    "Id": 73
   },
   {
     "Name": "Centaur Shaman",
@@ -1209,15 +1092,12 @@
     "Hp": 2320,
     "Exp": 43,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 74
+    "Id": 74
   },
   {
     "Name": "Champion of Nar Zhul",
@@ -1225,15 +1105,12 @@
     "Hp": 2350,
     "Exp": 23,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 75
+    "Id": 75
   },
   {
     "Name": "Daemon Skeleton",
@@ -1241,15 +1118,12 @@
     "Hp": 2380,
     "Exp": 96,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 76
+    "Id": 76
   },
   {
     "Name": "Dark Seeded Rockstar",
@@ -1257,15 +1131,12 @@
     "Hp": 2410,
     "Exp": 15,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 77
+    "Id": 77
   },
   {
     "Name": "Darkened Battler",
@@ -1273,15 +1144,12 @@
     "Hp": 2440,
     "Exp": 30,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 78
+    "Id": 78
   },
   {
     "Name": "Darksteel Soldier",
@@ -1289,15 +1157,12 @@
     "Hp": 2470,
     "Exp": 30,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 79
+    "Id": 79
   },
   {
     "Name": "DC Enforcer",
@@ -1305,15 +1170,12 @@
     "Hp": 2500,
     "Exp": 85,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 80
+    "Id": 80
   },
   {
     "Name": "Deadly Spider",
@@ -1321,15 +1183,12 @@
     "Hp": 2530,
     "Exp": 70,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 81
+    "Id": 81
   },
   {
     "Name": "Death Mollusk",
@@ -1337,15 +1196,12 @@
     "Hp": 2560,
     "Exp": 17,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 82
+    "Id": 82
   },
   {
     "Name": "Deathbringer",
@@ -1353,15 +1209,12 @@
     "Hp": 2590,
     "Exp": 34,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 83
+    "Id": 83
   },
   {
     "Name": "Deluged Chaos Golem",
@@ -1369,15 +1222,12 @@
     "Hp": 2620,
     "Exp": 88,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 84
+    "Id": 84
   },
   {
     "Name": "Demi Warrior",
@@ -1385,15 +1235,12 @@
     "Hp": 2650,
     "Exp": 55,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 85
+    "Id": 85
   },
   {
     "Name": "Demolition Ogre",
@@ -1401,15 +1248,12 @@
     "Hp": 2680,
     "Exp": 68,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 86
+    "Id": 86
   },
   {
     "Name": "Demon Ape",
@@ -1417,15 +1261,12 @@
     "Hp": 2710,
     "Exp": 60,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 87
+    "Id": 87
   },
   {
     "Name": "Demon Ripper",
@@ -1433,15 +1274,12 @@
     "Hp": 2740,
     "Exp": 44,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 88
+    "Id": 88
   },
   {
     "Name": "Demonic Spider",
@@ -1449,15 +1287,12 @@
     "Hp": 2770,
     "Exp": 95,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 89
+    "Id": 89
   },
   {
     "Name": "Demopod",
@@ -1465,15 +1300,12 @@
     "Hp": 2800,
     "Exp": 11,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 90
+    "Id": 90
   },
   {
     "Name": "Deranged Ghoul",
@@ -1481,15 +1313,12 @@
     "Hp": 2830,
     "Exp": 29,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 91
+    "Id": 91
   },
   {
     "Name": "Hacksaw Nurse",
@@ -1497,15 +1326,12 @@
     "Hp": 2860,
     "Exp": 1,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 92
+    "Id": 92
   },
   {
     "Name": "Handy Giant",
@@ -1513,15 +1339,12 @@
     "Hp": 2890,
     "Exp": 29,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 93
+    "Id": 93
   },
   {
     "Name": "Hardened Criminal",
@@ -1529,15 +1352,12 @@
     "Hp": 2920,
     "Exp": 79,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 94
+    "Id": 94
   },
   {
     "Name": "Harmonic Sorcerer",
@@ -1545,15 +1365,12 @@
     "Hp": 2950,
     "Exp": 98,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 95
+    "Id": 95
   },
   {
     "Name": "Hate Weaver",
@@ -1561,15 +1378,12 @@
     "Hp": 2980,
     "Exp": 42,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 96
+    "Id": 96
   },
   {
     "Name": "Haunted Elemental",
@@ -1577,15 +1391,12 @@
     "Hp": 3010,
     "Exp": 75,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 97
+    "Id": 97
   },
   {
     "Name": "Headhunter Rider",
@@ -1593,15 +1404,12 @@
     "Hp": 3040,
     "Exp": 32,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 98
+    "Id": 98
   },
   {
     "Name": "Heat Hound",
@@ -1609,15 +1417,12 @@
     "Hp": 3070,
     "Exp": 69,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 99
+    "Id": 99
   },
   {
     "Name": "Heinous Hag",
@@ -1625,15 +1430,12 @@
     "Hp": 3100,
     "Exp": 45,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 100
+    "Id": 100
   },
   {
     "Name": "Hellbeast",
@@ -1641,15 +1443,12 @@
     "Hp": 3130,
     "Exp": 44,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 101
+    "Id": 101
   },
   {
     "Name": "Hellish Gnoll",
@@ -1657,15 +1456,12 @@
     "Hp": 3160,
     "Exp": 4,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 102
+    "Id": 102
   },
   {
     "Name": "Ghoul Elf",
@@ -1673,15 +1469,12 @@
     "Hp": 3190,
     "Exp": 68,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 103
+    "Id": 103
   },
   {
     "Name": "Ghoul Fiend",
@@ -1689,15 +1482,12 @@
     "Hp": 3220,
     "Exp": 55,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 104
+    "Id": 104
   },
   {
     "Name": "Ghoulish Drake",
@@ -1705,15 +1495,12 @@
     "Hp": 3250,
     "Exp": 94,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 105
+    "Id": 105
   },
   {
     "Name": "Giant Mosquito",
@@ -1721,15 +1508,12 @@
     "Hp": 3280,
     "Exp": 82,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 106
+    "Id": 106
   },
   {
     "Name": "Gigantic Dust Mite",
@@ -1737,15 +1521,12 @@
     "Hp": 3310,
     "Exp": 21,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 107
+    "Id": 107
   },
   {
     "Name": "Gloombringer",
@@ -1753,15 +1534,12 @@
     "Hp": 3340,
     "Exp": 74,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 108
+    "Id": 108
   },
   {
     "Name": "Glorious Demon",
@@ -1769,15 +1547,12 @@
     "Hp": 3370,
     "Exp": 98,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 109
+    "Id": 109
   },
   {
     "Name": "Gnathsomold",
@@ -1785,15 +1560,12 @@
     "Hp": 3400,
     "Exp": 92,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 110
+    "Id": 110
   },
   {
     "Name": "Gnawing Hellbat",
@@ -1801,15 +1573,12 @@
     "Hp": 3430,
     "Exp": 23,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 111
+    "Id": 111
   },
   {
     "Name": "Goilkun",
@@ -1817,15 +1586,12 @@
     "Hp": 3460,
     "Exp": 10,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 112
+    "Id": 112
   },
   {
     "Name": "Factioned Warrior",
@@ -1833,15 +1599,12 @@
     "Hp": 3490,
     "Exp": 35,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 113
+    "Id": 113
   },
   {
     "Name": "Famous Popstar",
@@ -1849,15 +1612,12 @@
     "Hp": 3520,
     "Exp": 33,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 114
+    "Id": 114
   },
   {
     "Name": "Fantasm",
@@ -1865,15 +1625,12 @@
     "Hp": 3550,
     "Exp": 5,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 115
+    "Id": 115
   },
   {
     "Name": "Fattened Owl",
@@ -1881,15 +1638,12 @@
     "Hp": 3580,
     "Exp": 71,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 116
+    "Id": 116
   },
   {
     "Name": "Feral Hydra",
@@ -1897,15 +1651,12 @@
     "Hp": 3610,
     "Exp": 33,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 117
+    "Id": 117
   },
   {
     "Name": "Fiery Bull",
@@ -1913,15 +1664,12 @@
     "Hp": 3640,
     "Exp": 28,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 118
+    "Id": 118
   },
   {
     "Name": "Fire Elemental Keeper",
@@ -1929,15 +1677,12 @@
     "Hp": 3670,
     "Exp": 40,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 119
+    "Id": 119
   },
   {
     "Name": "Flame Goliath",
@@ -1945,15 +1690,12 @@
     "Hp": 3700,
     "Exp": 41,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 120
+    "Id": 120
   },
   {
     "Name": "Flare Whelp",
@@ -1961,15 +1703,12 @@
     "Hp": 3730,
     "Exp": 63,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 121
+    "Id": 121
   },
   {
     "Name": "Foreign Monk",
@@ -1977,15 +1716,12 @@
     "Hp": 3760,
     "Exp": 16,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 122
+    "Id": 122
   },
   {
     "Name": "Forgotten Warrior",
@@ -1993,14 +1729,11 @@
     "Hp": 3790,
     "Exp": 50,
     "Rage": 1,
-    "Drops": [
-      "Precision Glove of Champions",
-      "Title Belt of Champions"
-    ],
+    "Drops": [],
     "DropsChance": [
       10,
       20
     ],
-    "id": 123
+    "Id": 123
   }
 ]
