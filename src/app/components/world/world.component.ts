@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import worldDefinitions from '../../data/WorldDefinitions.json';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
+import { Quest } from '../all-quests/all-quests.component';
+import questsDescriptions from '../../data/Quests.json';
+
 
 interface WorldLocation {
   id: number;
@@ -33,6 +36,7 @@ export class WorldComponent implements OnInit {
   combatOutcomeMsg = '';
   isModalOpen = false;
   modalContent = `Fetch quest status is it taken or not... display quest status etc. todo`;
+  currentNpcQuest:Quest | undefined = undefined;
 
   constructor(
     private http: HttpClient,
@@ -56,8 +60,19 @@ export class WorldComponent implements OnInit {
     });
   }
 
-  startQuest(questName: string){
-    this.playerProfileService.startQuest(questName)
+  async startQuest(questName: string){
+    const res = await this.playerProfileService.startQuest(questName)
+    if(res){
+      this.modalContent = res;
+    }
+  }
+
+  getNpcBtnText(){
+    if(this.currentNpcQuest?.status === 1 && this.currentNpcQuest.gotReward === 1){
+      return "Completed!"
+    }
+
+    return this.currentNpcQuest?.status === 0 ? "Quest in progress" : "Talk"
   }
 
   isPlayerLocation(row: number, col: number): boolean {
@@ -83,6 +98,7 @@ export class WorldComponent implements OnInit {
         const currentLocationDetails = this.getLocationDetails();
         if (currentLocationDetails) {
           this.currentLocationDetails = currentLocationDetails;
+          this.getSingleQuest(currentLocationDetails.npcs[0])
         }
 
         this.combatOutcomeMsg = '';
@@ -93,8 +109,31 @@ export class WorldComponent implements OnInit {
     });
   }
 
+  async getSingleQuest(questName:string){
+    const url = `https://localhost:44338/get-single-quest?username=test1&questName=${questName}`;
+    try {
+      const response = await this.http.get(url).toPromise();
+      if(response){ //Basically tricking typescript telling it to expect quest in response
+        const res = response;
+        this.currentNpcQuest = res as Quest;
+      }
+      console.log(response)
+    } catch (error) {
+      console.error('Error getting single quest:', error);
+      throw error;
+    }
+  }
+
+  isQuestBtnDisabled(){
+    if(this.currentNpcQuest){
+      return true
+    }
+
+    return false;
+  }
+
   openModal(npc:string) {
-    this.modalContent = this.modalContent + ` ${npc} - quest`
+    this.modalContent = questsDescriptions.find(q => q.Name === npc)?.Description || 'Something went wrong!';
     this.isModalOpen = true;
   }
 

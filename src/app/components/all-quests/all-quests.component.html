@@ -11,7 +11,7 @@
     </label>
 
     <mat-icon class="cursor-pointer" (click)="refreshQuests()" aria-hidden="false" aria-label="Example home icon"
-        fontIcon="refresh"></mat-icon>
+      fontIcon="refresh"></mat-icon>
 
   </div>
 
@@ -21,6 +21,7 @@
         <h2 class="text-lg font-semibold">{{ quest.name }}</h2>
         <p class="text-sm">
           Status:
+
           <span [class.text-green-600]="quest.status === 1" [class.text-blue-600]="quest.status === 0">
             {{ quest.status === 1 ? 'Completed' : 'Started' }}
           </span>
@@ -43,6 +44,13 @@
         <ul class="list-disc list-inside text-sm">
           <li *ngFor="let item of quest.itemRewardNames">{{ item }}</li>
         </ul>
+      </div>
+      <button *ngIf="quest.gotReward === 0" class="bg-green-500 mt-3 text-white text-xs px-4 py-2 rounded hover:bg-green-600" (click)="completeQuest(quest.name)">
+        Get Reward
+      </button>
+      <br/>
+      <div class="mt-3 text-yellow-500">
+        {{questCompletedMessage}}
       </div>
     </div>
   </div>

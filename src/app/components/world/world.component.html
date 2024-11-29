@@ -60,7 +60,10 @@
       <ul class="space-y-2">
         <li *ngFor="let npc of currentLocationDetails.npcs" class="text-xs text-gray-300 bg-gray-600 p-2 rounded shadow"
           (click)="openModal(npc)">
-          {{ npc }} <button class=" bg-green-500 mt-4 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Talk</button>
+          {{ npc }} <button [disabled]="isQuestBtnDisabled()"
+            class="bg-green-500 mt-4 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            {{getNpcBtnText()}}
+          </button>
         </li>
       </ul>
     </div>
@@ -82,10 +85,6 @@
         <button (click)="startQuest(currentLocationDetails.npcs[0])"
           class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Start Quest
-        </button>
-        <button (click)="closeModal()"
-          class=" bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          OK
         </button>
       </div>
     </div>

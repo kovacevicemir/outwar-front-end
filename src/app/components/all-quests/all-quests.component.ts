@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +42,7 @@ export class AllQuestsComponent implements OnInit {
   collapsedState: boolean[] = this.allQuests.map(() => true);
   showActiveOnly = true;
   monsters = Monsters;
+  questCompletedMessage = '';
 
   toggleCollapse(index: number): void {
     this.collapsedState[index] = !this.collapsedState[index];
@@ -59,16 +60,34 @@ export class AllQuestsComponent implements OnInit {
 
   refreshQuests(){
     this.getAllQuests()
+    this.showActiveOnly = true
+    this.questCompletedMessage = ''
   }
 
+  async completeQuest(questName:string){
+    const url = `https://localhost:44338/get-quest-reward?username=test1&questName=${questName}`;
+    try {
+      const response = await this.http.post(url,NgTemplateOutlet).toPromise();
+      if(response){ //Basically tricking typescript telling it to expect string in response
+        const res = response as string;
+        this.questCompletedMessage = res;
+      }
+      console.log(response)
+    } catch (error) {
+      console.error('Error completing quest:', error);
+      //@ts-ignore
+      this.questCompletedMessage = error.error 
+      throw error;
+    }
+  }
 
   toogleActive(){
-    this.showActiveOnly = !this.showActiveOnly;
-
-    if(this.showActiveOnly){
-      const q = this.allQuests.filter(q => {return q.status = 0})
+    console.log("Before: ",this.showActiveOnly)
+    if(this.showActiveOnly === true){
+      const q = this.allQuests.filter(q => {return q.gotReward === 0})
       this.displayedQuests = q
     }else{
+      console.log("this.allQuests: ",this.allQuests)
       this.displayedQuests = [...this.allQuests];
     }
   }
@@ -80,7 +99,8 @@ export class AllQuestsComponent implements OnInit {
       if(response){ //Basically tricking typescript telling it to expect quests in response
         const res = response as ExtendedResponseType;
         this.allQuests = res.quests
-        this.displayedQuests = res.quests
+        const c = res.quests.filter(q => {return q.gotReward === 0})
+        this.displayedQuests = c
       }
       console.log(response)
     } catch (error) {

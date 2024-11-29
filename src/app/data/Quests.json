@@ -1,0 +1,11 @@
+[
+    {
+      "Name": "Casino Manager",
+      "Description": "Welcome to Diamond City! Can you help me with Addicted Doctor and Acidic Spider?",
+      "MonsterIds": [1,2],
+      "Requirements": [5,5],
+      "Progress": [0,0],
+      "ItemRewardNames": ["Roman Ring"],
+      "Exp": 100
+    }
+  ]
