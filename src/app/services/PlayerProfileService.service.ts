@@ -498,6 +498,23 @@ export class PlayerProfileServiceService {
           return "../assets/sigil/sigbody.gif";
     }
 
+    if(item.name === "Sacred Blade of the Order"){
+      return "../assets/sacredbladeoftheorder.gif";
+    }
+
+    if(item.name === "Bracer of Death"){
+      return "../assets/bracerofdeath.gif";
+    }
+
+    if(item.name === "Bracer of Life"){
+      return "../assets/braceroflife.gif";
+    }
+
+    if(item.name === "Dead Eye"){
+      return "../assets/deadeye.gif";
+    }
+
+    
     return "resolve image path went wrong! - replace with default img"
   }
 

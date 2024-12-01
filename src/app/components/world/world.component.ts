@@ -4,6 +4,7 @@ import worldDefinitions from '../../data/WorldDefinitions.json';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { Quest } from '../all-quests/all-quests.component';
 import questsDescriptions from '../../data/Quests.json';
+import allMonsters from '../../data/Monsters.json';
 
 
 interface WorldLocation {
@@ -107,6 +108,14 @@ export class WorldComponent implements OnInit {
         console.error('Error fetching user:', error);
       },
     });
+  }
+
+  getMonsterLevel(monsterName:string){
+    return allMonsters.find(m => m.Name === monsterName)?.Id || 0;
+  }
+
+  getMonsterRage(monsterName:string){
+    return allMonsters.find(m => m.Name === monsterName)?.Rage || 0;
   }
 
   async getSingleQuest(questName:string){

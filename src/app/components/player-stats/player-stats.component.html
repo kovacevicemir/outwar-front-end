@@ -14,6 +14,17 @@
   <!-- Total Attack and Total HP -->
   <div class="flex gap-2 items-center justify-between text-xs text-gray-100">
     <div class="flex items-center">
+      <span class="font-semibold">Level:</span>
+      <span>&nbsp;{{ user()?.level }}</span>
+    </div>
+    <div class="flex items-center">
+      <span class="font-semibold">Exp:</span>
+      <span>&nbsp;{{ user()?.experience }}</span>
+    </div>
+  </div>
+  <hr />
+  <div class="flex gap-2 items-center justify-between text-xs text-gray-100">
+    <div class="flex items-center">
       <span class="font-semibold">Total Attack:</span>
       <span>&nbsp;{{ playerStatsSummary().attack }}</span>
     </div>
@@ -23,7 +34,11 @@
     </div>
   </div>
 
-  <hr />
+  <!-- Level Bonus -->
+  <div class="flex justify-between text-xs text-gray-300">
+    <span class="font-semibold">Level Bonus</span>
+    <span>{{ playerStatsSummary().levelAttackBonus }} attack / {{ playerStatsSummary().levelHpBonus }} hp</span>
+  </div>
 
   <!-- Set Bonus -->
   <div class="flex justify-between text-xs text-gray-300">
@@ -31,11 +46,7 @@
     <span>{{ playerStatsSummary().totalSetAttackBonus }} attack / {{ playerStatsSummary().totalSetHpBonus }} hp</span>
   </div>
 
-  <!-- Level Bonus -->
-  <div class="flex justify-between text-xs text-gray-300">
-    <span class="font-semibold">Level Bonus</span>
-    <span>{{ playerStatsSummary().levelAttackBonus }} attack / {{ playerStatsSummary().levelHpBonus }} hp</span>
-  </div>
+
 
   <hr />
 

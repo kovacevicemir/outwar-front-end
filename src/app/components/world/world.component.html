@@ -37,10 +37,10 @@
       <ul class="space-y-2">
         <li *ngFor="let monster of currentLocationDetails.monsters"
           class="flex items-center justify-between bg-gray-600 p-2 rounded shadow">
-          <span class="text-gray-300">{{ monster }}</span>
+          <span class="text-gray-300">[{{getMonsterLevel(monster)}}] {{ monster }} </span>
           <button class="bg-red-500 text-white text-xs px-4 py-2 rounded hover:bg-red-600"
             (click)="attackMonster(monster)">
-            Attack
+            Attack [{{getMonsterRage(monster)}}]
           </button>
         </li>
       </ul>
