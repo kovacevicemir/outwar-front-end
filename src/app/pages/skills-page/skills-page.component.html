@@ -1,0 +1,75 @@
+<div class="p-4 space-y-6 w-[540px]">
+  <h2>Available skill points {{user()?.skillPoints}}</h2>
+  <div class="flex flex-row w-full gap-1">
+    <button *ngFor="let skill of activeSkills()" [matTooltip]="getSkillOnHoverSummary(skill)"
+      class="w-8 h-8 bg-gray-600 rounded-sm hover:cursor-pointer"><img
+        [src]="getSkillImage(skill.skillName)" /></button>
+  </div>
+
+  <div *ngFor="let skill of allSkills; let skillDefIndex = index" class="bg-gray-900 rounded-lg p-6 shadow-md">
+    <!-- Skill Header -->
+    <div class="flex items-center space-x-4">
+      <!-- Placeholder Image -->
+      <div><img class="mb-3" [src]="getSkillImage(skill.Name)" /></div>
+
+      <!-- Skill Name and Attribute -->
+      <div>
+        <strong class="text-xl font-bold">{{ skill.Name }}</strong>
+        <p class="text-sm text-gray-200">{{ skill.Attribute }} Bonus</p>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="mt-4 text-gray-300 text-xs">{{ skill.Description }}</p>
+
+    <!-- Level Bonuses Table Style -->
+    <div class="mt-4">
+      <div class="flex text-sm font-medium text-gray-300">
+        <span class="mr-4">Level:</span>
+        <div class="flex space-x-2 text-xs">
+          <span *ngFor="let value of skill.LevelValues; let i = index" class="w-8 text-center">{{ i + 1 }}</span>
+        </div>
+      </div>
+      <div class="flex text-sm text-gray-300 mt-1">
+        <span class="mr-4">Bonus:</span>
+        <div class="flex space-x-2 text-xs">
+          <span *ngFor="let value of skill.LevelValues" class="w-8 text-center">{{ value }}</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mt-4 mb-7" />
+
+    <!-- Level Bonuses Table Style -->
+    <div class="mt-4">
+      <div class="flex justify-between text-sm font-medium text-gray-300">
+        <div class="flex content-center">
+          <div>
+            <span class="mr-2 flex items-center">[Level {{user()?.skills?.[skillDefIndex]}}]</span>
+            <span class="mr-2 flex items-center">{{getCurrentSkillBonus(skillDefIndex, skill.Attribute)}}</span>
+          </div>
+          <button (click)="increaseSkillLevel(skill.Name)"
+            class="bg-green-500 hover:bg-green-600  text-white font-medium px-4 py-1 rounded transition">
+            +
+          </button>
+        </div>
+
+        <div class="flex items-center">
+          <div *ngIf="isDisabled(skill.Name)" class="mr-2 ">
+            Cooldown: {{getCooldownTime(skill.Name)}}
+          </div>
+          <button (click)="castSkill(skill.Name)" [disabled]="isDisabled(skill.Name)"
+            class="bg-purple-500 hover:bg-purple-700 text-white font-medium px-4 py-2 rounded"
+            [class.bg-gray-300]="isDisabled(skill.Name)">
+            Cast Skill!
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <p *ngIf="displaySkillResponseMessage(skill.Name) !== ''" class="text-yellow-500">
+      {{displaySkillResponseMessage(skill.Name)}}</p>
+
+  </div>
+</div>

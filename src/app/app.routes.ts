@@ -8,6 +8,8 @@ import { RankingPageComponent } from './pages/ranking-page/ranking-page.componen
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { DefaultPageComponent } from './pages/default-page/default-page.component';
 import { BlacksmithPageComponent } from './pages/blacksmith-page/blacksmith-page.component';
+import { SkillsPageComponent } from './pages/skills-page/skills-page.component';
+import { ShopsPageComponent } from './pages/shops-page/shops-page.component';
 
 export const routes: Routes = [
   { path: '', component: DefaultPageComponent },
@@ -16,6 +18,8 @@ export const routes: Routes = [
   { path: 'diamond-city', component: DiamondCityPageComponent },
   { path: 'ranking', component: RankingPageComponent },
   { path: 'blacksmith', component: BlacksmithPageComponent },
+  { path: 'skills', component: SkillsPageComponent },
+  { path: 'shop', component: ShopsPageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: 'hello', component: HelloWorldComponent },
 ];

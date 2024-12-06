@@ -1,7 +1,14 @@
 <div class="p-8">
   <!-- <app-equiped-items></app-equiped-items> -->
   <div class="flex gap-4">
-    <app-player-stats></app-player-stats>
+    <div>
+      <div class="flex flex-row w-full gap-1">
+        <button *ngFor="let skill of activeSkills()" [matTooltip]="getSkillOnHoverSummary(skill)"
+          class="w-8 h-8 bg-gray-600 rounded-sm hover:cursor-pointer"><img
+            [src]="getSkillImage(skill.skillName)" /></button>
+      </div>
+      <app-player-stats></app-player-stats>
+    </div>
     <app-equiped-items-redo></app-equiped-items-redo>
   </div>
   <div class="p-4">
