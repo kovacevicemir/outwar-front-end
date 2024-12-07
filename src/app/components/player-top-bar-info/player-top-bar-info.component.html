@@ -1,6 +1,11 @@
 <div class="flex items-center gap-0">
-  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300" *ngIf="user()?.name">
+  <div (click)="debugbutton()">
+    
+  </div>
+  <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300 relative hover-trigger" *ngIf="user()?.name">
     {{ user()?.name }}
+    <div class="tooltip">Points: {{user()?.points}}</div>
+
   </div>
   <div class="border-2 bg-gray-900 border-gray-600 rounded-sm p-1 text-gray-300" *ngIf="user()?.level">
     Level {{ user()?.level }}

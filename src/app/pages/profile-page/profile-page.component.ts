@@ -43,6 +43,28 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
+  isDisabled(skillName: string) {
+    const skill = this.activeSkills().find((s) => s.skillName === skillName);
+    if (skill) {
+      const isActive = this.isStillActive(skill);
+      if (isActive) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  isStillActive(skill: ActiveSkill) {
+    if (skill.duration.slice(0, 2) !== '23') {
+      return false;
+    }
+    {
+      return true;
+    }
+  }
+
   getRemainingTime(timeDuration: string) {
     return `${timeDuration.slice(3, 5)}m`;
   }

@@ -36,13 +36,15 @@ export class SkillsPageComponent implements OnInit {
   ) {}
 
   getRemainingTime(timeDuration: string) {
-    return `${timeDuration.slice(3,5)}m`
+    return `${timeDuration.slice(3, 5)}m`;
   }
-  
-  getSkillOnHoverSummary(skill: ActiveSkill){
-    const attribute = this.allSkills.find(s => s.Name === skill.skillName)?.Attribute
-    const timeRemaining = this.getRemainingTime(skill.duration)
-    return `Skill time remaining: ${timeRemaining}  ${skill.skillName} +${skill.bonus} ${attribute}`
+
+  getSkillOnHoverSummary(skill: ActiveSkill) {
+    const attribute = this.allSkills.find(
+      (s) => s.Name === skill.skillName
+    )?.Attribute;
+    const timeRemaining = this.getRemainingTime(skill.duration);
+    return `Skill time remaining: ${timeRemaining}  ${skill.skillName} +${skill.bonus} ${attribute}`;
   }
 
   getCurrentSkillBonus(index: number, skillAttribute: string) {
@@ -55,8 +57,8 @@ export class SkillsPageComponent implements OnInit {
     return 'unavailable';
   }
 
-  getSkillImage(skillName: string){
-    return `../../../assets/skills/${skillName.toLowerCase()}.gif`
+  getSkillImage(skillName: string) {
+    return `../../../assets/skills/${skillName.toLowerCase()}.gif`;
   }
 
   ngOnInit() {
@@ -68,11 +70,16 @@ export class SkillsPageComponent implements OnInit {
   }
 
   isDisabled(skillName: string) {
-    if (this.activeSkills().find((s) => s.skillName === skillName)) {
-      return true;
-    } else {
-      return false;
+    const skill = this.activeSkills().find((s) => s.skillName === skillName);
+    if (skill) {
+      const isActive = this.isStillActive(skill);
+      if (isActive === false) {
+        return true;
+      } else {
+        return false;
+      }
     }
+    return true;
   }
 
   displaySkillResponseMessage(skillName: string) {
@@ -92,6 +99,15 @@ export class SkillsPageComponent implements OnInit {
       return `${s.duration.slice(0, 8)}h`;
     }
     return '';
+  }
+
+  isStillActive(skill: ActiveSkill) {
+    if (skill.duration.slice(0, 2) !== '23') {
+      return false;
+    }
+    {
+      return true;
+    }
   }
 
   async getAllActiveSkills() {

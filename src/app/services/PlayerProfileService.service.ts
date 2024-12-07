@@ -49,6 +49,7 @@ export type UserResponse = {
   equipedItemsId: number[];
   questMonsterIds: number[];
   crewName?:string
+  points: number,
   skills: number[],
   skillPoints: number
 };

@@ -144,7 +144,16 @@
   </div>
 
 
-  <div *ngIf="crew() === null">
-    You dont belong to any crew!
+  <div class="p-4" *ngIf="crew() === null">
+    <div class="w-[200px]">
+      <div class="flex flex-col">
+        <strong>Create new crew</strong>
+        <input #crewNameInput class=" text-black" placeholder="Crew Name" />
+      </div>
+      <button (click)="createCrew(crewNameInput.value)"
+        class="text-xs mb-4 bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</button>
+      <p>Message!</p>
+    </div>
+
   </div>
 </div>

@@ -54,6 +54,13 @@ export class CrewPageComponent implements OnInit {
     }
   }
 
+  async createCrew(crewName: string) {
+    const res = await this.crewService.createCrew(crewName);
+    if (res) {
+      window.location.reload();
+    }
+  }
+
   constructor(
     private route: ActivatedRoute,
     private crewService: CrewService,

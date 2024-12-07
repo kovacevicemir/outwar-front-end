@@ -1,9 +1,11 @@
 <div class="p-4 space-y-6 w-[540px]">
   <h2>Available skill points {{user()?.skillPoints}}</h2>
   <div class="flex flex-row w-full gap-1">
-    <button *ngFor="let skill of activeSkills()" [matTooltip]="getSkillOnHoverSummary(skill)"
-      class="w-8 h-8 bg-gray-600 rounded-sm hover:cursor-pointer"><img
-        [src]="getSkillImage(skill.skillName)" /></button>
+    <div *ngFor="let skill of activeSkills()">
+      <button *ngIf="isStillActive(skill)" [matTooltip]="getSkillOnHoverSummary(skill)"
+        class="w-8 h-8 bg-gray-600 rounded-sm hover:cursor-pointer"><img
+          [src]="getSkillImage(skill.skillName)" /></button>
+    </div>
   </div>
 
   <div *ngFor="let skill of allSkills; let skillDefIndex = index" class="bg-gray-900 rounded-lg p-6 shadow-md">

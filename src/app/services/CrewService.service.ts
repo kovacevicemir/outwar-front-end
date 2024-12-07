@@ -1,21 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { effect, Injectable, signal, WritableSignal } from '@angular/core';
-import { Item, UserResponse } from './PlayerProfileService.service';
+import {
+  Item,
+  PlayerProfileServiceService,
+  UserResponse,
+} from './PlayerProfileService.service';
 
-export interface Crew{
-  id: number,
-  name: string,
-  crewLeaderId: number,
-  members: UserResponse[],
-  vaultItems: Item[]
+export interface Crew {
+  id: number;
+  name: string;
+  crewLeaderId: number;
+  members: UserResponse[];
+  vaultItems: Item[];
 }
 
-export interface Raid{
-  id: number,
-  raidName: string,
-  raidMembers: UserResponse[],
-  createdBy: UserResponse,
-  hpLeft: number
+export interface Raid {
+  id: number;
+  raidName: string;
+  raidMembers: UserResponse[];
+  createdBy: UserResponse;
+  hpLeft: number;
 }
 
 @Injectable({
@@ -27,14 +31,19 @@ export class CrewService {
   public crewSignal = signal<Crew | null>(null);
   public activeRaids = signal<Raid[] | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private playerProfileService: PlayerProfileServiceService
+  ) {}
 
   ngOnInit() {
     // this.getCrewByName();
   }
 
   async attackRaid(raidName: string): Promise<any> {
-    const url = `https://localhost:44338/attack-raid?crewName=${this.crewSignal()?.name}&raidName=${raidName}`;
+    const url = `https://localhost:44338/attack-raid?crewName=${
+      this.crewSignal()?.name
+    }&raidName=${raidName}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       return response;
@@ -44,8 +53,28 @@ export class CrewService {
     }
   }
 
-  getCrewRaids(crewName: string){
-    const url = `https://localhost:44338/get-crew-raids?crewName=${crewName}`
+  async createCrew(crewName: string): Promise<any> {
+    if (
+      this.userSignal()?.name === undefined ||
+      this.userSignal()?.name === null
+    ) {
+      this.getUserByUsername('test1');
+      return;
+    }
+    const url = `https://localhost:44338/create-crew?crewName=${crewName}&crewLeaderId=${
+      this.userSignal()?.id
+    }`;
+    try {
+      const response = await this.http.post(url, null).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error creating crew:', error);
+      throw error;
+    }
+  }
+
+  getCrewRaids(crewName: string) {
+    const url = `https://localhost:44338/get-crew-raids?crewName=${crewName}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.activeRaids.set(response as Raid[]);
@@ -56,8 +85,8 @@ export class CrewService {
     });
   }
 
-  getCrewByName(crewName: string){
-    const url = `https://localhost:44338/get-crew?crewName=${crewName}`
+  getCrewByName(crewName: string) {
+    const url = `https://localhost:44338/get-crew?crewName=${crewName}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.crewSignal.set(response as Crew);
@@ -69,13 +98,18 @@ export class CrewService {
     });
   }
 
-  async createRaid(raidName: string){
-    if(this.userSignal()?.name === undefined || this.userSignal()?.name === null){
-      this.getUserByUsername('test1')
+  async createRaid(raidName: string) {
+    if (
+      this.userSignal()?.name === undefined ||
+      this.userSignal()?.name === null
+    ) {
+      this.getUserByUsername('test1');
       return;
     }
 
-    const url = `https://localhost:44338/create-raid?crewName=${this.crewSignal()?.name}&createdBy=${this.userSignal()?.name}&raidName=${raidName}`
+    const url = `https://localhost:44338/create-raid?crewName=${
+      this.crewSignal()?.name
+    }&createdBy=${this.userSignal()?.name}&raidName=${raidName}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       return response;
@@ -85,7 +119,6 @@ export class CrewService {
     }
   }
 
-  
   getUserByUsername(username: string) {
     const url = `https://localhost:44338/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
@@ -97,7 +130,6 @@ export class CrewService {
       },
     });
   }
- 
 
   extractSetName(itemName: string): string | null {
     // Define your set name matching logic here
