@@ -79,7 +79,7 @@ export class SkillsPageComponent implements OnInit {
         return false;
       }
     }
-    return true;
+    return false;
   }
 
   displaySkillResponseMessage(skillName: string) {

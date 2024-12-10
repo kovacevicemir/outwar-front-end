@@ -1,5 +1,57 @@
-<p>
-  shops-page works!
+<div class="shop-container">
+  <mat-card class="shop-item" *ngFor="let item of shopItems">
+    <div class="shop-item-content">
+      <div>
+        <!-- Image Section -->
+        <h2>{{ item.name }}</h2>
+        <div class="image-container">
+          <img [src]="item.image" alt="Product Image" />
+        </div>
+        <!-- Text Section -->
+        <div class="mt-4">
+          <p class="w-[250px]">{{ item.description }}</p>
+          <p><strong>Price: </strong>{{ item.price }} points</p>
+        </div>
+      </div>
 
-  ADD DEAD-EYE and BRACERS TO SHOP!
-</p>
+      <div class="text-container">
+        <div class="mt-2 space-y-1">
+          <p *ngIf="item.stats" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[0] }} ATK</span>
+          </p>
+          <p *ngIf="item.stats[1]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[1] }} HP</span>
+          </p>
+          <p *ngIf="item.stats[2]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[2] }} max rage</span>
+          </p>
+          <p *ngIf="item.stats[3]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[3] }} rage per hr</span>
+          </p>
+          <p *ngIf="item.stats[4]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[4] }} exp per hr</span>
+          </p>
+          <p *ngIf="item.stats[5]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[5] }}% rampage</span>
+          </p>
+          <p *ngIf="item.stats[6]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[6] }}% critical hit</span>
+          </p>
+          <p *ngIf="item.stats[7]" class="text-gray-300 text-xs">
+            <span class="font-semibold">+{{ item.stats[7] }}% block</span>
+          </p>
+          <p *ngIf="item.SetBonus[0]" class="text-gray-300 text-xs">
+            <span class="font-semibold">[{{ item.SetBonus?.[0] }}/{{item.SetBonus?.[1]}}] Set Bonus</span>
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Button Section -->
+      <div class="button-container">
+        <button (click)="purchaseItem(item.name)" mat-raised-button color="primary">Buy</button>
+      </div>
+    </div>
+    <p *ngIf="displayResMsg(item.name)" class="bg-yellow-600 p-1 rounded-sm">{{displayResMsg(item.name)}}</p>
+  </mat-card>
+</div>

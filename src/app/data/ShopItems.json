@@ -1,0 +1,26 @@
+[
+  {
+    "image": "../assets/deadeye.gif",
+    "name": "Dead Eye",
+    "description": "A relic from an ancient assassin, said to enhance the precision of those who wear it.",
+    "price": 120,
+    "stats": [185, 0, 0, 0, 0, 0, 10, 0],
+    "SetBonus": [0, 0]
+  },
+  {
+    "image": "../assets/bracerofdeath.gif",
+    "name": "Bracer of Death",
+    "description": "Forged in the flames of a cursed battlefield, it grants unmatched power at a deadly cost.",
+    "price": 400,
+    "stats": [160, 0, 1000, 75, 75, 20, 7, 0],
+    "SetBonus": [500, 0]
+  },
+  {
+    "image": "../assets/braceroflife.gif",
+    "name": "Bracer of Life",
+    "description": "Blessed by the forest druids, this bracer radiates vitality and enduring strength.",
+    "price": 400,
+    "stats": [160, 0, 1200, 75, 75, 15, 7, 5],
+    "SetBonus": [500, 0]
+  }
+]

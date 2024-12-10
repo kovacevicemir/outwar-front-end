@@ -1,0 +1,38 @@
+.shop-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    width: 600px;
+  }
+  
+  .shop-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: rgb(27, 25, 25);
+  }
+  
+  .shop-item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .image-container img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .text-container {
+    flex: 1;
+    margin: 0 16px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
