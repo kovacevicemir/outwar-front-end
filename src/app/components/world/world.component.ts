@@ -5,6 +5,7 @@ import { PlayerProfileServiceService } from '../../services/PlayerProfileService
 import { Quest } from '../all-quests/all-quests.component';
 import questsDescriptions from '../../data/Quests.json';
 import allMonsters from '../../data/Monsters.json';
+import { environment } from '../../../environments/environment';
 
 
 interface WorldLocation {
@@ -49,7 +50,7 @@ export class WorldComponent implements OnInit {
   }
 
   getUserByUsername(username: string) {
-    const url = `https://localhost:44338/get-user-by-username?username=${username}`;
+    const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
         // @ts-ignore
@@ -91,7 +92,7 @@ export class WorldComponent implements OnInit {
   }
 
   changeLocation(direction: string): void {
-    const url = `https://localhost:44338/change-user-location?username=test1&direction=${direction}`;
+    const url = `${environment.baseUrl}/change-user-location?username=test1&direction=${direction}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         //@ts-ignore
@@ -119,7 +120,7 @@ export class WorldComponent implements OnInit {
   }
 
   async getSingleQuest(questName:string){
-    const url = `https://localhost:44338/get-single-quest?username=test1&questName=${questName}`;
+    const url = `${environment.baseUrl}/get-single-quest?username=test1&questName=${questName}`;
     try {
       const response = await this.http.get(url).toPromise();
       if(response){ //Basically tricking typescript telling it to expect quest in response
@@ -239,7 +240,7 @@ export class WorldComponent implements OnInit {
   ];
 
   attackMonster(monster: string) {
-    const url = `https://localhost:44338/attack-monster-by-name?monsterName=${monster}&username=test1`;
+    const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         this.combatOutcomeMsg = response.toString();

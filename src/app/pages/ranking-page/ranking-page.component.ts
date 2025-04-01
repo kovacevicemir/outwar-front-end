@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 [
   {
@@ -53,7 +54,7 @@ export class RankingPageComponent implements OnInit {
   }
 
   getRanking() {
-    const url = `https://localhost:44338/get-ranking`;
+    const url = `${environment.baseUrl}/get-ranking`;
     this.http.get(url).subscribe({
       next: (response) => {
         if(response){

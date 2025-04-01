@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { effect, Injectable, signal, WritableSignal } from '@angular/core';
 import experienceList from '../data/experienceList.json';
+import { environment } from '../../environments/environment';
 
 export type Item = {
   id: number;
@@ -110,7 +111,7 @@ export class PlayerProfileServiceService {
   }
 
   async startQuest(questName: string): Promise<any>{
-    const url = `https://localhost:44338/start-quest?username=test1&questName=${questName}`;
+    const url = `${environment.baseUrl}/start-quest?username=test1&questName=${questName}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       return response;
@@ -121,7 +122,7 @@ export class PlayerProfileServiceService {
   }
 
   async upgradeItem(item: Item): Promise<any> {
-    const url = `https://localhost:44338/upgrade-item-level-by-item-id?username=test1&itemId=${item.id}`;
+    const url = `${environment.baseUrl}/upgrade-item-level-by-item-id?username=test1&itemId=${item.id}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       return response;
@@ -132,7 +133,7 @@ export class PlayerProfileServiceService {
   }
 
   equipItem(item: Item) {
-    const url = `https://localhost:44338/equip-item?username=test1&itemId=${item.id}`;
+    const url = `${environment.baseUrl}/equip-item?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         //Refetch - retrigger all?
@@ -145,7 +146,7 @@ export class PlayerProfileServiceService {
   }
 
   unequipItem(item: Item) {
-    const url = `https://localhost:44338/unequip-item?username=test1&itemId=${item.id}`;
+    const url = `${environment.baseUrl}/unequip-item?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         //Refetch - retrigger all?
@@ -158,7 +159,7 @@ export class PlayerProfileServiceService {
   }
 
   deleteItem(item: Item) {
-    const url = `https://localhost:44338/delete-item-from-user-by-item-id?username=test1&itemId=${item.id}`;
+    const url = `${environment.baseUrl}/delete-item-from-user-by-item-id?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
         //Refetch - retrigger all?
@@ -171,7 +172,7 @@ export class PlayerProfileServiceService {
   }
 
   getUserByUsername(username: string) {
-    const url = `https://localhost:44338/get-user-by-username?username=${username}`;
+    const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.userSignal.set(response as UserResponse);

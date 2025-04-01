@@ -5,6 +5,7 @@ import {
   PlayerProfileServiceService,
   UserResponse,
 } from './PlayerProfileService.service';
+import { environment } from '../../environments/environment';
 
 export interface Crew {
   id: number;
@@ -41,7 +42,7 @@ export class CrewService {
   }
 
   async attackRaid(raidName: string): Promise<any> {
-    const url = `https://localhost:44338/attack-raid?crewName=${
+    const url = `${environment.baseUrl}/attack-raid?crewName=${
       this.crewSignal()?.name
     }&raidName=${raidName}`;
     try {
@@ -61,7 +62,7 @@ export class CrewService {
       this.getUserByUsername('test1');
       return;
     }
-    const url = `https://localhost:44338/create-crew?crewName=${crewName}&crewLeaderId=${
+    const url = `${environment.baseUrl}/create-crew?crewName=${crewName}&crewLeaderId=${
       this.userSignal()?.id
     }`;
     try {
@@ -74,7 +75,7 @@ export class CrewService {
   }
 
   getCrewRaids(crewName: string) {
-    const url = `https://localhost:44338/get-crew-raids?crewName=${crewName}`;
+    const url = `${environment.baseUrl}/get-crew-raids?crewName=${crewName}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.activeRaids.set(response as Raid[]);
@@ -86,7 +87,7 @@ export class CrewService {
   }
 
   getCrewByName(crewName: string) {
-    const url = `https://localhost:44338/get-crew?crewName=${crewName}`;
+    const url = `${environment.baseUrl}/get-crew?crewName=${crewName}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.crewSignal.set(response as Crew);
@@ -107,7 +108,7 @@ export class CrewService {
       return;
     }
 
-    const url = `https://localhost:44338/create-raid?crewName=${
+    const url = `${environment.baseUrl}/create-raid?crewName=${
       this.crewSignal()?.name
     }&createdBy=${this.userSignal()?.name}&raidName=${raidName}`;
     try {
@@ -120,7 +121,7 @@ export class CrewService {
   }
 
   getUserByUsername(username: string) {
-    const url = `https://localhost:44338/get-user-by-username?username=${username}`;
+    const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {
         this.userSignal.set(response as UserResponse);

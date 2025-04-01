@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class SkillsServiceService {
 constructor(private http: HttpClient) { }
 
 async getAllActiveSkills(playerName: string): Promise<any>{
-  const url = `https://localhost:44338/get-all-active-skills?userName=${playerName}`;
+  const url = `${environment.baseUrl}/get-all-active-skills?userName=${playerName}`;
   try {
     const response = await this.http.get(url).toPromise();
     return response;
@@ -20,7 +21,7 @@ async getAllActiveSkills(playerName: string): Promise<any>{
 }
 
 async increaseSkillLevel(playerName: string, skillName: string): Promise<any>{
-  const url = `https://localhost:44338/increase-skill-level?userName=${playerName}&skillName=${skillName}`;
+  const url = `${environment.baseUrl}/increase-skill-level?userName=${playerName}&skillName=${skillName}`;
   try {
     const response = await this.http.post(url,null).toPromise();
     return response;
@@ -31,7 +32,7 @@ async increaseSkillLevel(playerName: string, skillName: string): Promise<any>{
 }
 
 async castSkill(playerName: string, skillName: string): Promise<any>{
-  const url = `https://localhost:44338/cast-skill?userName=${playerName}&skillName=${skillName}`;
+  const url = `${environment.baseUrl}/cast-skill?userName=${playerName}&skillName=${skillName}`;
   try {
     const response = await this.http.post(url,null).toPromise();
     return response;

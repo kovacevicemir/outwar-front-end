@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Monsters from '../../data/Monsters.json';
 import {MatIconModule} from '@angular/material/icon';
+import { environment } from '../../../environments/environment';
 
 export interface Quest {
   id: number; // Unique identifier for the quest
@@ -65,7 +66,7 @@ export class AllQuestsComponent implements OnInit {
   }
 
   async completeQuest(questName:string){
-    const url = `https://localhost:44338/get-quest-reward?username=test1&questName=${questName}`;
+    const url = `${environment.baseUrl}/get-quest-reward?username=test1&questName=${questName}`;
     try {
       const response = await this.http.post(url,NgTemplateOutlet).toPromise();
       if(response){ //Basically tricking typescript telling it to expect string in response
@@ -93,7 +94,7 @@ export class AllQuestsComponent implements OnInit {
   }
 
   async getAllQuests(): Promise<any>{
-    const url = `https://localhost:44338/get-all-quests?username=test1`;
+    const url = `${environment.baseUrl}/get-all-quests?username=test1`;
     try {
       const response = await this.http.get(url).toPromise();
       if(response){ //Basically tricking typescript telling it to expect quests in response

@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import shopItems from '../../data/ShopItems.json';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface resMessage{
   name: string,
@@ -33,7 +34,7 @@ export class ShopsPageComponent implements OnInit {
   }
 
   async purchaseItem(itemName: string): Promise<any> {
-    const url = `https://localhost:44338/buy-item-from-shop?username=test1&itemName=${itemName}`;
+    const url = `${environment.baseUrl}/buy-item-from-shop?username=test1&itemName=${itemName}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       if(response){
