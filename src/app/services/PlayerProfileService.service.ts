@@ -52,7 +52,8 @@ export type UserResponse = {
   crewName?:string
   points: number,
   skills: number[],
-  skillPoints: number
+  skillPoints: number,
+  location: number[]
 };
 
 export type PlayerStatsSummary = {
@@ -95,7 +96,7 @@ export class PlayerProfileServiceService {
     });
 
   constructor(private http: HttpClient) {
-    //     // Effect: Trigger functions when userSignal changes
+    // Effect: Trigger functions when userSignal changes
 
     effect(
       () => {
@@ -135,9 +136,8 @@ export class PlayerProfileServiceService {
   equipItem(item: Item) {
     const url = `${environment.baseUrl}/equip-item?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
-      next: (response) => {
-        //Refetch - retrigger all?
-        this.getUserByUsername('test1');
+      next: () => {
+        this.getUserByUsername('test1'); //Refetch
       },
       error: (error) => {
         console.error('Error equiping item:', error);
@@ -148,9 +148,8 @@ export class PlayerProfileServiceService {
   unequipItem(item: Item) {
     const url = `${environment.baseUrl}/unequip-item?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
-      next: (response) => {
-        //Refetch - retrigger all?
-        this.getUserByUsername('test1');
+      next: () => {
+        this.getUserByUsername('test1'); //Refetch
       },
       error: (error) => {
         console.error('Error unequiping item:', error);
@@ -161,9 +160,8 @@ export class PlayerProfileServiceService {
   deleteItem(item: Item) {
     const url = `${environment.baseUrl}/delete-item-from-user-by-item-id?username=test1&itemId=${item.id}`;
     this.http.post(url, null).subscribe({
-      next: (response) => {
-        //Refetch - retrigger all?
-        this.getUserByUsername('test1');
+      next: () => {
+        this.getUserByUsername('test1'); //Refetch
       },
       error: (error) => {
         console.error('Error equiping item:', error);
@@ -171,16 +169,16 @@ export class PlayerProfileServiceService {
     });
   }
 
-  getUserByUsername(username: string) {
+  async getUserByUsername(username: string) {
     const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
-    this.http.get(url).subscribe({
-      next: (response) => {
-        this.userSignal.set(response as UserResponse);
-      },
-      error: (error) => {
-        console.error('Error getting user:', error);
-      },
-    });
+    try {
+      const res = await this.http.get(url).toPromise();
+      this.userSignal.set(res as UserResponse)
+      return res as UserResponse
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      throw error;
+    }
   }
 
   generateEquipedItems(user: UserResponse) {
@@ -330,17 +328,6 @@ export class PlayerProfileServiceService {
       );
       return { numberOfParts, setBonus, calculatedSetBonus };
     });
-  }
-
-  extractSetName(itemName: string): string | null {
-    // Define your set name matching logic here
-    const knownSets = ['champion', 'banana', 'hero', 'legend'];
-    for (const setName of knownSets) {
-      if (itemName.toLowerCase().includes(setName)) {
-        return setName;
-      }
-    }
-    return null; // Return null if no set match is found
   }
 
   resolveImagePath(item: Item | undefined){

@@ -1,23 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-player-stats',
   templateUrl: './player-stats.component.html',
   styleUrls: ['./player-stats.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [],
 })
-export class PlayerStatsComponent implements OnInit {
-
-  playerStatsSummary = this.playerProfileService.playerStatsSummary.asReadonly();
+export class PlayerStatsComponent {
+  playerStatsSummary =
+    this.playerProfileService.playerStatsSummary.asReadonly();
   user = this.playerProfileService.userSignal.asReadonly();
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}
-
-  ngOnInit() {
-
-  }
-
 }

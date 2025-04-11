@@ -55,10 +55,11 @@
 }
 
 .current-location-cell{
-  background-color: rgb(122, 186, 38) !important;
+  background-color: green !important;
+  border: 1px solid green;
+  box-shadow: 0 0 3px 3px rgba(2, 246, 2, 0.3);
+  font-weight: bold;
 }
-
-
 
 .game-cell {
   background-color: #f4f4f4;

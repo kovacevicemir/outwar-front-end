@@ -3,34 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
-[
-  {
-      "name": "Name 1",
-      "level": 1,
-      "experience": 0
-  },
-  {
-      "name": "Name 2",
-      "level": 1,
-      "experience": 0
-  },
-  {
-      "name": "Name 3",
-      "level": 1,
-      "experience": 0
-  },
-  {
-      "name": "newuser",
-      "level": 1,
-      "experience": 0
-  },
-  {
-      "name": "test1",
-      "level": 12,
-      "experience": 5987
-  }
-]
-
 interface RankingObject{
   name:string,
   level: number,

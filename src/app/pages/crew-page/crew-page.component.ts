@@ -188,10 +188,7 @@ export class CrewPageComponent implements OnInit {
     const crewName = this.route.snapshot.queryParamMap.get('crewName');
     if (crewName) {
       this.fetchCrewByName(crewName);
-      return;
-    } else {
-      this.fetchCrewByUser();
-    }
+    } 
   }
 
   fetchCrewByName(crewName: string) {

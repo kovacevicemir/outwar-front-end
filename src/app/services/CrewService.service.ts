@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { effect, Injectable, signal, WritableSignal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {
   Item,
   PlayerProfileServiceService,
@@ -136,17 +136,6 @@ export class CrewService {
         console.error('Error getting user:', error);
       },
     });
-  }
-
-  extractSetName(itemName: string): string | null {
-    // Define your set name matching logic here
-    const knownSets = ['champion', 'banana', 'hero', 'legend'];
-    for (const setName of knownSets) {
-      if (itemName.toLowerCase().includes(setName)) {
-        return setName;
-      }
-    }
-    return null; // Return null if no set match is found
   }
 
   resolveImagePath(item: Item | undefined) {

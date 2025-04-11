@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, effect, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect } from '@angular/core';
 import { Item, PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrade-display.component';
 
 @Component({
@@ -12,7 +11,7 @@ import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrad
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryComponent implements OnInit {
+export class InventoryComponent {
   inventoryItems = this.playerProfileService.inventoryItemsSignal.asReadonly();
   activeItem = 0;
 
@@ -22,9 +21,6 @@ export class InventoryComponent implements OnInit {
       this.inventoryItems(); //track inventory signal change
       this.activeItem = 0;
     });
-  }
-
-  ngOnInit() {
   }
 
   setActiveItem(item: number) {

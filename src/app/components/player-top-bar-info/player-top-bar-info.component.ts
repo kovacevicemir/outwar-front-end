@@ -27,9 +27,13 @@ export class PlayerTopBarInfoComponent implements OnInit {
 
   ngOnInit() {
     if(this.user() === null){
-      this.playerProfileService.getUserByUsername('test1');
+      this.refetchUser();
       this.generateNeededExp();
     }
+  }
+
+  async refetchUser(){
+    await this.playerProfileService.getUserByUsername('test1');
   }
 
 }

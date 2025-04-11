@@ -7,7 +7,6 @@ import questsDescriptions from '../../data/Quests.json';
 import allMonsters from '../../data/Monsters.json';
 import { environment } from '../../../environments/environment';
 
-
 interface WorldLocation {
   id: number;
   name: string;
@@ -38,7 +37,9 @@ export class WorldComponent implements OnInit {
   combatOutcomeMsg = '';
   isModalOpen = false;
   modalContent = `Fetch quest status is it taken or not... display quest status etc. todo`;
-  currentNpcQuest:Quest | undefined = undefined;
+  currentNpcQuest: Quest | undefined = undefined;
+  isChangingLocation = false;
+  user = this.playerProfileService.userSignal();
 
   constructor(
     private http: HttpClient,
@@ -46,35 +47,47 @@ export class WorldComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUserByUsername('test1');
+    if(this.user === null || this.user === undefined){
+      this.getUserByUsername('test1');
+    }else{
+      this.playerLocation = this.user.location;
+    }
   }
 
-  getUserByUsername(username: string) {
-    const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
-    this.http.get(url).subscribe({
-      next: (response) => {
-        // @ts-ignore
-        this.playerLocation = response.location;
-      },
-      error: (error) => {
-        console.error('Error fetching user:', error);
-      },
-    });
+  async getUserByUsername(username: string) {
+    
+    if(this.user == null){ //If user is null because its not set (happens if refresh page), it means that we dont have player location x,y
+      const userRefetch = await this.playerProfileService.getUserByUsername(username);
+      if(userRefetch !== undefined){
+        this.playerLocation = userRefetch.location;
+        const locationDetails = this.getLocationDetails();
+        if(locationDetails){
+          this.currentLocationDetails = locationDetails
+        }
+      }
+    }else{
+      if(this.user.location){
+        this.playerLocation = this.user.location;
+      }
+    }
   }
 
-  async startQuest(questName: string){
-    const res = await this.playerProfileService.startQuest(questName)
-    if(res){
+  async startQuest(questName: string) {
+    const res = await this.playerProfileService.startQuest(questName);
+    if (res) {
       this.modalContent = res;
     }
   }
 
-  getNpcBtnText(){
-    if(this.currentNpcQuest?.status === 1 && this.currentNpcQuest.gotReward === 1){
-      return "Completed!"
+  getNpcBtnText() {
+    if (
+      this.currentNpcQuest?.status === 1 &&
+      this.currentNpcQuest.gotReward === 1
+    ) {
+      return 'Completed!';
     }
 
-    return this.currentNpcQuest?.status === 0 ? "Quest in progress" : "Talk"
+    return this.currentNpcQuest?.status === 0 ? 'Quest in progress' : 'Talk';
   }
 
   isPlayerLocation(row: number, col: number): boolean {
@@ -92,6 +105,11 @@ export class WorldComponent implements OnInit {
   }
 
   changeLocation(direction: string): void {
+    //Debounce logic (prevent fast movement)
+    if (this.isChangingLocation) return;
+    this.isChangingLocation = true;
+    setTimeout(() => (this.isChangingLocation = false), 100);
+
     const url = `${environment.baseUrl}/change-user-location?username=test1&direction=${direction}`;
     this.http.post(url, null).subscribe({
       next: (response) => {
@@ -101,11 +119,10 @@ export class WorldComponent implements OnInit {
         if (currentLocationDetails) {
           this.currentLocationDetails = currentLocationDetails;
           // Only fetch quest if room have npc in it
-          if(currentLocationDetails.npcs.length > 0){
-            this.getSingleQuest(currentLocationDetails.npcs[0])
+          if (currentLocationDetails.npcs.length > 0) {
+            this.getSingleQuest(currentLocationDetails.npcs[0]);
           }
         }
-
         this.combatOutcomeMsg = '';
       },
       error: (error) => {
@@ -114,19 +131,20 @@ export class WorldComponent implements OnInit {
     });
   }
 
-  getMonsterLevel(monsterName:string){
-    return allMonsters.find(m => m.Name === monsterName)?.Id || 0;
+  getMonsterLevel(monsterName: string) {
+    return allMonsters.find((m) => m.Name === monsterName)?.Id || 0;
   }
 
-  getMonsterRage(monsterName:string){
-    return allMonsters.find(m => m.Name === monsterName)?.Rage || 0;
+  getMonsterRage(monsterName: string) {
+    return allMonsters.find((m) => m.Name === monsterName)?.Rage || 0;
   }
 
-  async getSingleQuest(questName:string){
+  async getSingleQuest(questName: string) {
     const url = `${environment.baseUrl}/get-single-quest?username=test1&questName=${questName}`;
     try {
       const response = await this.http.get(url).toPromise();
-      if(response){ //Basically tricking typescript telling it to expect quest in response
+      if (response) {
+        //Basically tricking typescript telling it to expect quest in response
         const res = response;
         this.currentNpcQuest = res as Quest;
       }
@@ -136,21 +154,87 @@ export class WorldComponent implements OnInit {
     }
   }
 
-  isQuestBtnDisabled(){
-    if(this.currentNpcQuest){
-      return true
+  isQuestBtnDisabled() {
+    if (this.currentNpcQuest) {
+      return true;
     }
 
     return false;
   }
 
-  openModal(npc:string) {
-    this.modalContent = questsDescriptions.find(q => q.Name === npc)?.Description || 'Something went wrong!';
+  openModal(npc: string) {
+    this.modalContent =
+      questsDescriptions.find((q) => q.Name === npc)?.Description ||
+      'Something went wrong!';
     this.isModalOpen = true;
   }
 
   closeModal() {
     this.isModalOpen = false;
+  }
+
+  attackMonster(monster: string) {
+    const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
+    this.http.post(url, null).subscribe({
+      next: (response) => {
+        this.combatOutcomeMsg = response.toString();
+        this.playerProfileService.getUserByUsername('test1'); //Refresh the user
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+      },
+    });
+  }
+
+  getLocationDetails() {
+    const [x, y] = this.playerLocation;
+
+    // Validate coordinates
+    if (
+      x < 0 ||
+      y < 0 ||
+      x >= this.gameMap.length ||
+      y >= this.gameMap[x].length
+    ) {
+      console.error('Player location is out of bounds.');
+      return undefined;
+    }
+
+    // Get the ID from this.gameMap
+    const locationId = this.gameMap[x][y];
+
+    // Find the entry in WorldDefinitions
+    const locationDetails = worldDefinitions.find(
+      (entry: WorldLocation) => entry.id === locationId
+    );
+
+    if (!locationDetails) {
+      console.warn(`No matching location found for ID: ${locationId}`);
+    }
+
+    return locationDetails;
+  }
+
+  // Listen for keypress events
+  @HostListener('document:keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent): void {
+    switch (event.key.toLowerCase()) {
+      case 'w':
+        this.changeLocation('up');
+        break;
+      case 'a':
+        this.changeLocation('left');
+        break;
+      case 's':
+        this.changeLocation('down');
+        break;
+      case 'd':
+        this.changeLocation('right');
+        break;
+      default:
+        // Ignore other keys
+        break;
+    }
   }
 
   gameMap: number[][] = [
@@ -240,71 +324,4 @@ export class WorldComponent implements OnInit {
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ],
   ];
-
-  attackMonster(monster: string) {
-    const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
-    this.http.post(url, null).subscribe({
-      next: (response) => {
-        this.combatOutcomeMsg = response.toString();
-        // this.generateEquipedItems(response as UserResponse);
-        this.playerProfileService.getUserByUsername('test1');
-      },
-      error: (error) => {
-        console.error('Error fetching user:', error);
-      },
-    });
-  }
-
-  getLocationDetails() {
-    const [x, y] = this.playerLocation;
-
-    // Validate coordinates
-    if (
-      x < 0 ||
-      y < 0 ||
-      x >= this.gameMap.length ||
-      y >= this.gameMap[x].length
-    ) {
-      console.error('Player location is out of bounds.');
-      return undefined;
-    }
-
-    // Get the ID from this.gameMap
-    const locationId = this.gameMap[x][y];
-
-    // Find the entry in WorldDefinitions
-    const locationDetails = worldDefinitions.find(
-      (entry: WorldLocation) => entry.id === locationId
-    );
-
-    if (!locationDetails) {
-      console.warn(`No matching location found for ID: ${locationId}`);
-    }
-
-    return locationDetails;
-  }
-
-  // Listen for keypress events
-  @HostListener('document:keydown', ['$event'])
-  handleKeydown(event: KeyboardEvent): void {
-    switch (event.key.toLowerCase()) {
-      case 'w':
-        this.changeLocation('up');
-        break;
-      case 'a':
-        this.changeLocation('left');
-        break;
-      case 's':
-        this.changeLocation('down');
-        break;
-      case 'd':
-        this.changeLocation('right');
-        break;
-      default:
-        // Ignore other keys
-        break;
-    }
-  }
-
-  transposedMap: number[][] = [];
 }

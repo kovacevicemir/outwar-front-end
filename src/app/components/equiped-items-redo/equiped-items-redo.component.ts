@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Item, PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
 import { CommonModule } from '@angular/common';
 import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrade-display.component';
@@ -10,17 +10,13 @@ import { ItemUpgradeDisplayComponent } from '../item-upgrade-display/item-upgrad
   standalone: true,
   imports: [CommonModule, ItemUpgradeDisplayComponent]
 })
-export class EquipedItemsRedoComponent implements OnInit {
+export class EquipedItemsRedoComponent {
 
   title = 'micro-outwar';
   activeItem = '';
   equipedItems = this.playerProfileService.equipedItems.asReadonly();
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}
-
-  ngOnInit() {
-    this.playerProfileService.getUserByUsername('test1');
-  }
 
   resolveImagePath(item: Item | undefined){
     return this.playerProfileService.resolveImagePath(item);
