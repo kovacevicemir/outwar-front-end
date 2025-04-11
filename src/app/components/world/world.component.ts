@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import worldDefinitions from '../../data/WorldDefinitions.json';
-import { PlayerProfileServiceService } from '../../services/PlayerProfileService.service';
+import {
+  PlayerProfileServiceService,
+  UserResponse,
+} from '../../services/PlayerProfileService.service';
 import { Quest } from '../all-quests/all-quests.component';
 import questsDescriptions from '../../data/Quests.json';
 import allMonsters from '../../data/Monsters.json';
@@ -47,26 +50,28 @@ export class WorldComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if(this.user === null || this.user === undefined){
+    if (this.user === null || this.user === undefined) {
       this.getUserByUsername('test1');
-    }else{
+    } else {
       this.playerLocation = this.user.location;
     }
   }
 
   async getUserByUsername(username: string) {
-    
-    if(this.user == null){ //If user is null because its not set (happens if refresh page), it means that we dont have player location x,y
-      const userRefetch = await this.playerProfileService.getUserByUsername(username);
-      if(userRefetch !== undefined){
+    if (this.user == null) {
+      //If user is null because its not set (happens if refresh page), it means that we dont have player location x,y
+      const userRefetch = await this.playerProfileService.getUserByUsername(
+        username
+      );
+      if (userRefetch !== undefined) {
         this.playerLocation = userRefetch.location;
         const locationDetails = this.getLocationDetails();
-        if(locationDetails){
-          this.currentLocationDetails = locationDetails
+        if (locationDetails) {
+          this.currentLocationDetails = locationDetails;
         }
       }
-    }else{
-      if(this.user.location){
+    } else {
+      if (this.user.location) {
         this.playerLocation = this.user.location;
       }
     }
@@ -118,6 +123,19 @@ export class WorldComponent implements OnInit {
         const currentLocationDetails = this.getLocationDetails();
         if (currentLocationDetails) {
           this.currentLocationDetails = currentLocationDetails;
+          // Update playerLocation in playerProfileService so rest of components and pages can Sync
+          const userClone = { ...this.playerProfileService.userSignal() };
+          userClone.location = response as number[];
+          if (
+            response !== undefined ||
+            response !== null ||
+            userClone !== null ||
+            userClone !== undefined ||
+            this.playerProfileService.userSignal() !== undefined
+          ) {
+            this.playerProfileService.userSignal.set(userClone as UserResponse);
+          }
+
           // Only fetch quest if room have npc in it
           if (currentLocationDetails.npcs.length > 0) {
             this.getSingleQuest(currentLocationDetails.npcs[0]);
