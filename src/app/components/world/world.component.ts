@@ -100,7 +100,10 @@ export class WorldComponent implements OnInit {
         const currentLocationDetails = this.getLocationDetails();
         if (currentLocationDetails) {
           this.currentLocationDetails = currentLocationDetails;
-          this.getSingleQuest(currentLocationDetails.npcs[0])
+          // Only fetch quest if room have npc in it
+          if(currentLocationDetails.npcs.length > 0){
+            this.getSingleQuest(currentLocationDetails.npcs[0])
+          }
         }
 
         this.combatOutcomeMsg = '';
@@ -127,7 +130,6 @@ export class WorldComponent implements OnInit {
         const res = response;
         this.currentNpcQuest = res as Quest;
       }
-      console.log(response)
     } catch (error) {
       console.error('Error getting single quest:', error);
       throw error;

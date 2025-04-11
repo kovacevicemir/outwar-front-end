@@ -31,6 +31,7 @@ export class BlacksmithPageComponent implements OnInit {
   async upgrade() {
     if (this.selectedItem){
       const res = await this.playerProfileService.upgradeItem(this.selectedItem);
+      
       this.resMessage = res;
       this.playerProfileService.getUserByUsername('test1');
 

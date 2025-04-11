@@ -19,10 +19,6 @@ export class PlayerTopBarInfoComponent implements OnInit {
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}
 
-  debugbutton(){
-    console.log(this.playerProfileService.userSignal.asReadonly()())
-  }
-
   generateNeededExp(){
     const userLevel = this.user()?.level || 0
     const expNeeded = experienceList.find(e => e.level === (userLevel +1))

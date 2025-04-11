@@ -56,14 +56,17 @@ export class CrewService {
 
   async createCrew(crewName: string): Promise<any> {
     if (
-      this.userSignal()?.name === undefined ||
-      this.userSignal()?.name === null
+      this.playerProfileService.userSignal()?.name == undefined ||
+      this.playerProfileService.userSignal()?.name == null
     ) {
-      this.getUserByUsername('test1');
+      this.playerProfileService.getUserByUsername('test1');
       return;
     }
-    const url = `${environment.baseUrl}/create-crew?crewName=${crewName}&crewLeaderId=${
-      this.userSignal()?.id
+
+    const url = `${
+      environment.baseUrl
+    }/create-crew?crewName=${crewName}&crewLeaderId=${
+      this.playerProfileService.userSignal()?.id
     }`;
     try {
       const response = await this.http.post(url, null).toPromise();
@@ -101,16 +104,18 @@ export class CrewService {
 
   async createRaid(raidName: string) {
     if (
-      this.userSignal()?.name === undefined ||
-      this.userSignal()?.name === null
+      this.playerProfileService.userSignal()?.name == undefined ||
+      this.playerProfileService.userSignal()?.name == null
     ) {
-      this.getUserByUsername('test1');
+      this.playerProfileService.getUserByUsername('test1');
       return;
     }
 
     const url = `${environment.baseUrl}/create-raid?crewName=${
       this.crewSignal()?.name
-    }&createdBy=${this.userSignal()?.name}&raidName=${raidName}`;
+    }&createdBy=${
+      this.playerProfileService.userSignal()?.name
+    }&raidName=${raidName}`;
     try {
       const response = await this.http.post(url, null).toPromise();
       return response;
@@ -121,6 +126,7 @@ export class CrewService {
   }
 
   getUserByUsername(username: string) {
+    this.playerProfileService.getUserByUsername(username);
     const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
     this.http.get(url).subscribe({
       next: (response) => {

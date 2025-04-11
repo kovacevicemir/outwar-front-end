@@ -18,10 +18,6 @@ export class EquipedItemsRedoComponent implements OnInit {
 
   constructor(private playerProfileService: PlayerProfileServiceService) {}
 
-  debug(){
-    console.log("this.playerProfileService.equipedItems.asReadonly(); ", this.playerProfileService.equipedItems.asReadonly()())
-  }
-
   ngOnInit() {
     this.playerProfileService.getUserByUsername('test1');
   }

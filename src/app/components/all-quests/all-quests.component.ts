@@ -73,7 +73,6 @@ export class AllQuestsComponent implements OnInit {
         const res = response as string;
         this.questCompletedMessage = res;
       }
-      console.log(response)
     } catch (error) {
       console.error('Error completing quest:', error);
       //@ts-ignore
@@ -83,12 +82,10 @@ export class AllQuestsComponent implements OnInit {
   }
 
   toogleActive(){
-    console.log("Before: ",this.showActiveOnly)
     if(this.showActiveOnly === true){
       const q = this.allQuests.filter(q => {return q.gotReward === 0})
       this.displayedQuests = q
     }else{
-      console.log("this.allQuests: ",this.allQuests)
       this.displayedQuests = [...this.allQuests];
     }
   }
@@ -103,7 +100,6 @@ export class AllQuestsComponent implements OnInit {
         const c = res.quests.filter(q => {return q.gotReward === 0})
         this.displayedQuests = c
       }
-      console.log(response)
     } catch (error) {
       console.error('Error starting quest:', error);
       throw error;
