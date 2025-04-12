@@ -1,0 +1,73 @@
+.drop-list-item-container {
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+}
+
+.drop-list-container-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.droplist-container {
+  padding: 10px;
+}
+
+.searchInput {
+  color: black;
+}
+
+.item-name-color {
+  color: orange;
+}
+
+.item-name-color:hover {
+  cursor: pointer;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 40px; /* space for icon */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: #3f51b5;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #888;
+  font-size: 20px;
+}
+
+.search-form {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.multi-column-list {
+    column-count: 4;              /* Set number of columns you want */
+    column-gap: 32px;             /* Space between columns */
+    max-height: 100%;    
+}
+
+.itemInWorldToStreetList {
+    break-inside: avoid;          /* Prevent breaking items mid-way */
+    margin-bottom: 6px;
+}

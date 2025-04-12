@@ -10,6 +10,7 @@ import { DefaultPageComponent } from './pages/default-page/default-page.componen
 import { BlacksmithPageComponent } from './pages/blacksmith-page/blacksmith-page.component';
 import { SkillsPageComponent } from './pages/skills-page/skills-page.component';
 import { ShopsPageComponent } from './pages/shops-page/shops-page.component';
+import { WikiPageComponent } from './pages/wiki-page/wiki-page.component';
 
 export const routes: Routes = [
   { path: '', component: DefaultPageComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'blacksmith', component: BlacksmithPageComponent },
   { path: 'skills', component: SkillsPageComponent },
   { path: 'shop', component: ShopsPageComponent },
+  { path: 'wiki', component: WikiPageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: 'hello', component: HelloWorldComponent },
 ];

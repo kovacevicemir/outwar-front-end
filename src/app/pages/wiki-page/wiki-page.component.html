@@ -1,0 +1,37 @@
+<div class="droplist-container">
+  <h2>Monsters Drop List</h2>
+
+  <form [formGroup]="form" class="search-form">
+    <div class="search-wrapper">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input
+        class="searchInput"
+        matInput
+        formControlName="search"
+        placeholder="Filter by item name"
+      />
+    </div>
+  </form>
+
+  <ng-container *ngIf="filteredDropList; else noData">
+    <div class="drop-list-item-container" *ngFor="let item of filteredDropList | keyvalue">
+      <strong class="item-name-color">{{ item.key }}</strong>
+      <div>
+        <p class="drop-list-container-item"><strong>Drops by:</strong> {{ item.value.monsterNames.join(', ') }}
+          <strong>at Locations:</strong> {{ item.value.monsterLocations.join(', ') }}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+
+  <h2 style="margin-top: 20px;">Street names & Ids</h2>
+  <div class="multi-column-list">
+    <div class="itemInWorldToStreetList" *ngFor="let i of worldIdToStreetName">
+      {{ i }}
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <p>No drop list data available.</p>
+  </ng-template>
+</div>
