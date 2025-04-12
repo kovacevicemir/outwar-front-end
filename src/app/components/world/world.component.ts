@@ -9,6 +9,7 @@ import { Quest } from '../all-quests/all-quests.component';
 import questsDescriptions from '../../data/Quests.json';
 import allMonsters from '../../data/Monsters.json';
 import { environment } from '../../../environments/environment';
+import { QuestService } from '../../services/QuestService.service';
 
 interface WorldLocation {
   id: number;
@@ -39,14 +40,15 @@ export class WorldComponent implements OnInit {
   subwayIds = [44];
   combatOutcomeMsg = '';
   isModalOpen = false;
-  modalContent = `Fetch quest status is it taken or not... display quest status etc. todo`;
+  modalContent = '';
   currentNpcQuest: Quest | undefined = undefined;
   isChangingLocation = false;
   user = this.playerProfileService.userSignal();
 
   constructor(
     private http: HttpClient,
-    private playerProfileService: PlayerProfileServiceService
+    private playerProfileService: PlayerProfileServiceService,
+    private questService: QuestService
   ) {}
 
   ngOnInit() {
@@ -54,6 +56,12 @@ export class WorldComponent implements OnInit {
       this.getUserByUsername('test1');
     } else {
       this.playerLocation = this.user.location;
+
+      // Get current location details - bug fix when switching between pages
+      const locationDetails = this.getLocationDetails();
+      if(locationDetails){
+        this.currentLocationDetails = locationDetails;
+      }
     }
   }
 
@@ -78,9 +86,10 @@ export class WorldComponent implements OnInit {
   }
 
   async startQuest(questName: string) {
-    const res = await this.playerProfileService.startQuest(questName);
+    const res = await this.questService.startQuest(questName);
     if (res) {
       this.modalContent = res;
+      this.questService.getAllQuests();
     }
   }
 

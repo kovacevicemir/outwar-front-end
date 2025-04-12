@@ -19,6 +19,7 @@ export type Item = {
   critical?: number;
   block?: number;
   urlPath?: string;
+  locked?: boolean;
 };
 
 export type EquipedItems = {
@@ -169,7 +170,7 @@ export class PlayerProfileServiceService {
     });
   }
 
-  async getUserByUsername(username: string) {
+  async getUserByUsername(username: string = 'test1') {
     const url = `${environment.baseUrl}/get-user-by-username?username=${username}`;
     try {
       const res = await this.http.get(url).toPromise();

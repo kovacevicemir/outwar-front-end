@@ -2,18 +2,21 @@
 <div class="grid grid-cols-10 grid-rows-5 gap-1 p-0 w-[550px]">
   <!-- Loop through each square in the grid and display items -->
   <div *ngFor="let item of inventoryItems(); let i = index"
-    class="relative w-12 h-12 rounded-lg overflow-visible border-2 border-gray-600">
+    class="relative w-12 h-12 rounded-lg overflow-visible border-2 " [ngClass]="item.locked ? 'border-blue-600' : 'border-gray-600'">
     <!-- Show image if item exists -->
     <img *ngIf="item" (click)="setActiveItem(item.id)" [src]="item.urlPath" alt="Item"
       class="object-cover w-full h-full rounded-lg hover:cursor-pointer" />
     <!-- Tooltip Positioned Below Image -->
-    <div *ngIf="activeItem === item.id"
-      class="absolute left-0 z-30 top-full mt-1  rounded shadow-lg w-fit">
-      
+    <div *ngIf="activeItem === item.id" class="absolute left-0 z-30 top-full mt-1  rounded shadow-lg w-fit">
+
       <!-- <pre>{{ item | json }}</pre> -->
       <div class="w-fit min-w-[150px] mx-auto p-4 bg-gray-900 rounded-lg shadow-md">
         <!-- Item Name -->
-        <p class=" text-xs font-bold text-gray-200 text-left">{{ item.name }}</p>
+        <div>
+          <p class=" text-xs font-bold text-gray-200 text-left">{{ item.name }}
+          </p>
+        </div>
+
         <div *ngIf="item.upgradeLevel !== 0" class="mt-2 text-sm text-gray-200">
           <app-item-upgrade-display [upgradeLevel]=item.upgradeLevel></app-item-upgrade-display>
         </div>
@@ -46,8 +49,8 @@
           <p *ngIf="item.setBonus[0]" class="text-gray-300 text-xs">
             <span class="font-semibold">[{{ item.setBonus?.[0] }}/{{item.setBonus?.[1]}}] Set Bonus</span>
           </p>
-          
-          
+
+
         </div>
 
         <!-- Item Type and Upgrade Level -->
@@ -62,10 +65,11 @@
             class="text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
             Equip
           </button>
-          <button (click)="deleteItem(item)"
-            class="ml-4 text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
+          <button (click)="deleteItem(item)" class="mx-2 text-xs  text-black font-bold py-1  rounded bg-slate-200 p-1">
             Delete
           </button>
+          <mat-icon (click)="toggleLockItem(item.id)" class="lockIcon" *ngIf="item.locked" aria-hidden="false" aria-label="Example home icon" fontIcon="lock_open"></mat-icon>
+          <mat-icon (click)="toggleLockItem(item.id)" class="lockIcon" *ngIf="!item.locked" aria-hidden="false" aria-label="Example home icon" fontIcon="lock"></mat-icon>
         </div>
       </div>
 
@@ -73,7 +77,5 @@
       <div *ngIf="!item" class="w-full h-full bg-gray-200 rounded-lg"></div>
     </div>
   </div>
-
-
 
   <!-- <pre>{{ inventoryItems()| json }}</pre> -->

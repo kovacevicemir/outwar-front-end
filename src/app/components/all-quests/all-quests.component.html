@@ -15,7 +15,7 @@
 
   </div>
 
-  <div *ngFor="let quest of displayedQuests; let i = index" class="mb-4 border border-gray-900 rounded-lg">
+  <div *ngFor="let quest of displayedQuests() let i = index" class="mb-4 border border-gray-900 rounded-lg">
     <div class="flex justify-between items-center bg-gray-900 p-4 cursor-pointer" (click)="toggleCollapse(i)">
       <div>
         <h2 class="text-lg font-semibold">{{ quest.name }}</h2>
