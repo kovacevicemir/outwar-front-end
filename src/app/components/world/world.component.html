@@ -29,7 +29,10 @@
     npcs: [], -->
   <div class="p-4 bg-gray-700 rounded shadow-md">
     <!-- Display the location name -->
-    <h1 class="text-2xl font-bold text-gray-200 mb-4">{{ currentLocationDetails.name }}</h1>
+    <div class="flex w-full justify-between" style="align-items: center;">
+      <h1 class="text-2xl font-bold text-gray-200 mb-4">{{ currentLocationDetails.name }}</h1> <mat-icon
+        *ngIf="isAttacking" aria-hidden="false" aria-label="Example home icon" class="mr-2" fontIcon="sports_martial_arts"></mat-icon>
+    </div>
 
     <!-- Display the monsters and Attack button -->
     <div>
@@ -38,7 +41,7 @@
         <li *ngFor="let monster of currentLocationDetails.monsters"
           class="flex items-center justify-between bg-gray-600 p-2 rounded shadow">
           <span class="text-gray-300">[{{getMonsterLevel(monster)}}] {{ monster }} </span>
-          <button class="bg-red-500 text-white text-xs px-4 py-2 rounded hover:bg-red-600"
+          <button [disabled]="isAttacking" class="bg-red-500 text-white text-xs px-4 py-2 rounded hover:bg-red-600"
             (click)="attackMonster(monster)">
             Attack [{{getMonsterRage(monster)}}]
           </button>

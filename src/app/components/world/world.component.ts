@@ -43,6 +43,7 @@ export class WorldComponent implements OnInit {
   modalContent = '';
   currentNpcQuest: Quest | undefined = undefined;
   isChangingLocation = false;
+  isAttacking = false;
   user = this.playerProfileService.userSignal();
 
   constructor(
@@ -201,6 +202,11 @@ export class WorldComponent implements OnInit {
   }
 
   attackMonster(monster: string) {
+    //Debounce logic (prevent fast attacking - ui only)
+    if (this.isAttacking) return;
+    this.isAttacking = true;
+    setTimeout(() => (this.isAttacking = false), 1000);
+
     const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {

@@ -72,9 +72,8 @@ export class AllQuestsComponent implements OnInit {
   }
 
   async completeQuest(questName: string) {
-    const url = `${environment.baseUrl}/get-quest-reward?username=test1&questName=${questName}`;
     try {
-      const response = await this.http.post(url, NgTemplateOutlet).toPromise();
+      const response = await this.questService.completeQuest(questName)
       if (response) {
         //Basically tricking typescript telling it to expect string in response
         const res = response as string;

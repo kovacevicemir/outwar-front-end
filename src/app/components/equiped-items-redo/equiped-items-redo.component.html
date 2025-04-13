@@ -1,4 +1,4 @@
-<div class="equiped-main-container w-[250px] h-[277px] grid grid-cols-3 gap-0 p-0 max-w-xs mx-auto bg-black">
+<div class="equiped-main-container w-[250px] h-[277px] grid grid-cols-3 grid-rows-3 gap-0 p-0 max-w-xs mx-auto bg-black">
 
   <!-- Row 1 with placeholder for 1 -->
   <div class="border-transparent p-4"></div>
@@ -61,7 +61,7 @@
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().neck"
+  <div class="flex items-center justify-center rounded-md p-2 relative ml-[-25px] mt-[-10px]"><img *ngIf="equipedItems().neck"
       (click)="setActiveItem('neck')" [src]="resolveImagePath(equipedItems().neck)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mt-5" />
     <!-- Tooltip Positioned Below Image -->
@@ -122,7 +122,7 @@
   <!-- Row 2 -->
   <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().weapon"
       (click)="setActiveItem('weapon')" [src]="resolveImagePath(equipedItems().weapon)"
-      class="hover:cursor-pointer border rounded-md border-gray-500" />
+      class="hover:cursor-pointer border rounded-md border-gray-500 mt-[-20px] ml-[30px]" />
     <!-- Tooltip Positioned Below Image -->
     <div *ngIf="activeItem === 'weapon'" class="absolute left-0 z-10 top-full mt-1 bg-gray-900 rounded shadow-lg">
       <div *ngIf="equipedItems().weapon" class="w-fit min-w-[150px] mx-auto p-4 bg-gray-900 rounded-lg shadow-md">
@@ -174,7 +174,7 @@
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('armor')"
+  <div class="flex items-center justify-center rounded-md p-2 relative"><img (click)="setActiveItem('armor')"
       *ngIf="equipedItems().armor" [src]="resolveImagePath(equipedItems().armor)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mt-[-45px]" />
     <!-- Tooltip Positioned Below Image -->
@@ -230,7 +230,7 @@
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img *ngIf="equipedItems().shield"
+  <div class="flex items-center justify-center  rounded-md p-2 relative mt-[-20px] ml-[-30px]"><img *ngIf="equipedItems().shield"
       (click)="setActiveItem('shield')" [src]="resolveImagePath(equipedItems().shield)"
       class="hover:cursor-pointer border rounded-md border-gray-500" />
     <!-- Tooltip Positioned Below Image -->
@@ -286,7 +286,7 @@
   </div>
 
   <!-- Row 3 -->
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('belt')"
+  <div class="flex items-center justify-center rounded-md p-2 relative ml-[20px] mt-[-20px]"><img (click)="setActiveItem('belt')"
       *ngIf="equipedItems().belt" [src]="resolveImagePath(equipedItems().belt)"
       class="hover:cursor-pointer border rounded-md border-gray-500 ml-5 mb-5" />
     <!-- Tooltip Positioned Below Image -->
@@ -406,7 +406,7 @@
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center  rounded-md p-2 relative"><img (click)="setActiveItem('ring')"
+  <div class="flex items-center justify-center rounded-md p-2 relative ml-[-20px] mt-[-20px]"><img (click)="setActiveItem('ring')"
       *ngIf="equipedItems().ring" [src]="resolveImagePath(equipedItems().ring)"
       class="hover:cursor-pointer border rounded-md border-gray-500 mr-5 mb-5" />
     <!-- Tooltip Positioned Below Image -->
