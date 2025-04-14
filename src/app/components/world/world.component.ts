@@ -45,6 +45,10 @@ export class WorldComponent implements OnInit {
   isChangingLocation = false;
   isAttacking = false;
   user = this.playerProfileService.userSignal();
+  monsterAttacks = []
+  playerAttacks = []
+  monsterHpLeft = []
+  playerHpLeft = []
 
   constructor(
     private http: HttpClient,
@@ -152,6 +156,10 @@ export class WorldComponent implements OnInit {
           }
         }
         this.combatOutcomeMsg = '';
+        this.playerAttacks = []
+        this.monsterAttacks = [];
+        this.playerHpLeft = []
+        this.monsterHpLeft = [];
       },
       error: (error) => {
         console.error('Error fetching user:', error);
@@ -210,7 +218,21 @@ export class WorldComponent implements OnInit {
     const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {
-        this.combatOutcomeMsg = response.toString();
+        // @ts-ignore
+        this.combatOutcomeMsg = response.message.toString();
+      
+        // @ts-ignore
+        this.playerAttacks = response.playerAttacks
+
+        // @ts-ignore
+        this.monsterAttacks = response.monsterAttacks
+
+        // @ts-ignore
+        this.playerHpLeft = response.playerHpLeft
+
+        // @ts-ignore
+        this.monsterHpLeft = response.monsterHpLeft
+
         this.playerProfileService.getUserByUsername('test1'); //Refresh the user
       },
       error: (error) => {

@@ -31,7 +31,8 @@
     <!-- Display the location name -->
     <div class="flex w-full justify-between" style="align-items: center;">
       <h1 class="text-2xl font-bold text-gray-200 mb-4">{{ currentLocationDetails.name }}</h1> <mat-icon
-        *ngIf="isAttacking" aria-hidden="false" aria-label="Example home icon" class="mr-2" fontIcon="sports_martial_arts"></mat-icon>
+        *ngIf="isAttacking" aria-hidden="false" aria-label="Example home icon" class="mr-2"
+        fontIcon="sports_martial_arts"></mat-icon>
     </div>
 
     <!-- Display the monsters and Attack button -->
@@ -71,6 +72,9 @@
       </ul>
     </div>
   </div>
+
+  <app-fight-outcome [playerAttacks]="playerAttacks" [monsterAttacks]="monsterAttacks" [playerHpLeft]="playerHpLeft"
+    [monsterHpLeft]="monsterHpLeft"></app-fight-outcome>
 
   <app-all-quests></app-all-quests>
 

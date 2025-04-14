@@ -1,10 +1,9 @@
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Monsters from '../../data/Monsters.json';
 import { MatIconModule } from '@angular/material/icon';
-import { environment } from '../../../environments/environment';
 import { QuestService } from '../../services/QuestService.service';
 
 export interface Quest {
@@ -97,19 +96,4 @@ export class AllQuestsComponent implements OnInit {
       this.questService.displayedQuests.set([...this.allQuests()]);
     }
   }
-
-  // async getAllQuests(): Promise<any>{
-  //   try {
-  //     const response = await this.questService.getAllQuests();
-  //     if(response){ //Basically tricking typescript telling it to expect quests in response
-  //       const res = response as ExtendedResponseType;
-  //       this.allQuests = res.quests
-  //       const c = res.quests.filter(q => {return q.gotReward === 0})
-  //       this.displayedQuests = c
-  //     }
-  //   } catch (error) {
-  //     console.error('Error starting quest:', error);
-  //     throw error;
-  //   }
-  // }
 }

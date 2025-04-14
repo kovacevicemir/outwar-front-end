@@ -1,0 +1,54 @@
+<div *ngIf="playerHpLeft.length > 0" class="fight-outcome mt-4" style="display: flex; flex-direction: column; gap: 20px;">
+  <!-- Health bars pinned at top -->
+  <div style="display: flex; gap: 10px; justify-content: center;">
+    <!-- Player HP -->
+    <div style="width: 150px;">
+      <p class="text-center"><strong>Player </strong>{{playerHpLeft[0]}} HP</p>
+      <div style="background: #ccc; height: 10px; width: 100%;">
+        <div
+          [style.width.%]="playerHpLeft[visibleTurns] / playerHpLeft[0] * 100 || 0"
+          style="height: 100%; background: green;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Monster HP -->
+    <div style="width: 150px;">
+      <p class="text-center"><strong>Monster </strong>{{monsterHpLeft[0]}} HP</p>
+      <div style="background: #ccc; height: 10px; width: 100%;">
+        <div
+          [style.width.%]="monsterHpLeft[visibleTurns] / monsterHpLeft[0] * 100 || 0"
+          style="height: 100%; background: red;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attack turns (alternating rows) -->
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div *ngFor="let i of indices.slice(0, visibleTurns)">
+      <!-- Player attack row -->
+      <div class="attack-row" style="display: flex; justify-content: center;">
+        <div style="width: 150px;">
+          <div *ngIf="playerAttacks[i] !== undefined">
+            <div class="playerAttackContainer">
+              {{normalizeAttack(playerAttacks[i])}}
+            </div>
+            <!-- <strong>Player attack {{ i + 1 }}:</strong> {{ playerAttacks[i] }} -->
+          </div>
+        </div>
+        <div style="width: 150px;"></div>
+      </div>
+
+      <!-- Monster attack row -->
+      <div class="attack-row" style="display: flex; justify-content: center;">
+        <div style="width: 150px;"></div>
+        <div style="width: 150px;">
+          <div class="monsterAttackContainer" *ngIf="monsterAttacks[i] !== undefined">
+            {{ monsterAttacks[i] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
