@@ -4,12 +4,7 @@
   <form [formGroup]="form" class="search-form">
     <div class="search-wrapper">
       <mat-icon class="search-icon">search</mat-icon>
-      <input
-        class="searchInput"
-        matInput
-        formControlName="search"
-        placeholder="Filter by item name"
-      />
+      <input class="searchInput" matInput formControlName="search" placeholder="Filter by item name" />
     </div>
   </form>
 
@@ -24,10 +19,24 @@
     </div>
   </ng-container>
 
-  <h2 style="margin-top: 20px;">Street names & Ids</h2>
+  <h2 style="margin-top: 50px;">Street names & Ids</h2>
   <div class="multi-column-list">
     <div class="itemInWorldToStreetList" *ngFor="let i of worldIdToStreetName">
       {{ i }}
+    </div>
+  </div>
+
+  <h2 style="margin-top: 50px;">Quests</h2>
+  <div *ngFor="let quest of quests">
+    <div class="quest-container mb-4">
+      <p><strong>{{quest.Name}}</strong></p>
+       <p>Location {{quest.Location}}</p>
+       <p>Description {{quest.Description}}</p>
+       <p class="text-yellow-400">Exp {{quest.Exp}}</p>
+       <p>Item rewards:</p>
+      <div class="text-blue-500" *ngFor="let item of quest.ItemRewardNames">
+        {{item}}
+      </div>
     </div>
   </div>
 

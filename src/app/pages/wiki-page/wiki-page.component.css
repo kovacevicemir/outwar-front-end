@@ -67,3 +67,10 @@
     break-inside: avoid;          /* Prevent breaking items mid-way */
     margin-bottom: 6px;
 }
+
+.quest-container{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+  border-bottom: 1px solid gray;
+}

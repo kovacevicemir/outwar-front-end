@@ -50,8 +50,10 @@
       </ul>
     </div>
 
-    <div *ngIf="combatOutcomeMsg !== ''"
-      class="bg-gradient-to-r from-green-500 to-green-700 text-white p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-200 font-mono text-lg text-center border-4 border-green-400">
+    <div *ngIf="combatOutcomeMsg !== ''" [ngClass]="combatOutcomeMsg.includes('You lost the fight') 
+       ? 'bg-gradient-to-r from-red-500 to-red-700 border-red-400' 
+       : 'bg-gradient-to-r from-green-500 to-green-700 border-green-400'"
+      class="text-white p-4 rounded-lg shadow-lg hover:scale-105 transform transition-all duration-200 font-mono text-lg text-center border-4">
       {{ combatOutcomeMsg }}
     </div>
 
