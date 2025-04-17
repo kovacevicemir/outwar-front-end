@@ -57,4 +57,13 @@ export class FightOutcomeComponent {
       return attackValue;
     }
   }
+
+  normalizeMonsterAttack(attackValue: number){
+    if(attackValue === -1){
+      //this means block
+      return "Block!"
+    }else{
+      return attackValue;
+    }
+  }
 }

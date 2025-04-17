@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import quests from '../../data/Quests.json';
+import experienceList from '../../data/experienceList.json';
 
 // I just runned .map on world.json file to extract this...
 export const worldIdToStreetName = [
@@ -105,6 +106,7 @@ export class WikiPageComponent implements OnInit {
   });
   worldIdToStreetName = worldIdToStreetName;
   quests = quests;
+  experienceList = experienceList;
 
 
   constructor(private http: HttpClient) { }

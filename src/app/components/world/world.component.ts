@@ -218,6 +218,11 @@ export class WorldComponent implements OnInit {
     const url = `${environment.baseUrl}/attack-monster-by-name?monsterName=${monster}&username=test1`;
     this.http.post(url, null).subscribe({
       next: (response) => {
+        if(response === "You dont have enough rage to attack this monster!"){
+          this.combatOutcomeMsg = response.toString();
+          return; //Should calculate rage here and not send request to backend at all. TODO
+        }
+
         // @ts-ignore
         this.combatOutcomeMsg = response.message.toString();
       

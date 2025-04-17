@@ -45,7 +45,7 @@
         <div style="width: 150px;"></div>
         <div style="width: 150px;">
           <div class="monsterAttackContainer" *ngIf="monsterAttacks[i] !== undefined">
-            {{ monsterAttacks[i] }}
+            {{normalizeMonsterAttack(monsterAttacks[i])}}
           </div>
         </div>
       </div>

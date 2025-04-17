@@ -40,6 +40,14 @@
     </div>
   </div>
 
+  <h2 style="margin-top: 50px;">Experience list</h2>
+  <div *ngFor="let listItem of experienceList">
+    <div class="experienceListItem-container mb-2">
+      <div> <p><strong>Level {{listItem.level}}</strong> - Experience {{listItem.experience}}</p> </div>
+      <p class="">Attack {{listItem.attackPoints}} Hp {{listItem.Hp}} (Skill Points {{listItem.skillPoints}})</p>
+    </div>
+  </div>
+
   <ng-template #noData>
     <p>No drop list data available.</p>
   </ng-template>
